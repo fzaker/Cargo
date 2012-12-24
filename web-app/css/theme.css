@@ -27,7 +27,7 @@ body {
 /********** Header **********/
 
 #header > #logo {
-    background: url(../images/logo.png) no-repeat center right;
+    background: url(../images/logo.png) no-repeat center left;
     line-height: 71px;
     text-indent: -9999px;
     margin:0;

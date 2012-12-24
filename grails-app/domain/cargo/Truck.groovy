@@ -5,19 +5,19 @@ class Truck {
     String typeOfVehicle
     String chassisNo
     String trademark
+    String kindOfVehicle
+    String trailerNumber
     String otherParticulars
-    Date validityDate
-    Date expireDate
-    Carrier carrier
+    ForwardingReference carrier
 
     static constraints = {
         registrationNo(blank: false)
         typeOfVehicle(blank: false)
         chassisNo(blank: false)
         trademark(blank: false)
+        kindOfVehicle(blank: true)
+        trailerNumber(blank: true)
         otherParticulars(maxSize: 128)
-        validityDate(nullable: false)
-        expireDate(nullable: false)
         carrier(nullable: false)
     }
 }

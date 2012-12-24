@@ -27,4 +27,9 @@ class ForwardingReference {
         asAnAgent(nullable: false)
         asAConsignee(nullable: false)
     }
+
+    @Override
+    String toString() {
+        title
+    }
 }

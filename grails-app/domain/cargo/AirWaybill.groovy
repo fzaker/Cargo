@@ -1,5 +1,7 @@
 package cargo
 
+import cargo.cargoItem.AirCargoItem
+
 class AirWaybill extends BillOfLading {
 
 

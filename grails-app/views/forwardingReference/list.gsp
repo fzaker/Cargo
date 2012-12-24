@@ -16,11 +16,15 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-		<div id="list-forwardingReference" class="content scaffold-list" role="main">
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+        <div id="list-forwardingReference" ng-controller="forwardingReferenceController" class="content scaffold-list" role="main">
             <rg:grid domainClass="${cargo.ForwardingReference}"></rg:grid>
-		</div>
-	</body>
+            <rg:dialog id="forwardingReference" title="ForwardingReference Dialog">
+                <rg:fields bean="${new cargo.ForwardingReference()}"></rg:fields>
+                <rg:saveButton domainClass="${cargo.ForwardingReference}"/>
+                <rg:cancelButton/>
+            </rg:dialog>
+            <input type="button" ng-click="openForwardingReferenceCreateDialog()" value="Create ForwardingReference"/>
+            <input type="button" ng-click="openForwardingReferenceEditDialog()" value="Edit ForwardingReference"/>
+        </div>
+    </body>
 </html>

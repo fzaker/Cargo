@@ -1,6 +1,12 @@
 <%@ page import="cargo.City" %>
 
-<rg:form bean="${cityInstance}"></rg:form>
+
+<rg:dialog id="city" title="City Dialog">
+</rg:dialog>
+<rg:fields bean="${cityInstance}"></rg:fields>
+
+
+
 %{--<f:input bean="cityInstance" property="airports[0].title"/>--}%
 %{--<f:input bean="cityInstance" property="airports[0].abbreviation"/>--}%
 

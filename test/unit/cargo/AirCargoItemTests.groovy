@@ -3,7 +3,8 @@ package cargo
 
 
 import grails.test.mixin.*
-import org.junit.*
+
+import cargo.cargoItem.AirCargoItem
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions

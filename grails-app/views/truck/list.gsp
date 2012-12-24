@@ -16,11 +16,15 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-		<div id="list-truck" class="content scaffold-list" role="main">
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+        <div id="list-truck" ng-controller="truckController" class="content scaffold-list" role="main">
             <rg:grid domainClass="${cargo.Truck}"></rg:grid>
-		</div>
-	</body>
+            <rg:dialog id="truck" title="Truck Dialog">
+                <rg:fields bean="${new cargo.Truck()}"></rg:fields>
+                <rg:saveButton domainClass="${cargo.Truck}"/>
+                <rg:cancelButton/>
+            </rg:dialog>
+            <input type="button" ng-click="openTruckCreateDialog()" value="Create Truck"/>
+            <input type="button" ng-click="openTruckEditDialog()" value="Edit Truck"/>
+        </div>
+    </body>
 </html>

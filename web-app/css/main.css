@@ -61,22 +61,6 @@ input:-moz-placeholder {
     max-width: 800px;
 }
 
-.initialList {
-    display: inline-block;
-    min-width: 900px;
-    min-height: 250px;
-}
-
-.compositionField {
-    width: 80px;
-    float: right;
-    margin: 2px;
-}
-
-.compositeForm {
-    clear: both;
-}
-
 ul.portfolioManagementTabs li {
     width: 120px;
 }
@@ -783,11 +767,11 @@ a.skip {
 }
 
 #home-nav{
-    margin-left:450px;
+    margin-right:450px;
 }
 
 #homelogo{
-    float:left;
+    float:right;
     background: url(../images/homelogo.png) center center no-repeat;
     width: 400px;
     height:400px;
