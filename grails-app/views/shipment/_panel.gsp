@@ -5,6 +5,17 @@
 </g:if>
 <ol class="property-list shipment">
 
+    <g:if test="${shipmentInstance?.referenceCode}">
+        <li class="fieldcontain">
+            <span id="referenceCode-label" class="property-label"><g:message code="shipment.referenceCode.label"
+                                                                     default="ReferenceCode"/></span>
+
+            <span class="property-value" aria-labelledby="referenceCode-label"><g:fieldValue bean="${shipmentInstance}"
+                                                                                     field="referenceCode"/></span>
+
+        </li>
+    </g:if>
+
     <g:if test="${shipmentInstance?.title}">
         <li class="fieldcontain">
             <span id="title-label" class="property-label"><g:message code="shipment.title.label"

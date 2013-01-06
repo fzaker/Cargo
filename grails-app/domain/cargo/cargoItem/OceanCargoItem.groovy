@@ -6,7 +6,9 @@ class OceanCargoItem {
     CargoItem cargoItem
     OceanFreight oceanFreight
 
-    String testProperty
+   String testProperty
+
+
 
     static constraints = {
     }

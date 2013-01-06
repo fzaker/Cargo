@@ -34,6 +34,9 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.16'
+        runtime "org.mongodb:mongo-java-driver:2.9.1"
+        compile "org.mongodb:mongo-java-driver:2.9.1"
+        runtime "com.gmongo:gmongo:1.0"
     }
 
     plugins {
@@ -47,6 +50,9 @@ grails.project.dependency.resolution = {
         //runtime ":yui-minify-resources:0.1.4"
 
         build ":tomcat:$grailsVersion"
+        compile(":mongodb:1.0.0.GA") {
+            excludes 'mongo-java-driver', 'gmongo'
+        }
     }
 }
 

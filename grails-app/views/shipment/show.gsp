@@ -8,26 +8,11 @@
 </head>
 
 <body>
-<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${CargoItem}">
-        <rg:criteria>
-            <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
-        </rg:criteria>
-    </rg:grid>
-    <rg:dialog id="cargoItem" title="CargoItem Dialog">
-        <rg:fields bean="${new CargoItem()}"></rg:fields>
-        <rg:saveButton domainClass="${CargoItem}"/>
-        <rg:cancelButton/>
-    </rg:dialog>
-    <input type="button" ng-click="openCargoItemCreateDialog()" value="Create CargoItem"/>
-    <input type="button" ng-click="openCargoItemEditDialog()" value="Edit CargoItem"/>
-</div>
 
-<br>
 
 <div id="list-freight" ng-controller="freightController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.freight.Freight}" onSelectRow="loadCargoItems"
-             columns="${[[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "shipper"], [name: "consignee"], [name: "notifyParty"], [name: "agent"], [name: "placeOfReceipt"], [name: "placeOfLoading"]]}"
+             columns="${[[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "shipper"], [name: "consignee"], [name: "notifyParty"], [name: "agent"], [name: "placeOfLoading"], [name: "placeOfReceipt"]]}"
     >
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
@@ -78,7 +63,21 @@
 </div>
 
 <br>
-
+<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
+    <rg:grid domainClass="${CargoItem}">
+        <rg:criteria>
+            <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
+        </rg:criteria>
+    </rg:grid>
+    <rg:dialog id="cargoItem" title="CargoItem Dialog">
+        <rg:fields bean="${new CargoItem()}"></rg:fields>
+        <rg:saveButton domainClass="${CargoItem}"/>
+        <rg:cancelButton/>
+    </rg:dialog>
+    <input type="button" ng-click="openCargoItemCreateDialog()" value="Create CargoItem"/>
+    <input type="button" ng-click="openCargoItemEditDialog()" value="Edit CargoItem"/>
+</div>
+<br>
 <div id="list-airCargoItem" ng-controller="airCargoItemController" class="content scaffold-list" role="main" >
     <rg:grid domainClass="${AirCargoItem}">
         <rg:criteria>
@@ -152,7 +151,7 @@
 
             <rg:interceptCreateDialog>
                 $scope.railCargoItemInstance.railFreight = { id: $scope.freightId };
-                $scope.railCargoItemInstance.cargoItem = { id: $scope.cargoItemId };
+                $scope.railCargoItemInstance.cargoItem =  { id: $scope.cargoItemId };
             </rg:interceptCreateDialog>
 
         </rg:fields>
@@ -281,6 +280,9 @@
     showCargoItem("");
 
 </g:javascript>
+<br>
+
+
 
 </body>
 </html>

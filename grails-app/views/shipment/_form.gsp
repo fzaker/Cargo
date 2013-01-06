@@ -1,6 +1,12 @@
 <%@ page import="cargo.Shipment" %>
 
-
+<div class="fieldcontain ${hasErrors(bean: shipmentInstance, field: 'referenceCode', 'error')} required">
+    <label for="referenceCode">
+        <g:message code="shipment.referenceCode.label" default="ReferenceCode" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="referenceCode" required="" value="${shipmentInstance?.referenceCode}"/>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: shipmentInstance, field: 'title', 'error')} required">
 	<label for="title">
