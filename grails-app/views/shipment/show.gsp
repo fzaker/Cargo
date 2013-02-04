@@ -10,10 +10,25 @@
 <body>
 
 
+<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
+    <rg:grid domainClass="${CargoItem}" maxColumns="14">
+        <rg:criteria>
+            <rg:eq name="shipment.id" value="${shipmentInstance.id}" />
+        </rg:criteria>
+    </rg:grid>
+    <rg:dialog id="cargoItem" title="CargoItem Dialog">
+        <rg:fields bean="${new CargoItem()}"></rg:fields>
+        <rg:saveButton domainClass="${CargoItem}"/>
+        <rg:cancelButton/>
+    </rg:dialog>
+    <input type="button" ng-click="openCargoItemCreateDialog()" value="Create CargoItem"/>
+    <input type="button" ng-click="openCargoItemEditDialog()" value="Edit CargoItem"/>
+</div>
+<br>
+
 <div id="list-freight" ng-controller="freightController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.freight.Freight}" onSelectRow="loadCargoItems"
-             columns="${[[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "shipper"], [name: "consignee"], [name: "notifyParty"], [name: "agent"], [name: "placeOfLoading"], [name: "placeOfReceipt"]]}"
-    >
+             columns="${[[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "placeOfLoading"], [name: "placeOfDischarge"]]}">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
         </rg:criteria>
@@ -30,56 +45,52 @@
         }
     </g:javascript>
 
-
+    <g:if test="${shipmentInstance.HBL&&shipmentInstance.shipper&&shipmentInstance.consignee&&shipmentInstance.notifyParty&&shipmentInstance.agent}">
     <rg:dialog id="airFreight" title="Air Freight Dialog">
-    <rg:fields bean="${new cargo.freight.AirFreight()}" angular="false"></rg:fields>
-    <rg:saveButton domainClass="${cargo.freight.AirFreight}" gridId="freight" />
-    <rg:cancelButton/>
+        <rg:fields bean="${new cargo.freight.AirFreight()}" angular="false"></rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.AirFreight}" gridId="freight"/>
+        <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openAirFreightCreateDialog()" value="Create Air Freight"/>
 
     <rg:dialog id="oceanFreight" title="Ocean Freight Dialog">
-    <rg:fields bean="${new cargo.freight.OceanFreight()}" angular="false"></rg:fields>
-    <rg:saveButton domainClass="${cargo.freight.OceanFreight}" gridId="freight" />
-    <rg:cancelButton/>
+        <rg:fields bean="${new cargo.freight.OceanFreight()}" angular="false"></rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.OceanFreight}" gridId="freight"/>
+        <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openOceanFreightCreateDialog()" value="Create Ocean Freight"/>
 
     <rg:dialog id="railFreight" title="Rail Freight Dialog">
-    <rg:fields bean="${new cargo.freight.RailFreight()}" angular="false"></rg:fields>
-    <rg:saveButton domainClass="${cargo.freight.RailFreight}" gridId="freight" />
-    <rg:cancelButton/>
+        <rg:fields bean="${new cargo.freight.RailFreight()}" angular="false"></rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.RailFreight}" gridId="freight"/>
+        <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openRailFreightCreateDialog()" value="Create Rail Freight"/>
 
     <rg:dialog id="roadFreight" title="Road Freight Dialog">
-    <rg:fields bean="${new cargo.freight.RoadFreight()}" angular="false"></rg:fields>
-    <rg:saveButton domainClass="${cargo.freight.RoadFreight}" gridId="freight" />
-    <rg:cancelButton/>
+        <rg:fields bean="${new cargo.freight.RoadFreight()}" angular="false"></rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.RoadFreight}" gridId="freight"/>
+        <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openRoadFreightCreateDialog()" value="Create Road Freight"/>
+
+    </g:if>
+    <g:else>
+        <br>
+      <p style="font-family: times;color: #00008b;font-size:x-large;text-align: center">
+          Please complete the shipment form to display Freight Mode buttons
+      </p>
+
+    </g:else>
 
     <rg:angularController domainClass="${cargo.freight.Freight}" subClasses="true" self="false"/>
 </div>
 
 <br>
-<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${CargoItem}">
-        <rg:criteria>
-            <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
-        </rg:criteria>
-    </rg:grid>
-    <rg:dialog id="cargoItem" title="CargoItem Dialog">
-        <rg:fields bean="${new CargoItem()}"></rg:fields>
-        <rg:saveButton domainClass="${CargoItem}"/>
-        <rg:cancelButton/>
-    </rg:dialog>
-    <input type="button" ng-click="openCargoItemCreateDialog()" value="Create CargoItem"/>
-    <input type="button" ng-click="openCargoItemEditDialog()" value="Edit CargoItem"/>
-</div>
-<br>
-<div id="list-airCargoItem" ng-controller="airCargoItemController" class="content scaffold-list" role="main" >
-    <rg:grid domainClass="${AirCargoItem}">
+
+
+<div id="list-airCargoItem" ng-controller="airCargoItemController" class="content scaffold-list" role="main">
+    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum"],[name: "loadingDate"],[name: "ETADate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem", expression: "obj.metaClass.theClass.name.replace(\\'cargo.cargoItem\\', \\'\\')"],[name: "airFreight"]]}">">
         <rg:criteria>
             <rg:eq name="airFreight.id" value="${0}"/>
         </rg:criteria>
@@ -105,7 +116,8 @@
         <rg:cancelButton/>
     </rg:dialog>
 </div>
-<div id="list-oceanCargoItem" ng-controller="oceanCargoItemController" class="content scaffold-list" role="main" >
+
+<div id="list-oceanCargoItem" ng-controller="oceanCargoItemController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${OceanCargoItem}">
         <rg:criteria>
             <rg:eq name="oceanFreight.id" value="${0}"/>
@@ -132,8 +144,9 @@
         <rg:cancelButton/>
     </rg:dialog>
 </div>
-<div id="list-railCargoItem" ng-controller="railCargoItemController" class="content scaffold-list" role="main" >
-    <rg:grid domainClass="${RailCargoItem}">
+
+<div id="list-railCargoItem" ng-controller="railCargoItemController" class="content scaffold-list" role="main">
+    <rg:grid domainClass="${RailCargoItem}" maxColumns="9">
         <rg:criteria>
             <rg:eq name="railFreight.id" value="${0}"/>
         </rg:criteria>
@@ -159,8 +172,9 @@
         <rg:cancelButton/>
     </rg:dialog>
 </div>
-<div id="list-roadCargoItem" ng-controller="roadCargoItemController" class="content scaffold-list" role="main" >
-    <rg:grid domainClass="${RoadCargoItem}">
+
+<div id="list-roadCargoItem" ng-controller="roadCargoItemController" class="content scaffold-list" role="main">
+    <rg:grid domainClass="${RoadCargoItem}" maxColumns="9">
         <rg:criteria>
             <rg:eq name="roadFreight.id" value="${0}"/>
         </rg:criteria>
@@ -195,18 +209,19 @@
     function makeCargoItemsDraggable() {
         var r = jQuery("#CargoItemGrid tr");
         r.draggable({
-            appendTo:"body",
-            cursorAt:{ left:0, top:60 },
-            helper: function(row) {
+            appendTo: "body",
+            cursorAt: { left: 0, top: 60 },
+            helper: function (row) {
                 var id = jQuery(row.currentTarget).attr("id");
                 var rowData = cargoItemsGrid.jqGrid('getRowData', id);
                 var tag = "<div style=\"background-color:#00ffff; padding: 5px; border-width: 1px; border-style: solid;\">";
                 tag += "<p>Chargeable Weight: " + rowData.chargeableWeight + "</p>";
-                tag += "<p>Commodity Item No: " + rowData.commodityItemNo + "</p>";
+                tag += "<p>Commodity: " + rowData.commodity + "</p>";
                 tag += "<p>Gross Weight: " + rowData.grossWeight + "</p>";
                 tag += "<p>Height: " + rowData.height + "</p>";
                 tag += "<p>Length: " + rowData.length + "</p>";
-                tag += "<p>Nature And Quantity Of Goods: " + rowData.natureAndQuantityOfGoods + "</p>";
+                tag += "<p>Width: " + rowData.width + "</p>";
+                tag += "<p>Chargeable Rate: " + rowData.chargeableRate + "</p>";
                 tag += "</div>";
                 return tag;
             }
@@ -216,7 +231,7 @@
     function makeFreightsDroppable() {
         var r = jQuery("#FreightGrid tr");
         r.droppable({
-            drop: function(event, ui) {
+            drop: function (event, ui) {
                 var targetId = jQuery(this).attr("id");
                 var sourceId = jQuery(ui.draggable).attr("id");
 
@@ -244,7 +259,7 @@
 
                 var i = 0;
             },
-            hoverClass:"ui-state-highlight"
+            hoverClass: "ui-state-highlight"
         });
     }
 
@@ -263,14 +278,14 @@
         jQuery("#list-" + prefix + "CargoItem").show();
     }
 
-    cargoItemsGrid.jqGrid('setGridParam', { loadComplete:function (data) {
+    cargoItemsGrid.jqGrid('setGridParam', { loadComplete: function (data) {
         makeCargoItemsDraggable();
     }});
-    cargoItemsGrid.jqGrid('setGridParam', { gridComplete:function () {
+    cargoItemsGrid.jqGrid('setGridParam', { gridComplete: function () {
         makeCargoItemsDraggable();
     }});
 
-    freightsGrid.jqGrid('setGridParam', { loadComplete:function (data) {
+    freightsGrid.jqGrid('setGridParam', { loadComplete: function (data) {
         makeFreightsDroppable();
     }});
     freightsGrid.jqGrid('setGridParam', { gridComplete: function () {
@@ -281,8 +296,6 @@
 
 </g:javascript>
 <br>
-
-
 
 </body>
 </html>

@@ -13,7 +13,8 @@
     <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
     <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
-    <link rel="stylesheet" href="${resource(plugin: 'rapid-grails', dir: 'css', file: 'rapidgrails.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(plugin: 'rapid-grails', dir: 'css', file: 'rapidgrails.css')}"
+          type="text/css">
     <link rel="stylesheet" href="${resource(plugin: 'rapid-grails', dir: 'css', file: 'rg-ltr.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'css3.css')}" type="text/css">
@@ -26,7 +27,7 @@
     <g:javascript library="jquery"></g:javascript>
     <r:layoutResources/>
     <jqui:resources theme="bootstrap"></jqui:resources>
-
+    <g:javascript plugin="rapid-grails" src="jquery.form.js"></g:javascript>
     <g:javascript plugin="rapid-grails" src="utils.js"></g:javascript>
     <g:javascript plugin="rapid-grails" src="grid_utils.js"></g:javascript>
 
@@ -40,6 +41,7 @@
     <g:javascript src="jquery.labelify.js"></g:javascript>
     <g:javascript src="theme.js"></g:javascript>
 
+    <g:javascript plugin="rapid-grails" src="jquery.form.js"></g:javascript>
     <rg:jstreeResources/>
 
     <script language="javascript" src="${resource(dir: 'js', file: 'msgGrowl.js')}" type="text/javascript"></script>
@@ -61,7 +63,7 @@
 
 <div id="footer" role="contentinfo">
     <g:message code="application.name" default="E-Forwarding System"/> | <g:message code="application.copyRight"
-                                                                      default="© AGAH-IT 2012"/>
+                                                                                    default="© AGAH-IT 2012"/>
 </div><!-- end #footer -->
 
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt"
@@ -73,27 +75,28 @@
 
     function msgSuccess(text) {
         $.msgGrowl({
-            type:'success', 'text':text, position:'bottom-left'
+            type: 'success', 'text': text, position: 'bottom-left'
         });
     }
 
     function msgInfo(text) {
         $.msgGrowl({
-            type:'info', 'text':text, position:'bottom-left'
+            type: 'info', 'text': text, position: 'bottom-left'
         });
     }
 
     function msgWarning(text) {
         $.msgGrowl({
-            type:'warning', 'text':text, position:'bottom-left'
+            type: 'warning', 'text': text, position: 'bottom-left'
         });
     }
 
     function msgError(text) {
         $.msgGrowl({
-            type:'error', 'text':text, position:'bottom-left'
+            type: 'error', 'text': text, position: 'bottom-left'
         });
     }
 </script>
+
 </body>
 </html>

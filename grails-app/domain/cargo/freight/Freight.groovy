@@ -5,15 +5,12 @@ import cargo.City
 import cargo.Shipment
 
 class Freight {
-    ForwardingReference shipper
-    ForwardingReference consignee
-    ForwardingReference notifyParty
-    ForwardingReference agent
 
-    City placeOfReceipt
+
     City placeOfLoading
     City placeOfDischarge
     City placeOfDelivery
+    City placeOfReceipt
 
     String freightPayableAt
     City placeOfIssue
@@ -25,22 +22,24 @@ class Freight {
     Shipment shipment
 
     static constraints = {
-        shipper(nullable:  false)
-        consignee(nullable:  false)
-        notifyParty(nullable:  false)
-        agent(nullable:  false)
 
-        placeOfReceipt(nullable: false)
+        shipment (nullable: false,validator: {val, Shipment ->
+            (val.HBL&&val.shipper&&val.consignee&&val.notifyParty&&val.agent)})
+
         placeOfLoading(nullable: false)
         placeOfDischarge(nullable: false)
         placeOfDelivery(nullable: false)
+        placeOfReceipt(nullable: false)
 
         freightPayableAt(nullable: false)
         placeOfIssue(nullable: false)
-        dateOfIssue(nullable: false)
-        numberOfBills(nullable: false)
-        signature(maxSize: 512, nullable: false)
-        signedAs(inList: ["As Carrier", "As Agent"])
+        dateOfIssue(nullable:false)
+        numberOfBills(nullable: true)
+        signedAs(inList:["As Carrier","As Agent"])
+
+        signature(maxSize: 512, nullable: true)
+
         shipment(nullable: false)
+
     }
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <title>E-Forwarding System</title>
     <style type="text/css" media="screen">
     #status {
         background-color: #eee;
@@ -103,35 +103,41 @@
                 </a>
             </li>
             <li>
-                <a href="" rel="menu2">
-                    <g:message code="menu2"/>
-                    <span><g:message code="menu2.description"/></span>
+                <a href="" rel="shipmentStatus">
+                    <g:message code="shipment.status"/>
+                    <span><g:message code="shipment.status.description"/></span>
                 </a>
             </li>
 
             <li>
-                <a href="" rel="menu3">
-                    <g:message code="menu3"/>
-                    <span><g:message code="menu3.description"/></span>
+                <a href="" rel="costs">
+                    <g:message code="costs"/>
+                    <span><g:message code="costs.description"/></span>
                 </a>
             </li>
             <li>
-                <a href="" rel="menu4">
-                    <g:message code="menu4"/>
-                    <span><g:message code="menu4.description"/></span>
+                <a href="" rel="secretariat">
+                    <g:message code="secretariat"/>
+                    <span><g:message code="secretariat.description"/></span>
                 </a>
 
             </li>
             <li>
-                <a href="" rel="menu5">
-                    <g:message code="menu5"/>
-                    <span><g:message code="menu5.description"/></span>
+                <a href="" rel="reports">
+                    <g:message code="reports"/>
+                    <span><g:message code="reports.description"/></span>
                 </a>
             </li>
             <li>
-                <a href="" rel="menu6">
-                    <g:message code="menu6"/>
-                    <span><g:message code="menu6.description"/></span>
+                <a href="" rel="communications">
+                    <g:message code="communications"/>
+                    <span><g:message code="communications.description"/></span>
+                </a>
+            </li>
+            <li>
+                <a href="" rel="search">
+                    <g:message code="search"/>
+                    <span><g:message code="search.description"/></span>
                 </a>
             </li>
         </ul>
@@ -149,9 +155,15 @@
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'branchHead.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
                         </span>
-                        <a href="<g:createLink controller="documentType"/>"><g:message code="menu.documentType"/></a>
+                        <a href="<g:createLink controller="forwardingReference"/>"><g:message code="menu.forwardingReference"/></a>
+                    </li>
+                    <li>
+                        <span>
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                        </span>
+                        <a href="<g:createLink controller="localAgent"/>"><g:message code="menu.localAgent"/></a>
                     </li>
                     <li>
                         <span>
@@ -163,19 +175,13 @@
                         <span>
                             <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
                         </span>
-                        <a href="<g:createLink controller="forwardingReference"/>"><g:message code="menu.forwardingReference"/></a>
+                        <a href="<g:createLink controller="truck"/>"><g:message code="menu.truck"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'branchHead.png')}" />
                         </span>
-                        <a href="<g:createLink controller="LoanGroup"/>"><g:message code="loanGroup"/></a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
-                        </span>
-                        <a href="<g:createLink controller="GLCode"/>"><g:message code="glCode"/></a>
+                        <a href="<g:createLink controller="documentType"/>"><g:message code="menu.documentType"/></a>
                     </li>
                     <li>
                         <span>
@@ -185,14 +191,23 @@
                     </li>
                 </ul>
             </div>
-            <div class="set menu2">
+            <div class="set shipmentStatus">
                 <ul>
                     <li>
-                        <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
+                        <span>
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                        </span>
+                        <a href="<g:createLink controller="shipment"/>"><g:message code="menu.shipment"/></a>
+                    </li>
+                    <li>
+                        <span>
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                        </span>
+                        <a href="<g:createLink controller="cargoItem"/>"><g:message code="menu.cargoItem"/></a>
                     </li>
                 </ul>
             </div>
-            <div class="set menu3">
+            <div class="set costs">
                 <ul>
                     <li>
                         <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
@@ -200,7 +215,7 @@
 
                 </ul>
             </div>
-            <div class="set menu4">
+            <div class="set secretariat">
                 <ul>
                     <li>
                         <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
@@ -208,19 +223,26 @@
 
                 </ul>
             </div>
-            <div class="set menu5">
+            <div class="set reports">
+                <ul>
+                    <li>
+                        <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="set communications">
                 <ul>
                     <li>
                         <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
                     </li>
                 </ul>
             </div>
-            <div class="set menu6">
+            <div class="set search">
                 <ul>
                     <li>
                         <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
                     </li>
-
                 </ul>
             </div>
         </div>

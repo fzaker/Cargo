@@ -17,6 +17,10 @@ class Driver {
     Date exitPermissionDateOfIssue
     Date exitPermissionValidity
 
+    String toString(){"$family"}
+
+
+
     static constraints = {
         name(blank: false)
         family(blank: false)

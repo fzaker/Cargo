@@ -18,7 +18,7 @@
 		</div>
 
         <div id="list-shipment" ng-controller="shipmentController" class="content scaffold-list" role="main">
-            <rg:grid domainClass="${cargo.Shipment}" caption="" width="800px"></rg:grid>
+            <rg:grid domainClass="${cargo.Shipment}" caption="" width="1000px" maxColumns="15"></rg:grid>
             <rg:dialog id="shipment" title="Shipment Dialog">
                 <rg:fields bean="${new cargo.Shipment()}"></rg:fields>
                 <rg:saveButton domainClass="${cargo.Shipment}"/>

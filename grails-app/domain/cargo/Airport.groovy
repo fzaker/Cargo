@@ -1,11 +1,14 @@
 package cargo
 
 class Airport {
+
     String title
-    String abbreviation
+    String abbreviation //IATA CODE
     City city
 
     static belongsTo = [city: City]
+
+    String toString(){"$title"}
 
     static constraints = {
         city(nullable: false)

@@ -1,8 +1,14 @@
 package cargo.freight
 
+import cargo.Airport
 import cargo.cargoItem.AirCargoItem
+import cargo.cargoItem.CargoItem
 
 class AirFreight extends Freight {
+
+    Airport airportDeparture
+    Airport airportDestination
+
     String otherCharges // todo: Could be composite relation
     String insurancePremium // todo: Same as above
 
@@ -28,11 +34,40 @@ class AirFreight extends Freight {
     String signatureOfShipperOrHisAgent
     String signatureOfIssuingCarrierOrItsAgent
 
-    Date executionDate
-    Date executionPlace
+
 
     static hasMany = [cargoItems: AirCargoItem]
 
     static constraints = {
+
+        airportDeparture(nullable: false)
+        airportDestination(nullable: false)
+
+        collectWeightCharge(nullable: true)
+        collectValuationCharges(nullable: true)
+        collectTax(nullable: true)
+        collectTotalOtherChargesDueAgent(nullable: true)
+        collectTotalOtherChargesDueCarrier(nullable: true)
+        totalCollect (nullable: true)
+
+        prepaidWeightCharge(nullable: true)
+        prepaidValuationCharges(nullable: true)
+        prepaidTax(nullable: true)
+        prepaidTotalOtherChargesDueAgent(nullable: true)
+        prepaidTotalOtherChargesDueCarrier(nullable: true)
+        totalPrepaid (nullable: true)
+
+        otherCharges(nullable: true)
+        insurancePremium(nullable: true)
+
+        currencyConversionRates(nullable: true)
+        ccChargesInDestCurrency(nullable: true)
+        chargesAtDestination(nullable: true)
+        totalCollectCharges(nullable: true)
+
+        signatureOfShipperOrHisAgent (nullable: true)
+        signatureOfIssuingCarrierOrItsAgent (nullable: true)
+
+
     }
 }

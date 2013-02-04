@@ -1,7 +1,7 @@
 package cargo
 
 import cargo.insuranceCertificate.AssignedInsuranceCert
-import cargo.insuranceCertificate.InsuranceCert
+
 
 class LocalAgent {
     City city
@@ -11,7 +11,7 @@ class LocalAgent {
     String address
 
     static hasMany = [assignedInsuranceCert: AssignedInsuranceCert]
-    static belongsTo = [LocalAgent]
+
 
     static constraints = {
         city(nullable: false)

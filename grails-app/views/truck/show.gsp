@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${truckInstance?.trailerNumber}">
+				<li class="fieldcontain">
+					<span id="trailerNumber-label" class="property-label"><g:message code="truck.trailerNumber.label" default="Trailer Number" /></span>
+					
+						<span class="property-value" aria-labelledby="trailerNumber-label"><g:fieldValue bean="${truckInstance}" field="trailerNumber"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${truckInstance?.otherParticulars}">
 				<li class="fieldcontain">
 					<span id="otherParticulars-label" class="property-label"><g:message code="truck.otherParticulars.label" default="Other Particulars" /></span>
@@ -68,29 +77,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${truckInstance?.validityDate}">
-				<li class="fieldcontain">
-					<span id="validityDate-label" class="property-label"><g:message code="truck.validityDate.label" default="Validity Date" /></span>
-					
-						<span class="property-value" aria-labelledby="validityDate-label"><g:formatDate date="${truckInstance?.validityDate}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${truckInstance?.expireDate}">
-				<li class="fieldcontain">
-					<span id="expireDate-label" class="property-label"><g:message code="truck.expireDate.label" default="Expire Date" /></span>
-					
-						<span class="property-value" aria-labelledby="expireDate-label"><g:formatDate date="${truckInstance?.expireDate}" /></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${truckInstance?.carrier}">
 				<li class="fieldcontain">
 					<span id="carrier-label" class="property-label"><g:message code="truck.carrier.label" default="Carrier" /></span>
 					
-						<span class="property-value" aria-labelledby="carrier-label"><g:link controller="carrier" action="show" id="${truckInstance?.carrier?.id}">${truckInstance?.carrier?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="carrier-label"><g:link controller="forwardingReference" action="show" id="${truckInstance?.carrier?.id}">${truckInstance?.carrier?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

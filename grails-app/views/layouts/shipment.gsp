@@ -26,7 +26,7 @@
     <g:javascript library="jquery"></g:javascript>
     <r:layoutResources/>
     <jqui:resources theme="bootstrap"></jqui:resources>
-
+    <g:javascript plugin="rapid-grails" src="jquery.form.js"></g:javascript>
     <g:javascript plugin="rapid-grails" src="utils.js"></g:javascript>
     <g:javascript plugin="rapid-grails" src="grid_utils.js"></g:javascript>
 

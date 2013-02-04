@@ -1,14 +1,20 @@
 package cargo.freight
 
+import cargo.Truck
+
 class RoadFreight extends Freight {
 
-    String driverName
-    Double truckTransitNumber
+
+    String CMR
+    Double totalCollect
+    Double totalPrepaid
 
 
     static constraints = {
 
-        driverName (nullable: false)
-        truckTransitNumber (nullable: false)
+
+        CMR(nullable: false)
+        totalCollect(nullable: true)
+        totalPrepaid(nullable: true)
     }
 }

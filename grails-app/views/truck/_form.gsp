@@ -34,6 +34,14 @@
 	<g:textField name="trademark" required="" value="${truckInstance?.trademark}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: truckInstance, field: 'trailerNumber', 'error')} ">
+	<label for="trailerNumber">
+		<g:message code="truck.trailerNumber.label" default="Trailer Number" />
+		
+	</label>
+	<g:textField name="trailerNumber" value="${truckInstance?.trailerNumber}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: truckInstance, field: 'otherParticulars', 'error')} ">
 	<label for="otherParticulars">
 		<g:message code="truck.otherParticulars.label" default="Other Particulars" />
@@ -42,27 +50,11 @@
 	<g:textField name="otherParticulars" maxlength="128" value="${truckInstance?.otherParticulars}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: truckInstance, field: 'validityDate', 'error')} required">
-	<label for="validityDate">
-		<g:message code="truck.validityDate.label" default="Validity Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="validityDate" precision="day"  value="${truckInstance?.validityDate}"  />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: truckInstance, field: 'expireDate', 'error')} required">
-	<label for="expireDate">
-		<g:message code="truck.expireDate.label" default="Expire Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="expireDate" precision="day"  value="${truckInstance?.expireDate}"  />
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: truckInstance, field: 'carrier', 'error')} required">
 	<label for="carrier">
 		<g:message code="truck.carrier.label" default="Carrier" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="carrier" name="carrier.id" from="${cargo.Carrier.list()}" optionKey="id" required="" value="${truckInstance?.carrier?.id}" class="many-to-one"/>
+	<g:select id="carrier" name="carrier.id" from="${cargo.ForwardingReference.list()}" optionKey="id" required="" value="${truckInstance?.carrier?.id}" class="many-to-one"/>
 </div>
 
