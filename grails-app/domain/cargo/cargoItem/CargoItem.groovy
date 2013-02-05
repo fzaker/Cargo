@@ -11,9 +11,9 @@ class CargoItem {
     String unitOfMeasure
     Double rateOrCharge
     Double chargeableWeight
-    Double width
-    Double length
-    Double height
+    Double width=0D
+    Double length=0D
+    Double height=0D
     String volume
     Double chargeableRate
     Double totalWeight
