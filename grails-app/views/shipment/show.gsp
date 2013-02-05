@@ -23,6 +23,14 @@
     </rg:dialog>
     <input type="button" ng-click="openCargoItemCreateDialog()" value="Create CargoItem"/>
     <input type="button" ng-click="openCargoItemEditDialog()" value="Edit CargoItem"/>
+    <g:javascript>
+        $("#cargoItem").find("#width,#height,#length").keyup(function(){
+            var width=parseFloat($("#cargoItem").find("#width").val())
+            var height=parseFloat($("#cargoItem").find("#height").val())
+            var length=parseFloat($("#cargoItem").find("#length").val())
+            $("#cargoItem").find("#volume").val(width*height*length)
+        })
+    </g:javascript>
 </div>
 <br>
 

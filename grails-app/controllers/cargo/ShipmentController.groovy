@@ -1,6 +1,7 @@
 package cargo
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.converters.deep.JSON
 
 class ShipmentController {
 
@@ -97,5 +98,11 @@ class ShipmentController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'shipment.label', default: 'Shipment'), params.id])
             redirect(action: "show", id: params.id)
         }
+    }
+
+    def getCities(){
+        def country=Country.get(params.id)
+        def cities = City.findAllByCountry(country)
+        render cities as JSON
     }
 }

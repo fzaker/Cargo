@@ -24,6 +24,22 @@
                 <rg:saveButton domainClass="${cargo.Shipment}"/>
                 <rg:cancelButton/>
             </rg:dialog>
+            <g:javascript>
+                $("#shipment").find("#originCnt").change(function(){
+                    var cnt = $(this).val()
+                    $.ajax({
+                        url:'<g:createLink action="getCities" />',
+                        data:{
+                            id:cnt
+                        }
+                    }).success(function(data){
+                        $("#shipment").find("#originCty").html("")
+                        $(data).each(function(){
+                            $("#shipment").find("#originCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
+                        })
+                    })
+                })
+            </g:javascript>
             <input type="button" ng-click="openShipmentCreateDialog()" value="Create Shipment"/>
             <input type="button" ng-click="openShipmentEditDialog()" value="Edit Shipment"/>
         </div>
