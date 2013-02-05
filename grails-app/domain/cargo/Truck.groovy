@@ -19,4 +19,6 @@ class Truck {
         otherParticulars(maxSize: 128)
         carrier(nullable: false)
     }
+
+    String toString(){$"typeOfVehicle"}
 }

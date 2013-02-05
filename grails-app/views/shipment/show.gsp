@@ -90,7 +90,7 @@
 
 
 <div id="list-airCargoItem" ng-controller="airCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum"],[name: "loadingDate"],[name: "ETADate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem", expression: "obj.metaClass.theClass.name.replace(\\'cargo.cargoItem\\', \\'\\')"],[name: "airFreight"]]}">">
+    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum"],[name: "loadingDate"],[name: "ETADate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem"],[name: "airFreight"]]}">">
         <rg:criteria>
             <rg:eq name="airFreight.id" value="${0}"/>
         </rg:criteria>

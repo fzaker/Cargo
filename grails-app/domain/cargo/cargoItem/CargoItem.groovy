@@ -41,4 +41,7 @@ class CargoItem {
         shipment(nullable: false)
 
     }
+    String toString(){
+        noOfPackage
+    }
 }

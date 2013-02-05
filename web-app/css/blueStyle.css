@@ -1,7 +1,7 @@
 /* blue color  */
 #jquerymenu { background-color: #336eb0; overflow: hidden; width: 960px;}
 
-#jquerymenu ul li { width: 137px; float: right; list-style: inside none; padding: 5px 8px; }
+#jquerymenu ul li { width: 120px; float: right; list-style: inside none; padding: 5px 8px; }
 #jquerymenu ul li:hover { background: url(../images/reportMenuImages/bg-blue.jpg) repeat-y; }
 #jquerymenu ul li.selected {background: #000; }
 #jquerymenu ul li a { height: 60px; text-align:center;  font-size: 12pt; font-weight: bold; color: #fff; text-transform: uppercase; display: block; text-shadow: 1px 1px 1px #111;}

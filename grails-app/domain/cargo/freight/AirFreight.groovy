@@ -70,4 +70,7 @@ class AirFreight extends Freight {
 
 
     }
+    String toString(){
+        "Air Freight"
+    }
 }
