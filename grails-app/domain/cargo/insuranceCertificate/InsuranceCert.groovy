@@ -17,7 +17,7 @@ class InsuranceCert {
     Double totalSending
     Double totalRemaining
     Double totalDepreciated
-    DoubleRange range
+//    DoubleRange range
 
 
 
