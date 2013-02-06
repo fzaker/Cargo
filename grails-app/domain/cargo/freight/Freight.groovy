@@ -35,7 +35,7 @@ class Freight {
         placeOfIssue(nullable: false)
         dateOfIssue(nullable:false)
         numberOfBills(nullable: true)
-        signedAs(inList:["As Shipper","As Consignee","As NotifyParty","As Agent","As Carrier"])
+        signedAs(inList:["As Agent","As Carrier"])
 
         signature(maxSize: 512, nullable: true)
 

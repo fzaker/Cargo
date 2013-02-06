@@ -6,7 +6,7 @@ class Airport {
     String abbreviation //IATA CODE
     City city
 
-    static belongsTo = [city: City]
+
 
     String toString(){"$title"}
 

@@ -28,7 +28,11 @@
                 }
             </g:javascript>
             <rg:dialog id="country" title="Country Dialog">
-                <rg:fields bean="${new cargo.Country()}"></rg:fields>
+                <rg:fields bean="${new cargo.Country()}">
+                    <rg:modify>
+                        <rg:ignoreField field="cities"/>
+                    </rg:modify>
+                </rg:fields>
                 <rg:saveButton domainClass="${cargo.Country}"/>
                 <rg:cancelButton/>
             </rg:dialog>
