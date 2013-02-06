@@ -50,6 +50,9 @@
             </g:javascript>
             <rg:dialog id="city" title="City Dialog">
                 <rg:fields bean="${new cargo.City()}">
+                    <rg:modify>
+                        <rg:ignoreField field="airports"/>
+                    </rg:modify>
                 </rg:fields>
                 <rg:saveButton domainClass="${cargo.City}"/>
                 <rg:cancelButton/>
