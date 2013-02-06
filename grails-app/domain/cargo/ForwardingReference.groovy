@@ -21,11 +21,15 @@ class ForwardingReference {
         fax(maxSize: 12)
         webSite(maxSize: 50)
         contactPerson(maxSize: 50)
-        asACarrier(nullable: false)
-        asANotifyParty(nullable: false)
         asAShipper(nullable: false)
-        asAnAgent(nullable: false)
         asAConsignee(nullable: false)
+        asANotifyParty(nullable: false)
+        asAnAgent(nullable: false)
+        asACarrier(nullable: false)
+
+
+
+
     }
 
     @Override

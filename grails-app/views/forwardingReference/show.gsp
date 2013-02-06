@@ -77,6 +77,51 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${forwardingReferenceInstance?.asAShipper}">
+				<li class="fieldcontain">
+					<span id="asAShipper-label" class="property-label"><g:message code="forwardingReference.asAShipper.label" default="As AS hipper" /></span>
+					
+						<span class="property-value" aria-labelledby="asAShipper-label"><g:formatBoolean boolean="${forwardingReferenceInstance?.asAShipper}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${forwardingReferenceInstance?.asAConsignee}">
+				<li class="fieldcontain">
+					<span id="asAConsignee-label" class="property-label"><g:message code="forwardingReference.asAConsignee.label" default="As AC onsignee" /></span>
+					
+						<span class="property-value" aria-labelledby="asAConsignee-label"><g:formatBoolean boolean="${forwardingReferenceInstance?.asAConsignee}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${forwardingReferenceInstance?.asANotifyParty}">
+				<li class="fieldcontain">
+					<span id="asANotifyParty-label" class="property-label"><g:message code="forwardingReference.asANotifyParty.label" default="As AN otify Party" /></span>
+					
+						<span class="property-value" aria-labelledby="asANotifyParty-label"><g:formatBoolean boolean="${forwardingReferenceInstance?.asANotifyParty}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${forwardingReferenceInstance?.asAnAgent}">
+				<li class="fieldcontain">
+					<span id="asAnAgent-label" class="property-label"><g:message code="forwardingReference.asAnAgent.label" default="As An Agent" /></span>
+					
+						<span class="property-value" aria-labelledby="asAnAgent-label"><g:formatBoolean boolean="${forwardingReferenceInstance?.asAnAgent}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${forwardingReferenceInstance?.asACarrier}">
+				<li class="fieldcontain">
+					<span id="asACarrier-label" class="property-label"><g:message code="forwardingReference.asACarrier.label" default="As AC arrier" /></span>
+					
+						<span class="property-value" aria-labelledby="asACarrier-label"><g:formatBoolean boolean="${forwardingReferenceInstance?.asACarrier}" /></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

@@ -13,7 +13,6 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 
@@ -36,6 +35,22 @@
                         $("#shipment").find("#originCty").html("")
                         $(data).each(function(){
                             $("#shipment").find("#originCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
+                        })
+                    })
+                })
+            </g:javascript>
+            <g:javascript>
+                $("#shipment").find("#destinationCnt").change(function(){
+                    var cnt = $(this).val()
+                    $.ajax({
+                        url:'<g:createLink action="getCities" />',
+                        data:{
+                            id:cnt
+                        }
+                    }).success(function(data){
+                        $("#shipment").find("#destinationCty").html("")
+                        $(data).each(function(){
+                            $("#shipment").find("#destinationCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })

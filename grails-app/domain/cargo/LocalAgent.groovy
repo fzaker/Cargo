@@ -1,6 +1,6 @@
 package cargo
 
-import cargo.insuranceCertificate.AssignedInsuranceCert
+
 
 
 class LocalAgent {
@@ -10,7 +10,7 @@ class LocalAgent {
     String fax
     String address
 
-    static hasMany = [assignedInsuranceCert: AssignedInsuranceCert]
+
 
 
     static constraints = {

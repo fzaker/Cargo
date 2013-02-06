@@ -8,7 +8,7 @@ class OceanCargoItem {
 
 
     Date loadingDate
-    Date ETADate // Estimated Time Arrival
+    Date etaDate // Estimated Time Arrival
     Date arrivalDate
     Date deliveryOrderDate
 
@@ -17,7 +17,7 @@ class OceanCargoItem {
     static constraints = {
 
         loadingDate(nullable: false)
-        ETADate(nullable: false)
+        etaDate(nullable: false)
         arrivalDate(nullable: false)
         deliveryOrderDate(nullable: false)
 

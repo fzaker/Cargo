@@ -20,5 +20,5 @@ class Truck {
         carrier(nullable: false)
     }
 
-    String toString(){$"typeOfVehicle"}
+    String toString(){"$typeOfVehicle"}
 }

@@ -10,11 +10,11 @@ class RoadCargoItem {
     RoadFreight roadFreight
 
     Driver driver
-    Double CNTRNO
+    Double cntrNo
     Truck truck
 
     Date loadingDate
-    Date ETADate // Estimated Time Arrival
+    Date etaDate // Estimated Time Arrival
     Date arrivalDate
     Date deliveryOrderDate
 
@@ -23,9 +23,9 @@ class RoadCargoItem {
 
         truck(nullable: false)
         driver(nullable: false)
-        CNTRNO(nullable: false)
+        cntrNo(nullable: false)
         loadingDate(nullable: false)
-        ETADate(nullable: false)
+        etaDate(nullable: false)
         arrivalDate(nullable: false)
         deliveryOrderDate(nullable: false)
 

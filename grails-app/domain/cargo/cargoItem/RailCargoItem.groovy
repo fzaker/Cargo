@@ -4,6 +4,7 @@ import cargo.freight.RailFreight
 
 class RailCargoItem {
 
+
     CargoItem cargoItem
     RailFreight railFreight
 
@@ -12,7 +13,7 @@ class RailCargoItem {
     String wagonStatus
 
     Date loadingDate
-    Date ETADate // Estimated Time Arrival
+    Date etaDate // Estimated Time Arrival
     Date arrivalDate
     Date deliveryOrderDate
 
@@ -23,7 +24,7 @@ class RailCargoItem {
         wagonStatus(inList: ["Flat", "Covered"])
 
         loadingDate(nullable: false)
-        ETADate(nullable: false)
+        etaDate(nullable: false)
         arrivalDate(nullable: false)
         deliveryOrderDate(nullable: false)
 

@@ -1,5 +1,9 @@
 package cargo
 
+import cargo.cargoItem.AirCargoItem
+import cargo.cargoItem.OceanCargoItem
+import cargo.cargoItem.RailCargoItem
+import cargo.cargoItem.RoadCargoItem
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.deep.JSON
 
@@ -104,5 +108,82 @@ class ShipmentController {
         def country=Country.get(params.id)
         def cities = City.findAllByCountry(country)
         render cities as JSON
+    }
+
+    def saveAirCargoItem(){
+        def airCargoItem
+        if(params.id){
+            airCargoItem=airCargoItem.get(params.id)
+            airCargoItem.properties=params
+        }
+        else
+            airCargoItem=new AirCargoItem(params)
+        def oldAirCargoItem=AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndAirFreight(airCargoItem.aircraft,airCargoItem.flightNum,airCargoItem.loadingDate,airCargoItem.etaDate,airCargoItem.arrivalDate,airCargoItem.deliveryOrderDate,airCargoItem.cargoItem,airCargoItem.airFreight)
+        if (oldAirCargoItem){
+            render "error"
+        }
+        else
+        {
+            airCargoItem.save()
+            render 0
+        }
+    }
+
+
+    def saveOceanCargoItem(){
+        def oceanCargoItem
+        if(params.id){
+            oceanCargoItem=OceanCargoItem.get(params.id)
+            oceanCargoItem.properties=params
+        }
+        else
+            oceanCargoItem=new OceanCargoItem(params)
+        def oldOceanCargoItem=OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate,oceanCargoItem.etaDate,oceanCargoItem.arrivalDate,oceanCargoItem.deliveryOrderDate,oceanCargoItem.cargoItem,oceanCargoItem.oceanFreight)
+        if (oldOceanCargoItem){
+            render "error"
+        }
+        else
+        {
+            oceanCargoItem.save()
+            render 0
+        }
+    }
+
+    def saveRailCargoItem(){
+        def railCargoItem
+        if(params.id){
+            railCargoItem=RailCargoItem.get(params.id)
+            railCargoItem.properties=params
+        }
+        else
+            railCargoItem=new RailCargoItem(params)
+        def oldRailCargoItem=RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRailFreight(railCargoItem.wagonType,railCargoItem.wagonStatus,railCargoItem.wagonNum,railCargoItem.loadingDate,railCargoItem.etaDate,railCargoItem.arrivalDate,railCargoItem.deliveryOrderDate,railCargoItem.cargoItem,railCargoItem.railFreight)
+        if (oldRailCargoItem){
+            render "error"
+        }
+        else
+        {
+            railCargoItem.save()
+            render 0
+        }
+    }
+
+    def saveRoadCargoItem(){
+        def roadCargoItem
+        if(params.id){
+            roadCargoItem=RoadCargoItem.get(params.id)
+            roadCargoItem.properties=params
+        }
+        else
+            roadCargoItem=new RoadCargoItem(params)
+        def oldRoadCargoItem=RoadCargoItem.findByTruckAndDriverAndCntrNoAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRoadFreight(roadCargoItem.truck,roadCargoItem.driver,roadCargoItem.cntrNo,roadCargoItem.loadingDate,roadCargoItem.etaDate,roadCargoItem.arrivalDate,roadCargoItem.deliveryOrderDate,roadCargoItem.cargoItem,roadCargoItem.roadFreight)
+        if (oldRoadCargoItem){
+            render "error"
+        }
+        else
+        {
+            roadCargoItem.save()
+            render 0
+        }
     }
 }

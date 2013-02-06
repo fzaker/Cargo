@@ -31,6 +31,34 @@
             $("#cargoItem").find("#volume").val(width*height*length)
         })
     </g:javascript>
+    <g:javascript>
+        $("#cargoItem").find("#noOfPackage,#grossWeight").keyup(function(){
+            var noOfPackage=parseFloat($("#cargoItem").find("#noOfPackage").val())
+            var grossWeight=parseFloat($("#cargoItem").find("#grossWeight").val())
+            $("#cargoItem").find("#totalWeight").val(noOfPackage*grossWeight)
+        })
+    </g:javascript>
+    <g:javascript>
+        $("#cargoItem").find("#totalWeight,#rateOrCharge").keyup(function(){
+            var totalWeight=parseFloat($("#cargoItem").find("#totalWeight").val())
+            var rateOrCharge=parseFloat($("#cargoItem").find("#rateOrCharge").val())
+            $("#cargoItem").find("#chargeableWeight").val(totalWeight*rateOrCharge)
+        })
+    </g:javascript>
+    <g:javascript>
+        $("#cargoItem").find("#noOfPackage,#volume").keyup(function(){
+            var noOfPackage=parseFloat($("#cargoItem").find("#noOfPackage").val())
+            var volume=parseFloat($("#cargoItem").find("#volume").val())
+            $("#cargoItem").find("#totalVolume").val(noOfPackage*volume)
+        })
+    </g:javascript>
+    <g:javascript>
+        $("#cargoItem").find("#totalVolume,#rateOrCharge").keyup(function(){
+            var totalVolume=parseFloat($("#cargoItem").find("#totalVolume").val())
+            var rateOrCharge=parseFloat($("#cargoItem").find("#rateOrCharge").val())
+            $("#cargoItem").find("#chargeableRate").val(totalVolume*rateOrCharge)
+        })
+    </g:javascript>
 </div>
 <br>
 
@@ -107,7 +135,7 @@
         </rg:commands>
     </rg:grid>
     <rg:dialog id="airCargoItem" title="Air Cargo Item Dialog">
-        <rg:fields bean="${new AirCargoItem()}">
+        <rg:fields bean="${new AirCargoItem()}" columns="[[name: 'aircraft'],[name: 'flightNum'],[name: 'loadingDate'],[name: 'etaDate'],[name: 'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
 
             <rg:modify>
                 <rg:hiddenReference field="airFreight"></rg:hiddenReference>
@@ -123,10 +151,16 @@
         <rg:saveButton domainClass="${AirCargoItem}"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <g:javascript>
+        function airCargoSaveCallback(resp){
+            if(resp!='0')
+                alert('<g:message code="something" />')
+        }
+    </g:javascript>
 </div>
 
 <div id="list-oceanCargoItem" ng-controller="oceanCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${OceanCargoItem}">
+    <rg:grid domainClass="${OceanCargoItem}" columns="[[name:'loadingDate'],[name:'etaDate'],[name: 'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
         <rg:criteria>
             <rg:eq name="oceanFreight.id" value="${0}"/>
         </rg:criteria>
@@ -151,10 +185,16 @@
         <rg:saveButton domainClass="${OceanCargoItem}"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <g:javascript>
+        function oceanCargoSaveCallback(resp){
+            if(resp!='0')
+                alert('<g:message code="something" />')
+        }
+    </g:javascript>
 </div>
 
 <div id="list-railCargoItem" ng-controller="railCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${RailCargoItem}" maxColumns="9">
+    <rg:grid domainClass="${RailCargoItem}" maxColumns="8" columns="[[name:'wagonType'],[name:'wagonNum'],[name:'wagonStatus'],[name:'loadingDate'],[name: 'etaDate'],[name:'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
         <rg:criteria>
             <rg:eq name="railFreight.id" value="${0}"/>
         </rg:criteria>
@@ -179,10 +219,16 @@
         <rg:saveButton domainClass="${RailCargoItem}"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <g:javascript>
+        function railCargoSaveCallback(resp){
+            if(resp!='0')
+                alert('<g:message code="something" />')
+        }
+    </g:javascript>
 </div>
 
 <div id="list-roadCargoItem" ng-controller="roadCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${RoadCargoItem}" maxColumns="9">
+    <rg:grid domainClass="${RoadCargoItem}" maxColumns="8" columns="[[name:'cntrNo',formatter:'integer'],[name:'driver'],[name:'truck'],[name:'loadingDate'],[name:'etaDate'],[name:'arrivalDate'],[name:'deliveryOrderDate'],[name:'cargoItem']]">
         <rg:criteria>
             <rg:eq name="roadFreight.id" value="${0}"/>
         </rg:criteria>
@@ -204,9 +250,15 @@
             </rg:interceptCreateDialog>
 
         </rg:fields>
-        <rg:saveButton domainClass="${RoadCargoItem}"/>
+        <rg:saveButton domainClass="${RoadCargoItem}" conroller="shipment" action="saveRoadCargoItem" params="[saveCallback:'roadCargoSaveCallback']"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <g:javascript>
+        function roadCargoSaveCallback(resp){
+            if(resp!='0')
+                alert('<g:message code="something" />')
+        }
+    </g:javascript>
 </div>
 
 

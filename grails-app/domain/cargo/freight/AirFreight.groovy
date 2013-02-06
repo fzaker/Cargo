@@ -36,8 +36,6 @@ class AirFreight extends Freight {
 
 
 
-    static hasMany = [cargoItems: AirCargoItem]
-
     static constraints = {
 
         airportDeparture(nullable: false)
@@ -70,7 +68,5 @@ class AirFreight extends Freight {
 
 
     }
-    String toString(){
-        "Air Freight"
-    }
+
 }

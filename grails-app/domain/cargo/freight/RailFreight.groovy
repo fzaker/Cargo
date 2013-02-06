@@ -14,9 +14,6 @@ class RailFreight extends Freight {
     Double totalPrepaid
 
 
-    static hasMany = [cargoItem: RailCargoItem ]
-
-
 
     static constraints = {
 
