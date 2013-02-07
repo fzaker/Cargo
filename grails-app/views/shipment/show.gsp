@@ -135,7 +135,7 @@
         </rg:commands>
     </rg:grid>
     <rg:dialog id="airCargoItem" title="Air Cargo Item Dialog">
-        <rg:fields bean="${new AirCargoItem()}" columns="[[name: 'aircraft'],[name: 'flightNum'],[name: 'loadingDate'],[name: 'etaDate'],[name: 'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
+        <rg:fields bean="${new AirCargoItem()}">
 
             <rg:modify>
                 <rg:hiddenReference field="airFreight"></rg:hiddenReference>
