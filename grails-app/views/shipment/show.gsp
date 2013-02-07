@@ -126,7 +126,7 @@
 
 
 <div id="list-airCargoItem" ng-controller="airCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum"],[name: "loadingDate"],[name: "etaDate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem"],[name: "airFreight"]]}">
+    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum",formatter: 'Integer'],[name: "loadingDate"],[name: "etaDate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem"]]}">
         <rg:criteria>
             <rg:eq name="airFreight.id" value="${0}"/>
         </rg:criteria>
@@ -135,7 +135,7 @@
         </rg:commands>
     </rg:grid>
     <rg:dialog id="airCargoItem" title="Air Cargo Item Dialog">
-        <rg:fields bean="${new AirCargoItem()}" columns="[[name: 'aircraft'],[name: 'flightNum'],[name: 'loadingDate'],[name: 'etaDate'],[name: 'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
+        <rg:fields bean="${new AirCargoItem()}">
 
             <rg:modify>
                 <rg:hiddenReference field="airFreight"></rg:hiddenReference>
@@ -194,7 +194,7 @@
 </div>
 
 <div id="list-railCargoItem" ng-controller="railCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${RailCargoItem}" maxColumns="8" columns="[[name:'wagonType'],[name:'wagonNum'],[name:'wagonStatus'],[name:'loadingDate'],[name: 'etaDate'],[name:'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
+    <rg:grid domainClass="${RailCargoItem}" maxColumns="8" columns="[[name:'wagonType'],[name:'wagonNum',formatter: 'Integer'],[name:'wagonStatus'],[name:'loadingDate'],[name: 'etaDate'],[name:'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
         <rg:criteria>
             <rg:eq name="railFreight.id" value="${0}"/>
         </rg:criteria>
