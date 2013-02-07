@@ -37,6 +37,8 @@ grails.project.dependency.resolution = {
         runtime "org.mongodb:mongo-java-driver:2.9.1"
         compile "org.mongodb:mongo-java-driver:2.9.1"
         runtime "com.gmongo:gmongo:1.0"
+        compile "net.sf.jasperreports:jasperreports:3.7.6"
+        runtime "net.sf.jasperreports:jasperreports:3.7.6"
     }
 
     plugins {
