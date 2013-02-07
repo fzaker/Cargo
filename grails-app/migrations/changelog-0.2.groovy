@@ -22,19 +22,19 @@ databaseChangeLog = {
 				constraints(nullable: "false")
 			}
 
-			column(name: "serial_num_end", type: "double precision") {
+			column(name: "serial_num_end", type: "double") {
 				constraints(nullable: "false")
 			}
 
-			column(name: "serial_num_start", type: "double precision") {
+			column(name: "serial_num_start", type: "double") {
 				constraints(nullable: "false")
 			}
 
-			column(name: "total_count", type: "double precision") {
+			column(name: "total_count", type: "double") {
 				constraints(nullable: "false")
 			}
 
-			column(name: "total_depreciated", type: "double precision")
+			column(name: "total_depreciated", type: "double")
 		}
 	}
 
@@ -52,11 +52,11 @@ databaseChangeLog = {
 				constraints(nullable: "false")
 			}
 
-			column(name: "avl_end", type: "double precision") {
+			column(name: "avl_end", type: "double") {
 				constraints(nullable: "false")
 			}
 
-			column(name: "avl_start", type: "double precision") {
+			column(name: "avl_start", type: "double") {
 				constraints(nullable: "false")
 			}
 
@@ -84,23 +84,23 @@ databaseChangeLog = {
 				constraints(nullable: "false")
 			}
 
-			column(name: "serial_num_end", type: "double precision") {
+			column(name: "serial_num_end", type: "double") {
 				constraints(nullable: "false")
 			}
 
-			column(name: "serial_num_start", type: "double precision") {
+			column(name: "serial_num_start", type: "double") {
 				constraints(nullable: "false")
 			}
 
-			column(name: "total_count", type: "double precision") {
+			column(name: "total_count", type: "double") {
 				constraints(nullable: "false")
 			}
 
-			column(name: "total_depreciated", type: "double precision")
+			column(name: "total_depreciated", type: "double")
 
-			column(name: "total_remaining", type: "double precision")
+			column(name: "total_remaining", type: "double")
 
-			column(name: "total_sending", type: "double precision")
+			column(name: "total_sending", type: "double")
 		}
 	}
 
@@ -146,7 +146,7 @@ databaseChangeLog = {
 				constraints(nullable: "false")
 			}
 
-			column(name: "smgsno", type: "double precision") {
+			column(name: "smgsno", type: "double") {
 				constraints(nullable: "false")
 			}
 
@@ -166,7 +166,7 @@ databaseChangeLog = {
 				constraints(nullable: "false")
 			}
 
-			column(name: "cmr", type: "double precision") {
+			column(name: "cmr", type: "double") {
 				constraints(nullable: "false")
 			}
 
@@ -210,7 +210,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-11") {
 		addColumn(tableName: "air_cargo_item") {
-			column(name: "flight_num", type: "double precision") {
+			column(name: "flight_num", type: "double") {
 				constraints(nullable: "false")
 			}
 		}
@@ -226,7 +226,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-13") {
 		addColumn(tableName: "cargo_item") {
-			column(name: "chargeable_rate", type: "double precision") {
+			column(name: "chargeable_rate", type: "double") {
 				constraints(nullable: "false")
 			}
 		}
@@ -250,7 +250,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-16") {
 		addColumn(tableName: "cargo_item") {
-			column(name: "total_volume", type: "double precision") {
+			column(name: "total_volume", type: "double") {
 				constraints(nullable: "false")
 			}
 		}
@@ -258,7 +258,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-17") {
 		addColumn(tableName: "cargo_item") {
-			column(name: "total_weight", type: "double precision") {
+			column(name: "total_weight", type: "double") {
 				constraints(nullable: "false")
 			}
 		}
@@ -266,7 +266,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-18") {
 		addColumn(tableName: "cargo_item") {
-			column(name: "volume", type: "double precision") {
+			column(name: "volume", type: "double") {
 				constraints(nullable: "false")
 			}
 		}
@@ -310,13 +310,13 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-25") {
 		addColumn(tableName: "freight") {
-			column(name: "smgsno", type: "double precision")
+			column(name: "smgsno", type: "double")
 		}
 	}
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-26") {
 		addColumn(tableName: "freight") {
-			column(name: "station_code", type: "double precision")
+			column(name: "station_code", type: "double")
 		}
 	}
 
@@ -328,7 +328,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-28") {
 		addColumn(tableName: "freight") {
-			column(name: "vessel_voy_no", type: "double precision")
+			column(name: "vessel_voy_no", type: "double")
 		}
 	}
 
@@ -398,7 +398,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-37") {
 		addColumn(tableName: "rail_cargo_item") {
-			column(name: "wagon_num", type: "double precision") {
+			column(name: "wagon_num", type: "double") {
 				constraints(nullable: "false")
 			}
 		}
@@ -430,7 +430,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-41") {
 		addColumn(tableName: "road_cargo_item") {
-			column(name: "cntr_no", type: "double precision") {
+			column(name: "cntr_no", type: "double") {
 				constraints(nullable: "false")
 			}
 		}
@@ -484,7 +484,7 @@ databaseChangeLog = {
 
 	changeSet(author: "roohi (generated)", id: "1360230296142-48") {
 		addColumn(tableName: "shipment") {
-			column(name: "charge", type: "double precision")
+			column(name: "charge", type: "double")
 		}
 	}
 
