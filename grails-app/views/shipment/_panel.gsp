@@ -6,7 +6,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><a class="list" href="/Cargo/shipment/list">Shipment List</a></li>
+        <li><g:createLink action="list" controller="shipment">Shipment List</li>
     </ul>
 </div>
 <br>
