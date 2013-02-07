@@ -126,7 +126,7 @@
 
 
 <div id="list-airCargoItem" ng-controller="airCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum",formatter: 'Integer'],[name: "loadingDate"],[name: "etaDate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem"]]}">
+    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum",formatter:'Integer'],[name: "loadingDate"],[name: "etaDate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem"]]}">
         <rg:criteria>
             <rg:eq name="airFreight.id" value="${0}"/>
         </rg:criteria>
@@ -194,7 +194,7 @@
 </div>
 
 <div id="list-railCargoItem" ng-controller="railCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${RailCargoItem}" maxColumns="8" columns="[[name:'wagonType'],[name:'wagonNum',formatter: 'Integer'],[name:'wagonStatus'],[name:'loadingDate'],[name: 'etaDate'],[name:'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
+    <rg:grid domainClass="${RailCargoItem}" maxColumns="8" columns="[[name:'wagonType'],[name:'wagonNum',formatter:'Integer'],[name:'wagonStatus'],[name:'loadingDate'],[name: 'etaDate'],[name:'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
         <rg:criteria>
             <rg:eq name="railFreight.id" value="${0}"/>
         </rg:criteria>
