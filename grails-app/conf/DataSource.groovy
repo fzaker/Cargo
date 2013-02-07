@@ -42,6 +42,7 @@ environments {
     }
     production {
         dataSource {
+            dbCreate = "update"
             url = "jdbc:mysql://85.198.15.141/cargo?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
             password = "Salam123"
