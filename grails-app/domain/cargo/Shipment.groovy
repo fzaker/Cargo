@@ -23,8 +23,6 @@ class Shipment {
     ForwardingReference agent
 
 
-
-
     static hasMany = [frieghts: Freight, cargoItems: CargoItem]
 
     static constraints = {
@@ -51,6 +49,8 @@ class Shipment {
 
 
     }
+
+    String toString(){"$title"}
 }
 
 

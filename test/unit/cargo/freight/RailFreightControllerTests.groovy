@@ -11,9 +11,9 @@ class RailFreightControllerTests {
 
 
     def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+      assert params != null
+      // TODO: Populate valid properties like...
+      //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -30,9 +30,9 @@ class RailFreightControllerTests {
     }
 
     void testCreate() {
-        def model = controller.create()
+       def model = controller.create()
 
-        assert model.railFreightInstance != null
+       assert model.railFreightInstance != null
     }
 
     void testSave() {

@@ -13,7 +13,6 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-
 			</ul>
 		</div>
 		<div id="list-country" ng-controller="countryController" class="content scaffold-list" role="main">

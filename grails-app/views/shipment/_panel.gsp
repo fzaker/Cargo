@@ -6,7 +6,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><a class="shipment" href="${createLink(action:'list')}">Shipment List</a></li>
+        <li><g:link class="list" action="list"><g:message code="shipment.panel.label" args="[entityName]" /></g:link></li>
     </ul>
 </div>
 <br>

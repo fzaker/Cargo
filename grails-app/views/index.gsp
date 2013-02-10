@@ -149,59 +149,54 @@
                 <ul>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'branch.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'geography.png')}" />
                         </span>
                         <a href="<g:createLink controller="country"/>"><g:message code="menu.geography"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'forwardingRef.png')}" />
                         </span>
                         <a href="<g:createLink controller="forwardingReference"/>"><g:message code="menu.forwardingReference"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'localAgent.png')}" />
                         </span>
                         <a href="<g:createLink controller="localAgent"/>"><g:message code="menu.localAgent"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'driver.png')}" />
                         </span>
                         <a href="<g:createLink controller="driver"/>"><g:message code="menu.driver"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'trucks.png')}" />
                         </span>
                         <a href="<g:createLink controller="truck"/>"><g:message code="menu.truck"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'branchHead.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'document.png')}" />
                         </span>
                         <a href="<g:createLink controller="documentType"/>"><g:message code="menu.documentType"/></a>
                     </li>
-                    <li>
-                        <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
-                        </span>
-                        <a href="<g:createLink controller="SystemParametersController"/>"><g:message code="systemParameter"/></a>
-                    </li>
+
                 </ul>
             </div>
             <div class="set shipmentStatus">
                 <ul>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'shipment.png')}" />
                         </span>
                         <a href="<g:createLink controller="shipment"/>"><g:message code="menu.shipment"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'bankRegion.png')}" />
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'cargoItem.png')}" />
                         </span>
                         <a href="<g:createLink controller="cargoItem"/>"><g:message code="menu.cargoItem"/></a>
                     </li>
@@ -210,15 +205,14 @@
             <div class="set costs">
                 <ul>
                     <li>
-                        <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
+                        <a href=""><h3>This part will Complete in the next version</h3></a>
                     </li>
-
                 </ul>
             </div>
             <div class="set secretariat">
                 <ul>
                     <li>
-                        <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
+                        <a href=""><h3>This part will Complete in the next version</h3></a>
                     </li>
 
                 </ul>
@@ -226,7 +220,7 @@
             <div class="set reports">
                 <ul>
                     <li>
-                        <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
+                        <a href=""><h3>This part will Complete in the next version</h3></a>
                     </li>
 
                 </ul>
@@ -234,14 +228,14 @@
             <div class="set communications">
                 <ul>
                     <li>
-                        <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
+                        <a href=""><h3>This part will Complete in the next version</h3></a>
                     </li>
                 </ul>
             </div>
             <div class="set search">
                 <ul>
                     <li>
-                        <a href="<g:createLink controller="test"/>"><g:message code="test"/></a>
+                        <a href=""><h3>This part will Complete in the next version</h3></a>
                     </li>
                 </ul>
             </div>

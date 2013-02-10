@@ -16,7 +16,7 @@
 			</ul>
 		</div>
         <div id="list-driver" ng-controller="driverController" class="content scaffold-list" role="main">
-            <rg:grid domainClass="${cargo.Driver}"></rg:grid>
+            <rg:grid domainClass="${cargo.Driver}" maxColumns="10"></rg:grid>
             <rg:dialog id="driver" title="Driver Dialog">
                 <rg:fields bean="${new cargo.Driver()}"></rg:fields>
                 <rg:saveButton domainClass="${cargo.Driver}"/>
