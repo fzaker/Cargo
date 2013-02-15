@@ -140,6 +140,12 @@
                     <span><g:message code="search.description"/></span>
                 </a>
             </li>
+            <li>
+                <a href="" rel="userMng">
+                    <g:message code="userMng"/>
+                    <span><g:message code="userMng.description"/></span>
+                </a>
+            </li>
         </ul>
 
     </div>
@@ -236,6 +242,22 @@
                 <ul>
                     <li>
                         <a href=""><h3>This part will Complete in the next version</h3></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="set userMng">
+                <ul>
+                    <li>
+                        <span>
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'userMng2.png')}" />
+                        </span>
+                        <a href="<g:createLink controller="user"/>"><g:message code="menu.userMng"/></a>
+                    </li>
+                    <li>
+                        <span>
+                            <img src="${resource(dir: 'images/reportMenuImages', file: 'roles.png')}" />
+                        </span>
+                        <a href="<g:createLink controller="userRole"/>"><g:message code="menu.rolMng"/></a>
                     </li>
                 </ul>
             </div>

@@ -10,6 +10,8 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
+import grails.plugins.springsecurity.SecurityConfigType
+
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
@@ -96,3 +98,21 @@ log4j = {
 }
 
 rapidgrails.application.direction="ltr"
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'cargo.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'cargo.UserRole'
+grails.plugins.springsecurity.authority.className = 'cargo.Role'
+
+
+grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
+
+grails.plugins.springsecurity.interceptUrlMap = [
+        '/logout': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/login/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/j_spring_security_check': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/js/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/css/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/images/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/favico.ico': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**': ['IS_AUTHENTICATED_REMEMBERED']
+]

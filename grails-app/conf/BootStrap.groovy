@@ -1,7 +1,10 @@
 import cargo.Country
 import cargo.City
 import cargo.Driver
+import cargo.Role
 import cargo.Truck
+import cargo.User
+import cargo.UserRole
 import grails.util.GrailsUtil
 import cargo.Airport
 import cargo.ForwardingReference
@@ -20,6 +23,16 @@ class BootStrap {
 
     def init = { servletContext ->
         if (GrailsUtil.environment == "development") {
+            def role1 = Role.findByAuthority("Admin")?:new Role(authority: "Admin").save()
+
+            def role2 = Role.findByAuthority("BasicInfo Operator")?:new Role(authority: "BasicInfo Operator").save()
+
+            def role3 = Role.findByAuthority("Shipment Creator")?:new Role(authority: "Shipment Creator").save()
+
+            def user1 = User.findByUsername("admin")?:new User(username: "admin",password: "123",enabled: true).save()
+
+            def userRole = UserRole.create(user1,role1,true)?:new UserRole(user: "user1",role: "role1",true).save()
+
             def iran = Country.findByAbbreviation("IRR")?:new Country(title: "Iran", persianTitle: "Iran", abbreviation: "IRR").save()
 
             def china = Country.findByAbbreviation("CNH")?:new Country(title: "China", persianTitle: "China", abbreviation: "CHN").save();
@@ -47,6 +60,7 @@ class BootStrap {
             def truck1 = Truck.findByRegistrationNo("33BB3")?:new Truck(registrationNo: "33BB3", typeOfVehicle:"kjbjby",chassisNo:"99MJ7700",trademark:"ASD",trailerNumber:"99B5544",otherParticulars:"khgjjj",carrier:forwardingRef).save()
 
             def truck2 = Truck.findByRegistrationNo("2A22")?:new Truck(registrationNo: "2A22", typeOfVehicle:"kjdddy",chassisNo:"997GGG7333",trademark:"HJK",trailerNumber:"99K22244",otherParticulars:"ksewdwjj",carrier:forwardingRef).save()
+
 
         }
     }
