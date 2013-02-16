@@ -22,6 +22,7 @@ class Shipment {
     ForwardingReference notifyParty
     ForwardingReference agent
 
+    User user
 
     static hasMany = [frieghts: Freight, cargoItems: CargoItem]
 
@@ -51,6 +52,15 @@ class Shipment {
     }
 
     String toString(){"$title"}
+
+    static mapping = {
+        table 'shipment'
+        version false
+        id generator: 'hilo',
+                params: [table: 'hi_value',
+                        column: 'next_value',
+                        max_lo: 100]
+    }
 }
 
 

@@ -1,7 +1,9 @@
 package cargo
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured("Admin,BasicInfo Operator")
 class ForwardingReferenceController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

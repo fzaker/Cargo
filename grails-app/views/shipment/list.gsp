@@ -17,15 +17,21 @@
 		</div>
 
         <div id="list-shipment" ng-controller="shipmentController" class="content scaffold-list" role="main">
-            <rg:grid domainClass="${cargo.Shipment}" caption="" width="1000px" maxColumns="15"></rg:grid>
+            <rg:grid domainClass="${cargo.Shipment}" caption="" width="1000px" maxColumns="15">
+                <rg:criteria>
+                    <rg:eq name='user.id' value='${userid}'/>
+                </rg:criteria>
+            </rg:grid>
             <rg:dialog id="shipment" title="Shipment Dialog">
                 <rg:fields bean="${new cargo.Shipment()}">
                     <rg:modify>
                         <rg:ignoreField field="frieghts"/>
                         <rg:ignoreField field="cargoItems"/>
+                        <rg:ignoreField field="user"/>
+                        <rg:ignoreField field="referenceCode"/>
                     </rg:modify>
                 </rg:fields>
-                <rg:saveButton domainClass="${cargo.Shipment}"/>
+                <rg:saveButton domainClass="${cargo.Shipment}" conroller="shipment" action="saveShipment"/>
                 <rg:cancelButton/>
             </rg:dialog>
             <g:javascript>

@@ -1,7 +1,9 @@
 package cargo.cargoItem
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured("Admin,Shipment Creator")
 class CargoItemController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

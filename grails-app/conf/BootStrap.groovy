@@ -31,11 +31,11 @@ class BootStrap {
 
             def user1 = User.findByUsername("admin")?:new User(username: "admin",password: "123",enabled: true).save()
 
-            def userRole = UserRole.create(user1,role1,true)?:new UserRole(user: "user1",role: "role1",true).save()
+            if(!user1.authorities.contains(role1)){UserRole.create(user1,role1,true)}
 
             def iran = Country.findByAbbreviation("IRR")?:new Country(title: "Iran", persianTitle: "Iran", abbreviation: "IRR").save()
 
-            def china = Country.findByAbbreviation("CNH")?:new Country(title: "China", persianTitle: "China", abbreviation: "CHN").save();
+            def china = Country.findByAbbreviation("CHN")?:new Country(title: "China", persianTitle: "China", abbreviation: "CHN").save();
 
             def germany = Country.findByAbbreviation("GRM")?:new Country(title: "Germany", persianTitle: "Alman", abbreviation: "GRM").save();
 

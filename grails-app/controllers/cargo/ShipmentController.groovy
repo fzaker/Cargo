@@ -4,11 +4,14 @@ import cargo.cargoItem.AirCargoItem
 import cargo.cargoItem.OceanCargoItem
 import cargo.cargoItem.RailCargoItem
 import cargo.cargoItem.RoadCargoItem
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.deep.JSON
 
+@Secured("Admin,Shipment Creator")
 class ShipmentController {
-
+    def principalService
+    def shipmentService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -16,10 +19,32 @@ class ShipmentController {
     }
 
     def list() {
+        def user = principalService.getUser()
+        def userid = user.id
+        def adminRole = Role.findByAuthority("Admin")
+        if (user.authorities.contains(adminRole))
+            render(view: "adminList")
+        else
+            render(view: "list", model: [userid: userid])
+
     }
 
     def create() {
         [shipmentInstance: new Shipment(params)]
+    }
+
+    def saveShipment() {
+        def shipment
+        if (params.id) {
+            shipment = Shipment.get(params.id)
+            shipment.properties = params
+        } else {
+            shipment = new Shipment(params)
+            shipment.referenceCode = shipmentService.generateReferenceCode()
+            shipment.user = principalService.getUser()
+        }
+        shipment.save()
+        render 0;
     }
 
     def save() {
@@ -104,86 +129,76 @@ class ShipmentController {
         }
     }
 
-    def getCities(){
-        def country=Country.get(params.id)
+    def getCities() {
+        def country = Country.get(params.id)
         def cities = City.findAllByCountry(country)
         render cities as JSON
     }
 
-    def saveAirCargoItem(){
+    def saveAirCargoItem() {
         def airCargoItem
-        if(params.id){
-            airCargoItem=airCargoItem.get(params.id)
-            airCargoItem.properties=params
-        }
-        else
-            airCargoItem=new AirCargoItem(params)
-        def oldAirCargoItem=AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndAirFreight(airCargoItem.aircraft,airCargoItem.flightNum,airCargoItem.loadingDate,airCargoItem.etaDate,airCargoItem.arrivalDate,airCargoItem.deliveryOrderDate,airCargoItem.cargoItem,airCargoItem.airFreight)
-        if (oldAirCargoItem){
+        if (params.id) {
+            airCargoItem = airCargoItem.get(params.id)
+            airCargoItem.properties = params
+        } else
+            airCargoItem = new AirCargoItem(params)
+        def oldAirCargoItem = AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndAirFreight(airCargoItem.aircraft, airCargoItem.flightNum, airCargoItem.loadingDate, airCargoItem.etaDate, airCargoItem.arrivalDate, airCargoItem.deliveryOrderDate, airCargoItem.cargoItem, airCargoItem.airFreight)
+        if (oldAirCargoItem) {
             render "error"
-        }
-        else
-        {
+        } else {
             airCargoItem.save()
             render 0
         }
     }
 
 
-    def saveOceanCargoItem(){
+    def saveOceanCargoItem() {
         def oceanCargoItem
-        if(params.id){
-            oceanCargoItem=OceanCargoItem.get(params.id)
-            oceanCargoItem.properties=params
-        }
-        else
-            oceanCargoItem=new OceanCargoItem(params)
-        def oldOceanCargoItem=OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate,oceanCargoItem.etaDate,oceanCargoItem.arrivalDate,oceanCargoItem.deliveryOrderDate,oceanCargoItem.cargoItem,oceanCargoItem.oceanFreight)
-        if (oldOceanCargoItem){
+        if (params.id) {
+            oceanCargoItem = OceanCargoItem.get(params.id)
+            oceanCargoItem.properties = params
+        } else
+            oceanCargoItem = new OceanCargoItem(params)
+        def oldOceanCargoItem = OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate, oceanCargoItem.etaDate, oceanCargoItem.arrivalDate, oceanCargoItem.deliveryOrderDate, oceanCargoItem.cargoItem, oceanCargoItem.oceanFreight)
+        if (oldOceanCargoItem) {
             render "error"
-        }
-        else
-        {
+        } else {
             oceanCargoItem.save()
             render 0
         }
     }
 
-    def saveRailCargoItem(){
+    def saveRailCargoItem() {
         def railCargoItem
-        if(params.id){
-            railCargoItem=RailCargoItem.get(params.id)
-            railCargoItem.properties=params
-        }
-        else
-            railCargoItem=new RailCargoItem(params)
-        def oldRailCargoItem=RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRailFreight(railCargoItem.wagonType,railCargoItem.wagonStatus,railCargoItem.wagonNum,railCargoItem.loadingDate,railCargoItem.etaDate,railCargoItem.arrivalDate,railCargoItem.deliveryOrderDate,railCargoItem.cargoItem,railCargoItem.railFreight)
-        if (oldRailCargoItem){
+        if (params.id) {
+            railCargoItem = RailCargoItem.get(params.id)
+            railCargoItem.properties = params
+        } else
+            railCargoItem = new RailCargoItem(params)
+        def oldRailCargoItem = RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRailFreight(railCargoItem.wagonType, railCargoItem.wagonStatus, railCargoItem.wagonNum, railCargoItem.loadingDate, railCargoItem.etaDate, railCargoItem.arrivalDate, railCargoItem.deliveryOrderDate, railCargoItem.cargoItem, railCargoItem.railFreight)
+        if (oldRailCargoItem) {
             render "error"
-        }
-        else
-        {
+        } else {
             railCargoItem.save()
             render 0
         }
     }
 
-    def saveRoadCargoItem(){
+    def saveRoadCargoItem() {
         def roadCargoItem
-        if(params.id){
-            roadCargoItem=RoadCargoItem.get(params.id)
-            roadCargoItem.properties=params
-        }
-        else
-            roadCargoItem=new RoadCargoItem(params)
-        def oldRoadCargoItem=RoadCargoItem.findByTruckAndDriverAndCntrNoAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRoadFreight(roadCargoItem.truck,roadCargoItem.driver,roadCargoItem.cntrNo,roadCargoItem.loadingDate,roadCargoItem.etaDate,roadCargoItem.arrivalDate,roadCargoItem.deliveryOrderDate,roadCargoItem.cargoItem,roadCargoItem.roadFreight)
-        if (oldRoadCargoItem){
+        if (params.id) {
+            roadCargoItem = RoadCargoItem.get(params.id)
+            roadCargoItem.properties = params
+        } else
+            roadCargoItem = new RoadCargoItem(params)
+        def oldRoadCargoItem = RoadCargoItem.findByTruckAndDriverAndCntrNoAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRoadFreight(roadCargoItem.truck, roadCargoItem.driver, roadCargoItem.cntrNo, roadCargoItem.loadingDate, roadCargoItem.etaDate, roadCargoItem.arrivalDate, roadCargoItem.deliveryOrderDate, roadCargoItem.cargoItem, roadCargoItem.roadFreight)
+        if (oldRoadCargoItem) {
             render "error"
-        }
-        else
-        {
+        } else {
             roadCargoItem.save()
             render 0
         }
     }
+
+
 }
