@@ -22,11 +22,10 @@ class ShipmentController {
         def user = principalService.getUser()
         def userid = user.id
         def adminRole = Role.findByAuthority("Admin")
+        def view = "list"
         if (user.authorities.contains(adminRole))
-            render(view: "adminList")
-        else
-            render(view: "list", model: [userid: userid])
-
+            view = "adminList"
+        render(view: view, model: [userid: userid])
     }
 
     def create() {
