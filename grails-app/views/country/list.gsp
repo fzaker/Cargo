@@ -26,12 +26,11 @@
     <rg:criteria inline="true">
         <rg:like name='title'/>
         <rg:filterGrid name='CountryGrid' grid="CountryGrid" label="Search"/>
-        <input type="button" value="Refresh" ngclick="refresh()"/>
+        <input type="button" value="Refresh" onclick="refresh()"/>
         <g:javascript>
             function refresh() {
-                var s = $('#searchTextBox').blank()
-                var clean = valueOf(s).blank()
-                return clean
+                $('#criteria_').find("input[type=text]").val('')
+                $('#criteria_').find("input[type=button]").first().click()
             }
         </g:javascript>
     </rg:criteria>
@@ -63,6 +62,13 @@
     <rg:criteria id='CityCriteria' inline="true">
         <rg:like name='title'/>
         <rg:filterGrid name='CityGrid' grid="CityGrid" label="Search"/>
+        <input type="button" value="Refresh" onclick="refresh()"/>
+        <g:javascript>
+            function refresh() {
+                $('#criteria_CityCriteria').find("input[type=text]").val('')
+                $('#criteria_CityCriteria').find("input[type=button]").first().click()
+            }
+        </g:javascript>
     </rg:criteria>
     <br>
     <rg:grid domainClass="${cargo.City}" onSelectRow="loadAirports"></rg:grid>
@@ -92,6 +98,13 @@
     <rg:criteria id='AirportCriteria' inline="true">
         <rg:like name='title'/>
         <rg:filterGrid name='AirportGrid' grid="AirportGrid" label="Search"/>
+        <input type="button" value="Refresh" onclick="refresh()"/>
+        <g:javascript>
+            function refresh() {
+                $('#criteria_AirportCriteria').find("input[type=text]").val('')
+                $('#criteria_AirportCriteria').find("input[type=button]").first().click()
+            }
+        </g:javascript>
     </rg:criteria>
     <br>
     <rg:grid domainClass="${cargo.Airport}"></rg:grid>

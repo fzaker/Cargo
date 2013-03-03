@@ -159,6 +159,7 @@ class ShipmentController {
             oceanCargoItem.properties = params
         } else
             oceanCargoItem = new OceanCargoItem(params)
+        oceanCargoItem.user = principalService.getUser()
         def oldOceanCargoItem = OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate, oceanCargoItem.etaDate, oceanCargoItem.arrivalDate, oceanCargoItem.deliveryOrderDate, oceanCargoItem.cargoItem, oceanCargoItem.oceanFreight)
         if (oldOceanCargoItem) {
             render "error"
@@ -201,7 +202,6 @@ class ShipmentController {
 
 
     }
-
 
 
 }

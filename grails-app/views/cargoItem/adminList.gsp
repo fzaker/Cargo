@@ -25,6 +25,13 @@
         <rg:like name='unitOfMeasure'/>
         <rg:like name='kindOfPackage'/>
         <rg:filterGrid name='cargoItemGrid' grid="cargoItemGrid" label="Search"/>
+        <input type="button" value="Refresh" onclick="refresh()"/>
+        <g:javascript>
+            function refresh() {
+                $('#criteria_').find("input[type=text]").val('')
+                $('#criteria_').find("input[type=button]").first().click()
+            }
+        </g:javascript>
     </rg:criteria>
     <br>
     <rg:grid domainClass="${cargo.cargoItem.CargoItem}" caption="" width="1000px" maxColumns="15">
@@ -81,7 +88,7 @@
             $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
         })
     </g:javascript>
-</div>
+
 </div>
 </body>
 </html>

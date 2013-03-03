@@ -21,11 +21,18 @@
 
 <div id="list-shipment" ng-controller="shipmentController" class="content scaffold-list" role="main">
     <rg:criteria inline="true">
-        <rg:eq name='title'/>
-        <rg:eq name='shipper'/>
-        <rg:eq name='consignee'/>
-        <rg:eq name='notifyParty'/>
+        <rg:like name='title'/>
+        <rg:like name='shipper'/>
+        <rg:like name='consignee'/>
+        <rg:like name='notifyParty'/>
         <rg:filterGrid name='ShipmentGrid' grid="ShipmentGrid" label="Search"/>
+        <input type="button" value="Refresh" onclick="refresh()"/>
+        <g:javascript>
+            function refresh() {
+                $('#criteria_').find("input[type=text]").val('')
+                $('#criteria_').find("input[type=button]").first().click()
+            }
+        </g:javascript>
     </rg:criteria>
     <br>
     <rg:grid domainClass="${cargo.Shipment}" caption="" width="1000px" maxColumns="15">

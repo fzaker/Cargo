@@ -205,6 +205,7 @@
             <rg:modify>
                 <rg:hiddenReference field="oceanFreight"></rg:hiddenReference>
                 <rg:hiddenReference field="cargoItem"></rg:hiddenReference>
+                <rg:ignoreField field="user"/>
             </rg:modify>
 
             <rg:interceptCreateDialog>
@@ -213,7 +214,7 @@
             </rg:interceptCreateDialog>
 
         </rg:fields>
-        <rg:saveButton domainClass="${OceanCargoItem}"/>
+        <rg:saveButton domainClass="${OceanCargoItem}" conroller="shipment" action="saveOceanCargoItem" params="[saveCallback:'oceanCargoSaveCallback']"/>
         <rg:cancelButton/>
     </rg:dialog>
     <g:javascript>

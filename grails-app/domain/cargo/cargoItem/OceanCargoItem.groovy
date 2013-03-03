@@ -1,5 +1,6 @@
 package cargo.cargoItem
 
+import cargo.User
 import cargo.freight.OceanFreight
 
 class OceanCargoItem {
@@ -13,6 +14,8 @@ class OceanCargoItem {
     Date etaDate // Estimated Time Arrival
     Date arrivalDate
     Date deliveryOrderDate
+
+    User user
 
 
 
