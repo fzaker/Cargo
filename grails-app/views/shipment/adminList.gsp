@@ -23,8 +23,10 @@
     <rg:criteria inline="true">
         <rg:eq name='title'/>
         <rg:eq name='shipper'/>
-        <rg:eq name='consignee'/>
-        <rg:eq name='notifyParty'/>
+        <rg:eq name='consignee.id' from='${cargo.ForwardingReference.list()}' noSelection='["":""]'/>
+        <rg:nest name='notifyParty'>
+            <rg:like name='title'/>
+        </rg:nest>
         <rg:filterGrid name='ShipmentGrid' grid="ShipmentGrid" label="Search"/>
     </rg:criteria>
     <br>
@@ -53,8 +55,7 @@
                     }).success(function(data){
                         $("#shipment").find("#originCty").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#originCty").append("<option
-            value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("#originCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })
@@ -70,8 +71,7 @@
                     }).success(function(data){
                         $("#shipment").find("#destinationCty").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#destinationCty").append("<option
-            value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("#destinationCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })
