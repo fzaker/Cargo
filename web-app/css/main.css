@@ -210,6 +210,7 @@ img {
 	border-bottom: 1px solid #CCCCCC;
 	margin: 0.8em 1em 0.3em;
 	padding: 0 0.25em;
+
 }
 
 .scaffold-list h1 {
@@ -301,6 +302,17 @@ img {
 
 .nav a.home {
 	background-image: url(../images/skin/house.png);
+}
+
+.nav a.logout, .nav a.list, .nav a.create {
+    background-position: right center;
+    background-repeat: no-repeat;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.nav a.logout {
+    background-image: url(../images/skin/logout.png);
 }
 
 .nav a.list {
@@ -777,6 +789,69 @@ a.skip {
     height:400px;
 }
 
+
+#logout-nav h3{
+    border-bottom:1px solid #888888;
+    padding-bottom: 5px;
+    display: block;
+}
+
+#logout-nav li{
+    display: block;
+}
+
+#logout-nav li ul li{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#logout-nav li ul li span{
+    display: block;
+    vertical-align: top;
+}
+
+#logout-nav li img{
+}
+
+#logout-nav li a{
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    border:1px solid #DDDDDD;
+    box-shadow: inset #DDDDDD 0 0 3px;
+    background: #F3F3F3;
+    width:100px;
+    height:100px;
+    text-align: center;
+    padding:5px;
+    margin:5px;
+}
+
+#logout-nav li a:hover{
+    box-shadow: #BBBBBB 0 0 5px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #dddddd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dddddd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#dddddd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#dddddd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#dddddd 100%); /* IE10+ */
+    background: linear-gradient(top,  #ffffff 0%,#dddddd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 ); /* IE6-9 */
+
+}
+
+#logout-nav{
+    margin-right:450px;
+}
+
+#logoutlogo{
+    float:right;
+    background: url(../images/logoutlogo.png) center center no-repeat;
+    width: 400px;
+    height:400px;
+}
+
+
 .jstree-undetermined a .jstree-radio { _background-position:-20px -19px; }
 .jstree-checked a .jstree-radio { _background-position:-38px -19px; }
 .jstree-unchecked a .jstree-radio { _background-position:-2px -19px; }
@@ -790,3 +865,7 @@ a.skip {
 .jstree-checked > a > .jstree-radio:hover { background-position:-38px -37px; }
 .jstree-unchecked > a > .jstree-radio:hover { background-position:-2px -37px; }
 .jstree-undetermined > a > .jstree-radio:hover { background-position:-20px -37px; }
+
+.inline .fieldcontain,.inline input[type=button]{
+    display: inline-block;
+}

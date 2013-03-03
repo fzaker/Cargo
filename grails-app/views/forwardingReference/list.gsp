@@ -16,6 +16,8 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message
                 code="default.home.label"/></a></li>
+        <li><g:link class="logout" action="index" controller="logout"><g:message code="logout.label"/></g:link></li>
+
     </ul>
 </div>
 <div id="list-forwardingReference" ng-controller="forwardingReferenceController" class="content scaffold-list"

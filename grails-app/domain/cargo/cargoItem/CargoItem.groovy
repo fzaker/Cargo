@@ -1,9 +1,11 @@
 package cargo.cargoItem
 
 import cargo.Shipment
+import cargo.User
 
 class CargoItem {
 
+    static searchable = true
     String kindOfPackage
     String commodity
     String unitOfMeasure
@@ -20,6 +22,7 @@ class CargoItem {
     Double totalVolume
 
     Shipment shipment
+    User user
 
     static constraints = {
 

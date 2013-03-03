@@ -42,6 +42,7 @@
     <g:javascript src="theme.js"></g:javascript>
 
     <g:javascript plugin="rapid-grails" src="jquery.form.js"></g:javascript>
+    <g:javascript plugin="rapid-grails" src="jquery.json-2.3.min.js"></g:javascript>
     <rg:jstreeResources/>
 
     <script language="javascript" src="${resource(dir: 'js', file: 'msgGrowl.js')}" type="text/javascript"></script>
@@ -49,6 +50,7 @@
 </head>
 
 <body>
+
 <div id="bokeh"><div id="container">
     <div id="header" role="banner">
         <h1 id="logo">Admin Control Panel</h1>

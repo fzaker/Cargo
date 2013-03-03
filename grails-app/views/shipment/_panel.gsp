@@ -7,6 +7,7 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="list" action="list"><g:message code="shipment.panel.label" args="[entityName]" /></g:link></li>
+        <li><g:link class="logout" action="index" controller="logout"><g:message code="logout.label"/></g:link></li>
     </ul>
 </div>
 <br>
@@ -178,6 +179,17 @@
 
             <span class="property-value" aria-labelledby="currency-label"><g:fieldValue bean="${shipmentInstance}"
                                                                                              field="currency"/></span>
+
+        </li>
+    </g:if>
+
+    <g:if test="${shipmentInstance?.user}">
+        <li class="fieldcontain">
+            <span id="user-label" class="property-label"><g:message code="shipment.user.label"
+                                                                        default="User"/></span>
+
+            <span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${shipmentInstance}"
+                                                                                        field="user"/></span>
 
         </li>
     </g:if>

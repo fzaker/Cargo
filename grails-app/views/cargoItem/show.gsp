@@ -21,6 +21,15 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list cargoItem">
+
+                <g:if test="${cargoItemInstance?.user}">
+                    <li class="fieldcontain">
+                        <span id="user-label" class="property-label"><g:message code="cargoItem.user.label" default="User" /></span>
+
+                        <span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${cargoItemInstance}" field="user"/></span>
+
+                    </li>
+                </g:if>
 			
 				<g:if test="${cargoItemInstance?.noOfPackage}">
 				<li class="fieldcontain">

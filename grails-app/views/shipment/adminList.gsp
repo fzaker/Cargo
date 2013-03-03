@@ -1,22 +1,33 @@
-
 <%@ page import="cargo.Shipment" %>
 <!doctype html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'shipment.label', default: 'Shipment')}" />
-    <title><g:message code="default.list.label" args="[entityName]" /></title>
+    <g:set var="entityName" value="${message(code: 'shipment.label', default: 'Shipment')}"/>
+    <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
+
 <body>
-<h2><g:message code="default.list.label" args="[entityName]" /></h2>
-<a href="#list-shipment" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+<h2><g:message code="default.list.label" args="[entityName]"/></h2>
+<a href="#list-shipment" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+                                                               default="Skip to content&hellip;"/></a>
+
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="logout" action="index" controller="logout"><g:message code="logout.label"/></g:link></li>
     </ul>
 </div>
 
 <div id="list-shipment" ng-controller="shipmentController" class="content scaffold-list" role="main">
+    <rg:criteria inline="true">
+        <rg:eq name='title'/>
+        <rg:eq name='shipper'/>
+        <rg:eq name='consignee'/>
+        <rg:eq name='notifyParty'/>
+        <rg:filterGrid name='ShipmentGrid' grid="ShipmentGrid" label="Search"/>
+    </rg:criteria>
+    <br>
     <rg:grid domainClass="${cargo.Shipment}" caption="" width="1000px" maxColumns="15">
     </rg:grid>
     <rg:dialog id="shipment" title="Shipment Dialog">
@@ -35,14 +46,15 @@
                 $("#shipment").find("#originCnt").change(function(){
                     var cnt = $(this).val()
                     $.ajax({
-                        url:'<g:createLink action="getCities" />',
+                        url:'<g:createLink action="getCities"/>',
                         data:{
                             id:cnt
                         }
                     }).success(function(data){
                         $("#shipment").find("#originCty").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#originCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("#originCty").append("<option
+            value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })
@@ -51,20 +63,23 @@
                 $("#shipment").find("#destinationCnt").change(function(){
                     var cnt = $(this).val()
                     $.ajax({
-                        url:'<g:createLink action="getCities" />',
+                        url:'<g:createLink action="getCities"/>',
                         data:{
                             id:cnt
                         }
                     }).success(function(data){
                         $("#shipment").find("#destinationCty").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#destinationCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("#destinationCty").append("<option
+            value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })
     </g:javascript>
-    <input type="button" ng-click="openShipmentCreateDialog()" value="Create Shipment"/>
-    <input type="button" ng-click="openShipmentEditDialog()" value="Edit Shipment"/>
+    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+        <input type="button" ng-click="openShipmentCreateDialog()" value="Create Shipment"/>
+        <input type="button" ng-click="openShipmentEditDialog()" value="Edit Shipment"/>
+    </sec:ifAnyGranted>
 </div>
 </body>
 </html>

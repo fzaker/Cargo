@@ -3,6 +3,8 @@ package cargo.cargoItem
 import cargo.freight.OceanFreight
 
 class OceanCargoItem {
+    static searchable = true
+
     CargoItem cargoItem
     OceanFreight oceanFreight
 

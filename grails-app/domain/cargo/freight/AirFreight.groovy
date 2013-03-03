@@ -1,11 +1,13 @@
 package cargo.freight
 
 import cargo.Airport
+import cargo.User
 import cargo.cargoItem.AirCargoItem
 import cargo.cargoItem.CargoItem
 
 class AirFreight extends Freight {
 
+    static searchable = true
     Airport airportDeparture
     Airport airportDestination
 
@@ -33,6 +35,9 @@ class AirFreight extends Freight {
 
     String signatureOfShipperOrHisAgent
     String signatureOfIssuingCarrierOrItsAgent
+
+    User user
+
 
 
 

@@ -8,7 +8,7 @@ import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.deep.JSON
 
-@Secured("Admin,Shipment Creator")
+@Secured("Admin,Head Shipment Creator,Shipment Creator")
 class ShipmentController {
     def principalService
     def shipmentService
@@ -17,6 +17,7 @@ class ShipmentController {
     def index() {
         redirect(action: "list", params: params)
     }
+
 
     def list() {
         def user = principalService.getUser()
@@ -197,7 +198,10 @@ class ShipmentController {
             roadCargoItem.save()
             render 0
         }
+
+
     }
+
 
 
 }

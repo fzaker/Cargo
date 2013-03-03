@@ -28,9 +28,6 @@
     </rg:criteria>
     <br>
     <rg:grid domainClass="${cargo.cargoItem.CargoItem}" caption="" width="1000px" maxColumns="15">
-        <rg:criteria>
-            <rg:eq name='user.id' value='${userid}'/>
-        </rg:criteria>
     </rg:grid>
     <rg:dialog id="cargoItem" title="CargoItem Dialog">
         <rg:fields bean="${new cargo.cargoItem.CargoItem()}">

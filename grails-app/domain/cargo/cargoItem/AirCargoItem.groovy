@@ -4,6 +4,8 @@ import cargo.freight.AirFreight
 
 class AirCargoItem {
 
+    static searchable = true
+
     CargoItem cargoItem
     AirFreight airFreight
 

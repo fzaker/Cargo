@@ -13,13 +13,19 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="logout" action="index" controller="logout"><g:message code="logout.label"/></g:link></li>
     </ul>
 </div>
 
 <div id="list-freight" ng-controller="freightController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${cargo.freight.Freight}" caption="" width="800px" maxColumns="15"></rg:grid>
+    <rg:grid domainClass="${cargo.freight.Freight}" caption="" width="800px" maxColumns="15">
+    </rg:grid>
     <rg:dialog id="freight" title="Freight Dialog">
-        <rg:fields bean="${new cargo.freight.Freight()}"></rg:fields>
+        <rg:fields bean="${new cargo.freight.Freight()}">
+            <rg:criteria>
+                <rg:eq name='user.id' value='${userid}'/>
+            </rg:criteria>
+        </rg:fields>
         <rg:saveButton domainClass="${cargo.freight.Freight}"/>
         <rg:cancelButton/>
     </rg:dialog>

@@ -10,7 +10,7 @@
 	}
 
 	#login .inner {
-		width: 370px;
+		width: 470px;
 		padding-bottom: 6px;
 		margin: 60px auto;
 		text-align: left;
@@ -25,7 +25,7 @@
 	#login .inner .fheader {
 		padding: 18px 26px 14px 26px;
 		background-color: #f7f7ff;
-		margin: 0px 0 14px 0;
+		margin: 0px 0 0px 0;
 		color: #2e3741;
 		font-size: 21px;
 		font-weight: bold;
@@ -56,12 +56,12 @@
 	}
 
 	#login #remember_me_holder {
-		padding-left: 10px;
+		padding-left: 120px;
 
 	}
 
 	#login #submit {
-		margin-left: 145px;
+		margin-left: 185px;
 	}
 
 	#login #remember_me_holder label {
@@ -96,6 +96,9 @@
 		</g:if>
 
 		<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
+            <img src="${resource(dir: 'images/reportMenuImages', file: 'conceptual_transport_system.png')}" alt="">
+            <br>
+            <br>
 			<p>
 				<label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
 				<input type='text' class='text_' name='j_username' id='username'/>
@@ -110,7 +113,6 @@
 				<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
 				<label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
 			</p>
-
 			<p>
 				<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
 			</p>

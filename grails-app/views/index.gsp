@@ -97,21 +97,22 @@
 
     <div style="direction:ltr;font-size:16px;margin:auto;" id="jquerymenu">
         <ul>
-
+                <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
                 <li>
                     <a href="" rel="basicInformation">
                         <g:message code="basic.information"/>
                         <span><g:message code="basic.information.description"/></span>
                     </a>
                 </li>
-
-
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
                 <li>
                     <a href="" rel="shipmentStatus">
                         <g:message code="shipment.status"/>
                         <span><g:message code="shipment.status.description"/></span>
                     </a>
                 </li>
+                </sec:ifAnyGranted>
 
 
             <li>
@@ -160,43 +161,42 @@
 
     <div style="direction:ltr;" id="jquerymenububble">
         <div class="slider">
-            <sec:ifAnyGranted roles="Admin,BasicInfo Operator">
+            <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
                 <div class="set basicInformation">
                     <ul>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'geography.png')}"/>
+                              <a  href="<g:createLink controller="country"/>">  <img src="${resource(dir: 'images/reportMenuImages', file: 'geography.png')}"/></a>
                             </span>
                             <a href="<g:createLink controller="country"/>"><g:message code="menu.geography"/></a>
                         </li>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'forwardingRef.png')}"/>
+                                <a href="<g:createLink controller="forwardingReference"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'forwardingRef.png')}"/></a>
                             </span>
-                            <a href="<g:createLink controller="forwardingReference"/>"><g:message
-                                    code="menu.forwardingReference"/></a>
+                            <a href="<g:createLink controller="forwardingReference"/>"><g:message code="menu.forwardingReference"/></a>
                         </li>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'localAgent.png')}"/>
+                                <a href="<g:createLink controller="localAgent"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'localAgent.png')}"/></a>
                             </span>
                             <a href="<g:createLink controller="localAgent"/>"><g:message code="menu.localAgent"/></a>
                         </li>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'driver.png')}"/>
+                                <a href="<g:createLink controller="driver"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'driver.png')}"/></a>
                             </span>
                             <a href="<g:createLink controller="driver"/>"><g:message code="menu.driver"/></a>
                         </li>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'trucks.png')}"/>
+                                <a href="<g:createLink controller="truck"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'trucks.png')}"/></a>
                             </span>
                             <a href="<g:createLink controller="truck"/>"><g:message code="menu.truck"/></a>
                         </li>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'document.png')}"/>
+                                <a href="<g:createLink controller="documentType"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'document.png')}"/></a>
                             </span>
                             <a href="<g:createLink controller="documentType"/>"><g:message
                                     code="menu.documentType"/></a>
@@ -205,18 +205,18 @@
                     </ul>
                 </div>
             </sec:ifAnyGranted>
-            <sec:ifAnyGranted roles="Admin,Shipment Creator">
+            <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
             <div class="set shipmentStatus">
                 <ul>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'shipment.png')}"/>
+                            <a href="<g:createLink controller="shipment"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'shipment.png')}"/></a>
                         </span>
                         <a href="<g:createLink controller="shipment"/>"><g:message code="menu.shipment"/></a>
                     </li>
                     <li>
                         <span>
-                            <img src="${resource(dir: 'images/reportMenuImages', file: 'cargoItem.png')}"/>
+                            <a href="<g:createLink controller="cargoItem"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'cargoItem.png')}"/></a>
                         </span>
                         <a href="<g:createLink controller="cargoItem"/>"><g:message code="menu.cargoItem"/></a>
                     </li>
@@ -261,7 +261,20 @@
             <div class="set search">
                 <ul>
                     <li>
-                        <a href=""><h3>This part will Complete in the next version</h3></a>
+                        <a href="<g:createLink controller="country"/>"><g:message code="menu.searchGeography"/></a>
+                    </li>
+                    <li>
+                        <a href="<g:createLink controller="shipment"/>"><g:message code="menu.searchShipment"/></a>
+                    </li>
+                    <li>
+                        <a href=""><g:message code="menu.searchFreight"/></a>
+                        <a href="<g:createLink controller="airFreight"/>"><g:message code="menu.searchAirFreight"/></a>
+                        <a href="<g:createLink controller="oceanFreight"/>"><g:message code="menu.searchOceanFreight"/></a>
+                        <a href="<g:createLink controller="railFreight"/>"><g:message code="menu.searchRailFreight"/></a>
+                        <a href="<g:createLink controller="roadFreight"/>"><g:message code="menu.searchRoadFreight"/></a>
+                    </li>
+                    <li>
+                        <a href="<g:createLink controller="cargoItem"/>"><g:message code="menu.searchCargoItem"/></a>
                     </li>
                 </ul>
             </div>
@@ -270,13 +283,13 @@
                     <ul>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'userMng2.png')}"/>
+                                <a href="<g:createLink controller="user"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'userMng2.png')}"/></a>
                             </span>
                             <a href="<g:createLink controller="user"/>"><g:message code="menu.userMng"/></a>
                         </li>
                         <li>
                             <span>
-                                <img src="${resource(dir: 'images/reportMenuImages', file: 'roles.png')}"/>
+                                <a href="<g:createLink controller="userRole"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'roles.png')}"/></a>
                             </span>
                             <a href="<g:createLink controller="userRole"/>"><g:message code="menu.rolMng"/></a>
                         </li>

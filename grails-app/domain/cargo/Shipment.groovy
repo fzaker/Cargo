@@ -5,6 +5,7 @@ import cargo.cargoItem.CargoItem
 
 class Shipment {
 
+    static searchable = true
     String referenceCode
     String title
     String description

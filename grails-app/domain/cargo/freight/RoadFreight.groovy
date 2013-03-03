@@ -4,7 +4,7 @@ import cargo.Truck
 
 class RoadFreight extends Freight {
 
-
+    static searchable = true
     String CMR
     Double totalCollect
     Double totalPrepaid

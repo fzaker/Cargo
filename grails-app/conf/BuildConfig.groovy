@@ -56,6 +56,9 @@ grails.project.dependency.resolution = {
             excludes 'mongo-java-driver', 'gmongo'
         }
         compile ":spring-security-core:1.2.7.3"
+        compile ":searchable:0.6.4"
+
+
     }
 }
 

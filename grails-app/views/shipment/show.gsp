@@ -1,4 +1,4 @@
-<%@ page import="cargo.cargoItem.RoadCargoItem; cargo.cargoItem.RailCargoItem; cargo.cargoItem.OceanCargoItem; cargo.cargoItem.AirCargoItem; cargo.cargoItem.CargoItem; cargo.Shipment" %>
+    <%@ page import="cargo.cargoItem.RoadCargoItem; cargo.cargoItem.RailCargoItem; cargo.cargoItem.OceanCargoItem; cargo.cargoItem.AirCargoItem; cargo.cargoItem.CargoItem; cargo.Shipment" %>
 <!doctype html>
 <html>
 <head>
@@ -17,8 +17,15 @@
         </rg:criteria>
     </rg:grid>
     <rg:dialog id="cargoItem" title="CargoItem Dialog">
-        <rg:fields bean="${new CargoItem()}"></rg:fields>
-        <rg:saveButton domainClass="${CargoItem}"/>
+        <rg:fields bean="${new CargoItem()}">
+            <rg:modify>
+                <rg:ignoreField field="user"/>
+                <rg:ignoreField field="shipment"/>
+            </rg:modify>
+            <input type="hidden" name="shipment.id" value="${shipmentInstance.id}">
+        </rg:fields>
+
+        <rg:saveButton domainClass="${CargoItem}" conroller="cargoItem" action="saveCargoItem"/>
         <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openCargoItemCreateDialog()" value="Create CargoItem"/>
@@ -83,29 +90,53 @@
 
     <g:if test="${shipmentInstance.HBL&&shipmentInstance.shipper&&shipmentInstance.consignee&&shipmentInstance.notifyParty&&shipmentInstance.agent}">
     <rg:dialog id="airFreight" title="Air Freight Dialog">
-        <rg:fields bean="${new cargo.freight.AirFreight()}" angular="false"></rg:fields>
-        <rg:saveButton domainClass="${cargo.freight.AirFreight}" gridId="freight"/>
+        <rg:fields bean="${new cargo.freight.AirFreight()}" angular="false">
+            <rg:modify>
+                <rg:ignoreField field="user"/>
+                <rg:ignoreField field="shipment"/>
+            </rg:modify>
+            <input type="hidden" name="shipment.id" value="${shipmentInstance.id}">
+        </rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.AirFreight}" gridId="freight" conroller="airFreight" action="saveAirFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openAirFreightCreateDialog()" value="Create Air Freight"/>
 
     <rg:dialog id="oceanFreight" title="Ocean Freight Dialog">
-        <rg:fields bean="${new cargo.freight.OceanFreight()}" angular="false"></rg:fields>
-        <rg:saveButton domainClass="${cargo.freight.OceanFreight}" gridId="freight"/>
+        <rg:fields bean="${new cargo.freight.OceanFreight()}" angular="false">
+            <rg:modify>
+                <rg:ignoreField field="user"/>
+                <rg:ignoreField field="shipment"/>
+            </rg:modify>
+            <input type="hidden" name="shipment.id" value="${shipmentInstance.id}">
+        </rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.OceanFreight}" gridId="freight" conroller="oceanFreight" action="saveOceanFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openOceanFreightCreateDialog()" value="Create Ocean Freight"/>
 
     <rg:dialog id="railFreight" title="Rail Freight Dialog">
-        <rg:fields bean="${new cargo.freight.RailFreight()}" angular="false"></rg:fields>
-        <rg:saveButton domainClass="${cargo.freight.RailFreight}" gridId="freight"/>
+        <rg:fields bean="${new cargo.freight.RailFreight()}" angular="false">
+            <rg:modify>
+                <rg:ignoreField field="user"/>
+                <rg:ignoreField field="shipment"/>
+            </rg:modify>
+            <input type="hidden" name="shipment.id" value="${shipmentInstance.id}">
+        </rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.RailFreight}" gridId="freight" conroller="railFreight" action="saveRailFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openRailFreightCreateDialog()" value="Create Rail Freight"/>
 
     <rg:dialog id="roadFreight" title="Road Freight Dialog">
-        <rg:fields bean="${new cargo.freight.RoadFreight()}" angular="false"></rg:fields>
-        <rg:saveButton domainClass="${cargo.freight.RoadFreight}" gridId="freight"/>
+        <rg:fields bean="${new cargo.freight.RoadFreight()}" angular="false">
+            <rg:modify>
+                <rg:ignoreField field="user"/>
+                <rg:ignoreField field="shipment"/>
+            </rg:modify>
+            <input type="hidden" name="shipment.id" value="${shipmentInstance.id}">
+        </rg:fields>
+        <rg:saveButton domainClass="${cargo.freight.RoadFreight}" gridId="freight" conroller="roadFreight" action="saveRoadFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openRoadFreightCreateDialog()" value="Create Road Freight"/>

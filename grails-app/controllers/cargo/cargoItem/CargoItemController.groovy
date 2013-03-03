@@ -1,11 +1,12 @@
 package cargo.cargoItem
 
+import cargo.Role
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured("Admin,Shipment Creator")
+@Secured("Admin,Head Shipment Creator,Shipment Creator")
 class CargoItemController {
-
+    def principalService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -13,12 +14,30 @@ class CargoItemController {
     }
 
     def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [cargoItemInstanceList: CargoItem.list(params), cargoItemInstanceTotal: CargoItem.count()]
+        def user = principalService.getUser()
+        def userid = user.id
+        def adminRole = Role.findByAuthority("Admin")
+        def view = "list"
+        if (user.authorities.contains(adminRole))
+            view = "adminList"
+        render(view: view, model: [userid: userid])
     }
 
     def create() {
         [cargoItemInstance: new CargoItem(params)]
+    }
+
+    def saveCargoItem() {
+        def cargoItem
+        if (params.id) {
+            cargoItem = CargoItem.get(params.id)
+            cargoItem.properties = params
+        } else {
+            cargoItem = new CargoItem(params)
+            cargoItem.user = principalService.getUser()
+        }
+        cargoItem.save()
+        render 0;
     }
 
     def save() {

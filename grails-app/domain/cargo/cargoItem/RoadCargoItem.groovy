@@ -6,6 +6,8 @@ import cargo.freight.RoadFreight
 
 class RoadCargoItem {
 
+    static searchable = true
+
     CargoItem cargoItem
     RoadFreight roadFreight
 

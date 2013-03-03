@@ -4,6 +4,7 @@ import cargo.freight.RailFreight
 
 class RailCargoItem {
 
+    static searchable = true
 
     CargoItem cargoItem
     RailFreight railFreight

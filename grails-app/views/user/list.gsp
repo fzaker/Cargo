@@ -13,11 +13,12 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="logout"  action="index" controller="logout"><g:message code="logout.label"/></g:link></li>
     </ul>
 </div>
 
 <div id="list-user" ng-controller="userController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${cargo.User}" caption="" width="1000px" maxColumns="15"></rg:grid>
+    <rg:grid domainClass="${cargo.User}" caption="" width="1000px" maxColumns="10"></rg:grid>
     <rg:dialog id="user" title="User Dialog">
         <rg:fields bean="${new cargo.User()}">
         </rg:fields>
