@@ -142,6 +142,7 @@ class ShipmentController {
             airCargoItem.properties = params
         } else
             airCargoItem = new AirCargoItem(params)
+        airCargoItem.user = principalService.getUser()
         def oldAirCargoItem = AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndAirFreight(airCargoItem.aircraft, airCargoItem.flightNum, airCargoItem.loadingDate, airCargoItem.etaDate, airCargoItem.arrivalDate, airCargoItem.deliveryOrderDate, airCargoItem.cargoItem, airCargoItem.airFreight)
         if (oldAirCargoItem) {
             render "error"
@@ -176,6 +177,7 @@ class ShipmentController {
             railCargoItem.properties = params
         } else
             railCargoItem = new RailCargoItem(params)
+        railCargoItem.user = principalService.getUser()
         def oldRailCargoItem = RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRailFreight(railCargoItem.wagonType, railCargoItem.wagonStatus, railCargoItem.wagonNum, railCargoItem.loadingDate, railCargoItem.etaDate, railCargoItem.arrivalDate, railCargoItem.deliveryOrderDate, railCargoItem.cargoItem, railCargoItem.railFreight)
         if (oldRailCargoItem) {
             render "error"
@@ -192,6 +194,7 @@ class ShipmentController {
             roadCargoItem.properties = params
         } else
             roadCargoItem = new RoadCargoItem(params)
+        roadCargoItem.user = principalService.getUser()
         def oldRoadCargoItem = RoadCargoItem.findByTruckAndDriverAndCntrNoAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRoadFreight(roadCargoItem.truck, roadCargoItem.driver, roadCargoItem.cntrNo, roadCargoItem.loadingDate, roadCargoItem.etaDate, roadCargoItem.arrivalDate, roadCargoItem.deliveryOrderDate, roadCargoItem.cargoItem, roadCargoItem.roadFreight)
         if (oldRoadCargoItem) {
             render "error"

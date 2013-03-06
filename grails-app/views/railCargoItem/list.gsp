@@ -1,66 +1,61 @@
-
 <%@ page import="cargo.cargoItem.RailCargoItem" %>
 <!doctype html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'railCargoItem.label', default: 'RailCargoItem')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-railCargoItem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-railCargoItem" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-				<thead>
-					<tr>
-					
-						<g:sortableColumn property="wagonType" title="${message(code: 'railCargoItem.wagonType.label', default: 'Wagon Type')}" />
-					
-						<g:sortableColumn property="wagonNum" title="${message(code: 'railCargoItem.wagonNum.label', default: 'Wagon Num')}" />
-					
-						<g:sortableColumn property="wagonStatus" title="${message(code: 'railCargoItem.wagonStatus.label', default: 'Wagon Status')}" />
-					
-						<g:sortableColumn property="loadingDate" title="${message(code: 'railCargoItem.loadingDate.label', default: 'Loading Date')}" />
-					
-						<g:sortableColumn property="etaDate" title="${message(code: 'railCargoItem.etaDate.label', default: 'Eta Date')}" />
-					
-						<g:sortableColumn property="arrivalDate" title="${message(code: 'railCargoItem.arrivalDate.label', default: 'Arrival Date')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${railCargoItemInstanceList}" status="i" var="railCargoItemInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${railCargoItemInstance.id}">${fieldValue(bean: railCargoItemInstance, field: "wagonType")}</g:link></td>
-					
-						<td>${fieldValue(bean: railCargoItemInstance, field: "wagonNum")}</td>
-					
-						<td>${fieldValue(bean: railCargoItemInstance, field: "wagonStatus")}</td>
-					
-						<td><g:formatDate date="${railCargoItemInstance.loadingDate}" /></td>
-					
-						<td><g:formatDate date="${railCargoItemInstance.etaDate}" /></td>
-					
-						<td><g:formatDate date="${railCargoItemInstance.arrivalDate}" /></td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${railCargoItemInstanceTotal}" />
-			</div>
-		</div>
-	</body>
+<head>
+    <meta name="layout" content="main">
+    <g:set var="entityName" value="${message(code: 'railCargoItem.label', default: 'RailCargoItem')}"/>
+    <title><g:message code="default.list.label" args="[entityName]"/></title>
+</head>
+
+<body>
+<h2><g:message code="default.list.label" args="[entityName]"/></h2>
+<a href="#list-railCargoItem" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+                                                                   default="Skip to content&hellip;"/></a>
+
+<div class="nav" role="navigation">
+    <ul>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="logout" action="index" controller="logout"><g:message code="logout.label"/></g:link></li>
+    </ul>
+</div>
+
+<div id="list-railCargoItem" ng-controller="railCargoItemController" class="content scaffold-list" role="main">
+    <rg:criteria inline="true">
+        <rg:eq name='user.id' value='${userid}' hidden='true'/>
+        <rg:like name='wagonType'/>
+        <rg:like name='wagonStatus'/>
+        <rg:filterGrid name='RailCargoItemGrid' grid="RailCargoItemGrid" label="Search"/>
+        <input type="button" value="Refresh" onclick="refresh()"/>
+        <g:javascript>
+            function refresh() {
+                $('#criteria_').find("input[type=text]").val('')
+                $('#criteria_').find("input[type=button]").first().click()
+            }
+        </g:javascript>
+    </rg:criteria>
+    <br>
+    <rg:grid domainClass="${cargo.cargoItem.RailCargoItem}" caption="" width="1000px" maxColumns="15">
+        <rg:criteria>
+            <rg:eq name='user.id' value='${userid}'/>
+        </rg:criteria>
+    </rg:grid>
+    <rg:dialog id="railCargoItem" title="RailCargoItem Dialog">
+        <rg:fields bean="${new cargo.cargoItem.RailCargoItem()}">
+            <rg:modify>
+                <rg:ignoreField field="user"/>
+                <rg:ignoreField field="shipment"/>
+            </rg:modify>
+            <input type="hidden" name="shipment.id">
+        </rg:fields>
+        <rg:saveButton domainClass="${cargo.cargoItem.RailCargoItem}"/>
+        <rg:cancelButton/>
+    </rg:dialog>
+    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+        <input type="button" ng-click="openRailCargoItemCreateDialog()" value="Create RailCargoItem"/>
+        <input type="button" ng-click="openRailCargoItemEditDialog()" value="Edit RailCargoItem"/>
+    </sec:ifAnyGranted>
+
+
+</div>
+</body>
 </html>

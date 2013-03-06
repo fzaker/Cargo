@@ -103,6 +103,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${freightInstance?.signedAs}">
+				<li class="fieldcontain">
+					<span id="signedAs-label" class="property-label"><g:message code="freight.signedAs.label" default="Signed As" /></span>
+					
+						<span class="property-value" aria-labelledby="signedAs-label"><g:fieldValue bean="${freightInstance}" field="signedAs"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${freightInstance?.signature}">
 				<li class="fieldcontain">
 					<span id="signature-label" class="property-label"><g:message code="freight.signature.label" default="Signature" /></span>
@@ -112,11 +121,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${freightInstance?.signedAs}">
+				<g:if test="${freightInstance?.user}">
 				<li class="fieldcontain">
-					<span id="signedAs-label" class="property-label"><g:message code="freight.signedAs.label" default="Signed As" /></span>
+					<span id="user-label" class="property-label"><g:message code="freight.user.label" default="User" /></span>
 					
-						<span class="property-value" aria-labelledby="signedAs-label"><g:fieldValue bean="${freightInstance}" field="signedAs"/></span>
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${freightInstance?.user?.id}">${freightInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

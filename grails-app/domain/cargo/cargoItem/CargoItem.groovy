@@ -6,6 +6,7 @@ import cargo.User
 class CargoItem {
 
     static searchable = true
+    String serialNumber
     String kindOfPackage
     String commodity
     String unitOfMeasure
@@ -26,7 +27,7 @@ class CargoItem {
 
     static constraints = {
 
-
+        serialNumber(nullable: false)
         kindOfPackage(nullable: false)
         commodity(nullable: false)
         unitOfMeasure(nullable: false)
@@ -44,6 +45,8 @@ class CargoItem {
         shipment(nullable: false)
 
     }
+
+    String toString(){"$serialNumber"}
 
 }
 

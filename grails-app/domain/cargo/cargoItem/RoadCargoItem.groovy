@@ -2,6 +2,7 @@ package cargo.cargoItem
 
 import cargo.Driver
 import cargo.Truck
+import cargo.User
 import cargo.freight.RoadFreight
 
 class RoadCargoItem {
@@ -19,6 +20,8 @@ class RoadCargoItem {
     Date etaDate // Estimated Time Arrival
     Date arrivalDate
     Date deliveryOrderDate
+
+    User user
 
 
     static constraints = {

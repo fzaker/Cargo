@@ -1,5 +1,6 @@
 package cargo.cargoItem
 
+import cargo.User
 import cargo.freight.AirFreight
 
 class AirCargoItem {
@@ -10,12 +11,14 @@ class AirCargoItem {
     AirFreight airFreight
 
     String aircraft
-    Double flightNum
+    String flightNum
 
     Date loadingDate
     Date etaDate // Estimated Time Arrival
     Date arrivalDate
     Date deliveryOrderDate
+
+    User user
 
 
     static constraints = {

@@ -175,6 +175,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${oceanFreightInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="oceanFreight.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${oceanFreightInstance?.user?.id}">${oceanFreightInstance?.user?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

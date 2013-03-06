@@ -1,9 +1,11 @@
 package cargo.freight
 
+import cargo.Role
 import org.springframework.dao.DataIntegrityViolationException
 
 class RailFreightController {
 
+    def principalService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -11,12 +13,30 @@ class RailFreightController {
     }
 
     def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [railFreightInstanceList: RailFreight.list(params), railFreightInstanceTotal: RailFreight.count()]
+        def user = principalService.getUser()
+        def userid = user.id
+        def adminRole = Role.findByAuthority("Admin")
+        def view = "list"
+        if (user.authorities.contains(adminRole))
+            view = "adminList"
+        render(view: view, model: [userid: userid])
     }
 
     def create() {
         [railFreightInstance: new RailFreight(params)]
+    }
+
+    def saveRailFreight() {
+        def railFreight
+        if (params.id) {
+            railFreight = RailFreight.get(params.id)
+            railFreight.properties = params
+        } else {
+            railFreight = new RailFreight(params)
+            railFreight.user = principalService.getUser()
+        }
+        railFreight.save()
+        render 0;
     }
 
     def save() {

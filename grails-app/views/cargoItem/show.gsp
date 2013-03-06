@@ -16,26 +16,17 @@
 			</ul>
 		</div>
 		<div id="show-cargoItem" class="content scaffold-show" role="main">
-
+			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list cargoItem">
-
-                <g:if test="${cargoItemInstance?.user}">
-                    <li class="fieldcontain">
-                        <span id="user-label" class="property-label"><g:message code="cargoItem.user.label" default="User" /></span>
-
-                        <span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${cargoItemInstance}" field="user"/></span>
-
-                    </li>
-                </g:if>
 			
-				<g:if test="${cargoItemInstance?.noOfPackage}">
+				<g:if test="${cargoItemInstance?.serialNumber}">
 				<li class="fieldcontain">
-					<span id="noOfPackage-label" class="property-label"><g:message code="cargoItem.noOfPackage.label" default="No Of Package" /></span>
+					<span id="serialNumber-label" class="property-label"><g:message code="cargoItem.serialNumber.label" default="Serial Number" /></span>
 					
-						<span class="property-value" aria-labelledby="noOfPackage-label"><g:fieldValue bean="${cargoItemInstance}" field="noOfPackage"/></span>
+						<span class="property-value" aria-labelledby="serialNumber-label"><g:fieldValue bean="${cargoItemInstance}" field="serialNumber"/></span>
 					
 				</li>
 				</g:if>
@@ -58,6 +49,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${cargoItemInstance?.unitOfMeasure}">
+				<li class="fieldcontain">
+					<span id="unitOfMeasure-label" class="property-label"><g:message code="cargoItem.unitOfMeasure.label" default="Unit Of Measure" /></span>
+					
+						<span class="property-value" aria-labelledby="unitOfMeasure-label"><g:fieldValue bean="${cargoItemInstance}" field="unitOfMeasure"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.noOfPackage}">
+				<li class="fieldcontain">
+					<span id="noOfPackage-label" class="property-label"><g:message code="cargoItem.noOfPackage.label" default="No Of Package" /></span>
+					
+						<span class="property-value" aria-labelledby="noOfPackage-label"><g:fieldValue bean="${cargoItemInstance}" field="noOfPackage"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${cargoItemInstance?.grossWeight}">
 				<li class="fieldcontain">
 					<span id="grossWeight-label" class="property-label"><g:message code="cargoItem.grossWeight.label" default="Gross Weight" /></span>
@@ -67,11 +76,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cargoItemInstance?.unitOfMeasure}">
+				<g:if test="${cargoItemInstance?.totalWeight}">
 				<li class="fieldcontain">
-					<span id="unitOfMeasure-label" class="property-label"><g:message code="cargoItem.unitOfMeasure.label" default="Unit Of Measure" /></span>
+					<span id="totalWeight-label" class="property-label"><g:message code="cargoItem.totalWeight.label" default="Total Weight" /></span>
 					
-						<span class="property-value" aria-labelledby="unitOfMeasure-label"><g:fieldValue bean="${cargoItemInstance}" field="unitOfMeasure"/></span>
+						<span class="property-value" aria-labelledby="totalWeight-label"><g:fieldValue bean="${cargoItemInstance}" field="totalWeight"/></span>
 					
 				</li>
 				</g:if>
@@ -130,24 +139,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cargoItemInstance?.chargeableRate}">
-				<li class="fieldcontain">
-					<span id="chargeableRate-label" class="property-label"><g:message code="cargoItem.chargeableRate.label" default="Chargeable Rate" /></span>
-					
-						<span class="property-value" aria-labelledby="chargeableRate-label"><g:fieldValue bean="${cargoItemInstance}" field="chargeableRate"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.totalWeight}">
-				<li class="fieldcontain">
-					<span id="totalWeight-label" class="property-label"><g:message code="cargoItem.totalWeight.label" default="Total Weight" /></span>
-					
-						<span class="property-value" aria-labelledby="totalWeight-label"><g:fieldValue bean="${cargoItemInstance}" field="totalWeight"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${cargoItemInstance?.totalVolume}">
 				<li class="fieldcontain">
 					<span id="totalVolume-label" class="property-label"><g:message code="cargoItem.totalVolume.label" default="Total Volume" /></span>
@@ -157,11 +148,29 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${cargoItemInstance?.chargeableRate}">
+				<li class="fieldcontain">
+					<span id="chargeableRate-label" class="property-label"><g:message code="cargoItem.chargeableRate.label" default="Chargeable Rate" /></span>
+					
+						<span class="property-value" aria-labelledby="chargeableRate-label"><g:fieldValue bean="${cargoItemInstance}" field="chargeableRate"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${cargoItemInstance?.shipment}">
 				<li class="fieldcontain">
 					<span id="shipment-label" class="property-label"><g:message code="cargoItem.shipment.label" default="Shipment" /></span>
 					
 						<span class="property-value" aria-labelledby="shipment-label"><g:link controller="shipment" action="show" id="${cargoItemInstance?.shipment?.id}">${cargoItemInstance?.shipment?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="cargoItem.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${cargoItemInstance?.user?.id}">${cargoItemInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

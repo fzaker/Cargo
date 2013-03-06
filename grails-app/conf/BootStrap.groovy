@@ -25,11 +25,15 @@ class BootStrap {
         if (GrailsUtil.environment == "development") {
             def role1 = Role.findByAuthority("Admin")?:new Role(authority: "Admin").save()
 
-            def role2 = Role.findByAuthority("BasicInfo Operator")?:new Role(authority: "BasicInfo Operator").save()
+            def role2 = Role.findByAuthority("Head BasicInfo")?:new Role(authority: "Head BasicInfo").save()
 
-            def role3 = Role.findByAuthority("Shipment Creator")?:new Role(authority: "Shipment Creator").save()
+            def role3 = Role.findByAuthority("BasicInfo Operator")?:new Role(authority: "BasicInfo Operator").save()
 
-            def user1 = User.findByUsername("admin")?:new User(username: "admin",password: "123",enabled: true).save()
+            def role4 = Role.findByAuthority("Head Shipment Creator")?:new Role(authority: "Head Shipment Creator").save()
+
+            def role5 = Role.findByAuthority("Shipment Creator")?:new Role(authority: "Shipment Creator").save()
+
+            def user1 = User.findByUsername("admin")?:new User(username: "admin",password: "123",email: "admin@msn.com",mobile: "0912333333",level: "head",department: "Management",enabled: true).save()
 
             if(!user1.authorities.contains(role1)){UserRole.create(user1,role1,true)}
 

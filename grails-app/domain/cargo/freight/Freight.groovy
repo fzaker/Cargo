@@ -3,6 +3,8 @@ package cargo.freight
 import cargo.ForwardingReference
 import cargo.City
 import cargo.Shipment
+import cargo.User
+
 
 class Freight {
 
@@ -20,6 +22,8 @@ class Freight {
     String signedAs
 
     Shipment shipment
+    User user
+
 
     static constraints = {
 

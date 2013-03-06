@@ -20,11 +20,19 @@
 </div>
 
 <div id="list-shipment" ng-controller="shipmentController" class="content scaffold-list" role="main">
+    <rg:eq name='user.id' value='${userid}' hidden='true'/>
     <rg:criteria inline="true">
+        <rg:eq name='user.id' value='${userid}' hidden='true'/>
         <rg:like name='title'/>
-        <rg:like name='shipper'/>
-        <rg:like name='consignee'/>
-        <rg:like name='notifyParty'/>
+        <rg:nest name='shipper'>
+            <rg:like name="title" label="shipper"/>
+        </rg:nest>
+        <rg:nest name='consignee'>
+            <rg:like name="title" label="consignee"/>
+        </rg:nest>
+        <rg:nest name='notifyParty'>
+            <rg:like name="title" label="notify party"/>
+        </rg:nest>
         <rg:filterGrid name='ShipmentGrid' grid="ShipmentGrid" label="Search"/>
         <input type="button" value="Refresh" onclick="refresh()"/>
         <g:javascript>
@@ -63,8 +71,7 @@
                     }).success(function(data){
                         $("#shipment").find("#originCty").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#originCty").append("<option
-            value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("#originCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })
@@ -80,8 +87,7 @@
                     }).success(function(data){
                         $("#shipment").find("#destinationCty").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#destinationCty").append("<option
-            value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("#destinationCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })

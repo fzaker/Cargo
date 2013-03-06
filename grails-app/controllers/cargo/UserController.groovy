@@ -2,8 +2,10 @@ package cargo
 
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
+
 @Secured("admin")
 class UserController {
+    def principalService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -18,6 +20,24 @@ class UserController {
 
     def create() {
         [userInstance: new User(params)]
+    }
+
+    def changePasswordSubmit = {
+        render(view: "changePassword")
+    }
+
+    def changePassword = {
+
+        User user = principalService.user
+        user.password = params.formPassword
+        if (params.formPassword == params.formPasswordConfirm) {
+            user.save(flush: true)
+            redirect(controller: "logout", action: "index")
+        } else {
+            redirect(action: "changePasswordSubmit")
+            return
+        }
+
     }
 
     def save() {

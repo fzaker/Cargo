@@ -174,6 +174,7 @@ body {
 
 a:link, a:visited, a:hover {
 	color: #48802c;
+    box-shadow: threedface;
 }
 
 a:hover, a:active {
@@ -868,4 +869,16 @@ a.skip {
 
 .inline .fieldcontain,.inline input[type=button]{
     display: inline-block;
+}
+.login-message{
+    float: right;
+    padding-right: 00px;
+    padding-top: -50px;
+    margin-top: -28px;
+}
+.login-message a{
+    font-size: 14pt;
+    font-family: "Times New Roman";
+    color: #6B6B6B;
+    font-weight: bold;
 }

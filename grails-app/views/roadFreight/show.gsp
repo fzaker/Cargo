@@ -148,6 +148,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${roadFreightInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="roadFreight.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${roadFreightInstance?.user?.id}">${roadFreightInstance?.user?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

@@ -171,6 +171,7 @@
             <rg:modify>
                 <rg:hiddenReference field="airFreight"></rg:hiddenReference>
                 <rg:hiddenReference field="cargoItem"></rg:hiddenReference>
+                <rg:ignoreField field="user"/>
             </rg:modify>
 
             <rg:interceptCreateDialog>
@@ -179,7 +180,7 @@
             </rg:interceptCreateDialog>
 
         </rg:fields>
-        <rg:saveButton domainClass="${AirCargoItem}"/>
+        <rg:saveButton domainClass="${AirCargoItem}" conroller="shipment" action="saveAirCargoItem" params="[saveCallback:'airCargoSaveCallback']"/>
         <rg:cancelButton/>
     </rg:dialog>
     <g:javascript>
@@ -240,6 +241,7 @@
             <rg:modify>
                 <rg:hiddenReference field="railFreight"></rg:hiddenReference>
                 <rg:hiddenReference field="cargoItem"></rg:hiddenReference>
+                <rg:ignoreField field="user"/>
             </rg:modify>
 
             <rg:interceptCreateDialog>
@@ -248,7 +250,7 @@
             </rg:interceptCreateDialog>
 
         </rg:fields>
-        <rg:saveButton domainClass="${RailCargoItem}"/>
+        <rg:saveButton domainClass="${RailCargoItem}" conroller="shipment" action="saveRailCargoItem" params="[saveCallback:'railCargoSaveCallback']"/>
         <rg:cancelButton/>
     </rg:dialog>
     <g:javascript>
@@ -274,6 +276,7 @@
             <rg:modify>
                 <rg:hiddenReference field="roadFreight"></rg:hiddenReference>
                 <rg:hiddenReference field="cargoItem"></rg:hiddenReference>
+                <rg:ignoreField field="user"/>
             </rg:modify>
 
             <rg:interceptCreateDialog>

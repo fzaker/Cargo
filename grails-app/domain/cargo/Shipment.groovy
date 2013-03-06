@@ -46,10 +46,6 @@ class Shipment {
         consignee(nullable: true)
         notifyParty(nullable: true)
         agent(nullable: true)
-
-
-
-
     }
 
     String toString(){"$title"}

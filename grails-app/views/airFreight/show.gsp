@@ -103,15 +103,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.signature}">
-				<li class="fieldcontain">
-					<span id="signature-label" class="property-label"><g:message code="airFreight.signature.label" default="Signature" /></span>
-					
-						<span class="property-value" aria-labelledby="signature-label"><g:fieldValue bean="${airFreightInstance}" field="signature"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${airFreightInstance?.signedAs}">
 				<li class="fieldcontain">
 					<span id="signedAs-label" class="property-label"><g:message code="airFreight.signedAs.label" default="Signed As" /></span>
@@ -121,40 +112,47 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.airport}">
+				<g:if test="${airFreightInstance?.signature}">
 				<li class="fieldcontain">
-					<span id="airport-label" class="property-label"><g:message code="airFreight.airport.label" default="Airport" /></span>
+					<span id="signature-label" class="property-label"><g:message code="airFreight.signature.label" default="Signature" /></span>
 					
-						<span class="property-value" aria-labelledby="airport-label"><g:link controller="airport" action="show" id="${airFreightInstance?.airport?.id}">${airFreightInstance?.airport?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="signature-label"><g:fieldValue bean="${airFreightInstance}" field="signature"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.cargoItems}">
+				<g:if test="${airFreightInstance?.airportDeparture}">
 				<li class="fieldcontain">
-					<span id="cargoItems-label" class="property-label"><g:message code="airFreight.cargoItems.label" default="Cargo Items" /></span>
+					<span id="airportDeparture-label" class="property-label"><g:message code="airFreight.airportDeparture.label" default="Airport Departure" /></span>
 					
-						<g:each in="${airFreightInstance.cargoItems}" var="c">
-						<span class="property-value" aria-labelledby="cargoItems-label"><g:link controller="airCargoItem" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="airportDeparture-label"><g:link controller="airport" action="show" id="${airFreightInstance?.airportDeparture?.id}">${airFreightInstance?.airportDeparture?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.ccChargesInDestCurrency}">
+				<g:if test="${airFreightInstance?.airportDestination}">
 				<li class="fieldcontain">
-					<span id="ccChargesInDestCurrency-label" class="property-label"><g:message code="airFreight.ccChargesInDestCurrency.label" default="Cc Charges In Dest Currency" /></span>
+					<span id="airportDestination-label" class="property-label"><g:message code="airFreight.airportDestination.label" default="Airport Destination" /></span>
 					
-						<span class="property-value" aria-labelledby="ccChargesInDestCurrency-label"><g:fieldValue bean="${airFreightInstance}" field="ccChargesInDestCurrency"/></span>
+						<span class="property-value" aria-labelledby="airportDestination-label"><g:link controller="airport" action="show" id="${airFreightInstance?.airportDestination?.id}">${airFreightInstance?.airportDestination?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.chargesAtDestination}">
+				<g:if test="${airFreightInstance?.collectWeightCharge}">
 				<li class="fieldcontain">
-					<span id="chargesAtDestination-label" class="property-label"><g:message code="airFreight.chargesAtDestination.label" default="Charges At Destination" /></span>
+					<span id="collectWeightCharge-label" class="property-label"><g:message code="airFreight.collectWeightCharge.label" default="Collect Weight Charge" /></span>
 					
-						<span class="property-value" aria-labelledby="chargesAtDestination-label"><g:fieldValue bean="${airFreightInstance}" field="chargesAtDestination"/></span>
+						<span class="property-value" aria-labelledby="collectWeightCharge-label"><g:fieldValue bean="${airFreightInstance}" field="collectWeightCharge"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${airFreightInstance?.collectValuationCharges}">
+				<li class="fieldcontain">
+					<span id="collectValuationCharges-label" class="property-label"><g:message code="airFreight.collectValuationCharges.label" default="Collect Valuation Charges" /></span>
+					
+						<span class="property-value" aria-labelledby="collectValuationCharges-label"><g:fieldValue bean="${airFreightInstance}" field="collectValuationCharges"/></span>
 					
 				</li>
 				</g:if>
@@ -186,65 +184,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.collectValuationCharges}">
+				<g:if test="${airFreightInstance?.totalCollect}">
 				<li class="fieldcontain">
-					<span id="collectValuationCharges-label" class="property-label"><g:message code="airFreight.collectValuationCharges.label" default="Collect Valuation Charges" /></span>
+					<span id="totalCollect-label" class="property-label"><g:message code="airFreight.totalCollect.label" default="Total Collect" /></span>
 					
-						<span class="property-value" aria-labelledby="collectValuationCharges-label"><g:fieldValue bean="${airFreightInstance}" field="collectValuationCharges"/></span>
+						<span class="property-value" aria-labelledby="totalCollect-label"><g:fieldValue bean="${airFreightInstance}" field="totalCollect"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.collectWeightCharge}">
+				<g:if test="${airFreightInstance?.prepaidWeightCharge}">
 				<li class="fieldcontain">
-					<span id="collectWeightCharge-label" class="property-label"><g:message code="airFreight.collectWeightCharge.label" default="Collect Weight Charge" /></span>
+					<span id="prepaidWeightCharge-label" class="property-label"><g:message code="airFreight.prepaidWeightCharge.label" default="Prepaid Weight Charge" /></span>
 					
-						<span class="property-value" aria-labelledby="collectWeightCharge-label"><g:fieldValue bean="${airFreightInstance}" field="collectWeightCharge"/></span>
+						<span class="property-value" aria-labelledby="prepaidWeightCharge-label"><g:fieldValue bean="${airFreightInstance}" field="prepaidWeightCharge"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.currencyConversionRates}">
+				<g:if test="${airFreightInstance?.prepaidValuationCharges}">
 				<li class="fieldcontain">
-					<span id="currencyConversionRates-label" class="property-label"><g:message code="airFreight.currencyConversionRates.label" default="Currency Conversion Rates" /></span>
+					<span id="prepaidValuationCharges-label" class="property-label"><g:message code="airFreight.prepaidValuationCharges.label" default="Prepaid Valuation Charges" /></span>
 					
-						<span class="property-value" aria-labelledby="currencyConversionRates-label"><g:fieldValue bean="${airFreightInstance}" field="currencyConversionRates"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${airFreightInstance?.executionDate}">
-				<li class="fieldcontain">
-					<span id="executionDate-label" class="property-label"><g:message code="airFreight.executionDate.label" default="Execution Date" /></span>
-					
-						<span class="property-value" aria-labelledby="executionDate-label"><g:formatDate date="${airFreightInstance?.executionDate}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${airFreightInstance?.executionPlace}">
-				<li class="fieldcontain">
-					<span id="executionPlace-label" class="property-label"><g:message code="airFreight.executionPlace.label" default="Execution Place" /></span>
-					
-						<span class="property-value" aria-labelledby="executionPlace-label"><g:formatDate date="${airFreightInstance?.executionPlace}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${airFreightInstance?.insurancePremium}">
-				<li class="fieldcontain">
-					<span id="insurancePremium-label" class="property-label"><g:message code="airFreight.insurancePremium.label" default="Insurance Premium" /></span>
-					
-						<span class="property-value" aria-labelledby="insurancePremium-label"><g:fieldValue bean="${airFreightInstance}" field="insurancePremium"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${airFreightInstance?.otherCharges}">
-				<li class="fieldcontain">
-					<span id="otherCharges-label" class="property-label"><g:message code="airFreight.otherCharges.label" default="Other Charges" /></span>
-					
-						<span class="property-value" aria-labelledby="otherCharges-label"><g:fieldValue bean="${airFreightInstance}" field="otherCharges"/></span>
+						<span class="property-value" aria-labelledby="prepaidValuationCharges-label"><g:fieldValue bean="${airFreightInstance}" field="prepaidValuationCharges"/></span>
 					
 				</li>
 				</g:if>
@@ -276,47 +238,56 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.prepaidValuationCharges}">
+				<g:if test="${airFreightInstance?.totalPrepaid}">
 				<li class="fieldcontain">
-					<span id="prepaidValuationCharges-label" class="property-label"><g:message code="airFreight.prepaidValuationCharges.label" default="Prepaid Valuation Charges" /></span>
+					<span id="totalPrepaid-label" class="property-label"><g:message code="airFreight.totalPrepaid.label" default="Total Prepaid" /></span>
 					
-						<span class="property-value" aria-labelledby="prepaidValuationCharges-label"><g:fieldValue bean="${airFreightInstance}" field="prepaidValuationCharges"/></span>
+						<span class="property-value" aria-labelledby="totalPrepaid-label"><g:fieldValue bean="${airFreightInstance}" field="totalPrepaid"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.prepaidWeightCharge}">
+				<g:if test="${airFreightInstance?.otherCharges}">
 				<li class="fieldcontain">
-					<span id="prepaidWeightCharge-label" class="property-label"><g:message code="airFreight.prepaidWeightCharge.label" default="Prepaid Weight Charge" /></span>
+					<span id="otherCharges-label" class="property-label"><g:message code="airFreight.otherCharges.label" default="Other Charges" /></span>
 					
-						<span class="property-value" aria-labelledby="prepaidWeightCharge-label"><g:fieldValue bean="${airFreightInstance}" field="prepaidWeightCharge"/></span>
+						<span class="property-value" aria-labelledby="otherCharges-label"><g:fieldValue bean="${airFreightInstance}" field="otherCharges"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.signatureOfIssuingCarrierOrItsAgent}">
+				<g:if test="${airFreightInstance?.insurancePremium}">
 				<li class="fieldcontain">
-					<span id="signatureOfIssuingCarrierOrItsAgent-label" class="property-label"><g:message code="airFreight.signatureOfIssuingCarrierOrItsAgent.label" default="Signature Of Issuing Carrier Or Its Agent" /></span>
+					<span id="insurancePremium-label" class="property-label"><g:message code="airFreight.insurancePremium.label" default="Insurance Premium" /></span>
 					
-						<span class="property-value" aria-labelledby="signatureOfIssuingCarrierOrItsAgent-label"><g:fieldValue bean="${airFreightInstance}" field="signatureOfIssuingCarrierOrItsAgent"/></span>
+						<span class="property-value" aria-labelledby="insurancePremium-label"><g:fieldValue bean="${airFreightInstance}" field="insurancePremium"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.signatureOfShipperOrHisAgent}">
+				<g:if test="${airFreightInstance?.currencyConversionRates}">
 				<li class="fieldcontain">
-					<span id="signatureOfShipperOrHisAgent-label" class="property-label"><g:message code="airFreight.signatureOfShipperOrHisAgent.label" default="Signature Of Shipper Or His Agent" /></span>
+					<span id="currencyConversionRates-label" class="property-label"><g:message code="airFreight.currencyConversionRates.label" default="Currency Conversion Rates" /></span>
 					
-						<span class="property-value" aria-labelledby="signatureOfShipperOrHisAgent-label"><g:fieldValue bean="${airFreightInstance}" field="signatureOfShipperOrHisAgent"/></span>
+						<span class="property-value" aria-labelledby="currencyConversionRates-label"><g:fieldValue bean="${airFreightInstance}" field="currencyConversionRates"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.totalCollect}">
+				<g:if test="${airFreightInstance?.ccChargesInDestCurrency}">
 				<li class="fieldcontain">
-					<span id="totalCollect-label" class="property-label"><g:message code="airFreight.totalCollect.label" default="Total Collect" /></span>
+					<span id="ccChargesInDestCurrency-label" class="property-label"><g:message code="airFreight.ccChargesInDestCurrency.label" default="Cc Charges In Dest Currency" /></span>
 					
-						<span class="property-value" aria-labelledby="totalCollect-label"><g:fieldValue bean="${airFreightInstance}" field="totalCollect"/></span>
+						<span class="property-value" aria-labelledby="ccChargesInDestCurrency-label"><g:fieldValue bean="${airFreightInstance}" field="ccChargesInDestCurrency"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${airFreightInstance?.chargesAtDestination}">
+				<li class="fieldcontain">
+					<span id="chargesAtDestination-label" class="property-label"><g:message code="airFreight.chargesAtDestination.label" default="Charges At Destination" /></span>
+					
+						<span class="property-value" aria-labelledby="chargesAtDestination-label"><g:fieldValue bean="${airFreightInstance}" field="chargesAtDestination"/></span>
 					
 				</li>
 				</g:if>
@@ -330,11 +301,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${airFreightInstance?.totalPrepaid}">
+				<g:if test="${airFreightInstance?.signatureOfShipperOrHisAgent}">
 				<li class="fieldcontain">
-					<span id="totalPrepaid-label" class="property-label"><g:message code="airFreight.totalPrepaid.label" default="Total Prepaid" /></span>
+					<span id="signatureOfShipperOrHisAgent-label" class="property-label"><g:message code="airFreight.signatureOfShipperOrHisAgent.label" default="Signature Of Shipper Or His Agent" /></span>
 					
-						<span class="property-value" aria-labelledby="totalPrepaid-label"><g:fieldValue bean="${airFreightInstance}" field="totalPrepaid"/></span>
+						<span class="property-value" aria-labelledby="signatureOfShipperOrHisAgent-label"><g:fieldValue bean="${airFreightInstance}" field="signatureOfShipperOrHisAgent"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${airFreightInstance?.signatureOfIssuingCarrierOrItsAgent}">
+				<li class="fieldcontain">
+					<span id="signatureOfIssuingCarrierOrItsAgent-label" class="property-label"><g:message code="airFreight.signatureOfIssuingCarrierOrItsAgent.label" default="Signature Of Issuing Carrier Or Its Agent" /></span>
+					
+						<span class="property-value" aria-labelledby="signatureOfIssuingCarrierOrItsAgent-label"><g:fieldValue bean="${airFreightInstance}" field="signatureOfIssuingCarrierOrItsAgent"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${airFreightInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="airFreight.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${airFreightInstance?.user?.id}">${airFreightInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

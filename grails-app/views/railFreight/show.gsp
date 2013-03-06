@@ -103,20 +103,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${railFreightInstance?.signature}">
-				<li class="fieldcontain">
-					<span id="signature-label" class="property-label"><g:message code="railFreight.signature.label" default="Signature" /></span>
-					
-						<span class="property-value" aria-labelledby="signature-label"><g:fieldValue bean="${railFreightInstance}" field="signature"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${railFreightInstance?.signedAs}">
 				<li class="fieldcontain">
 					<span id="signedAs-label" class="property-label"><g:message code="railFreight.signedAs.label" default="Signed As" /></span>
 					
 						<span class="property-value" aria-labelledby="signedAs-label"><g:fieldValue bean="${railFreightInstance}" field="signedAs"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${railFreightInstance?.signature}">
+				<li class="fieldcontain">
+					<span id="signature-label" class="property-label"><g:message code="railFreight.signature.label" default="Signature" /></span>
+					
+						<span class="property-value" aria-labelledby="signature-label"><g:fieldValue bean="${railFreightInstance}" field="signature"/></span>
 					
 				</li>
 				</g:if>
@@ -148,13 +148,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${railFreightInstance?.cargoItem}">
+				<g:if test="${railFreightInstance?.totalCollect}">
 				<li class="fieldcontain">
-					<span id="cargoItem-label" class="property-label"><g:message code="railFreight.cargoItem.label" default="Cargo Item" /></span>
+					<span id="totalCollect-label" class="property-label"><g:message code="railFreight.totalCollect.label" default="Total Collect" /></span>
 					
-						<g:each in="${railFreightInstance.cargoItem}" var="c">
-						<span class="property-value" aria-labelledby="cargoItem-label"><g:link controller="railCargoItem" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="totalCollect-label"><g:fieldValue bean="${railFreightInstance}" field="totalCollect"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${railFreightInstance?.totalPrepaid}">
+				<li class="fieldcontain">
+					<span id="totalPrepaid-label" class="property-label"><g:message code="railFreight.totalPrepaid.label" default="Total Prepaid" /></span>
+					
+						<span class="property-value" aria-labelledby="totalPrepaid-label"><g:fieldValue bean="${railFreightInstance}" field="totalPrepaid"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${railFreightInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="railFreight.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${railFreightInstance?.user?.id}">${railFreightInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

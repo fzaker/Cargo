@@ -21,10 +21,11 @@
 
 <div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
     <rg:criteria inline="true">
+        <rg:eq name='user.id' value='${userid}' hidden='true'/>
         <rg:like name='commodity'/>
         <rg:like name='unitOfMeasure'/>
         <rg:like name='kindOfPackage'/>
-        <rg:filterGrid name='cargoItemGrid' grid="cargoItemGrid" label="Search"/>
+        <rg:filterGrid name='CargoItemGrid' grid="CargoItemGrid" label="Search"/>
         <input type="button" value="Refresh" onclick="refresh()"/>
         <g:javascript>
             function refresh() {
