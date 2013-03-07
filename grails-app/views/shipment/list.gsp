@@ -20,7 +20,6 @@
 </div>
 
 <div id="list-shipment" ng-controller="shipmentController" class="content scaffold-list" role="main">
-    <rg:eq name='user.id' value='${userid}' hidden='true'/>
     <rg:criteria inline="true">
         <rg:eq name='user.id' value='${userid}' hidden='true'/>
         <rg:like name='title'/>

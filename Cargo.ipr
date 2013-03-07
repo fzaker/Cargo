@@ -161,6 +161,7 @@
       <module fileurl="file://$PROJECT_DIR$/Cargo.iml" filepath="$PROJECT_DIR$/Cargo.iml" />
       <module fileurl="file://$PROJECT_DIR$/Cargo-grailsPlugins.iml" filepath="$PROJECT_DIR$/Cargo-grailsPlugins.iml" />
       <module fileurl="file://$PROJECT_DIR$/../RapidGrails/RapidGrails.iml" filepath="$PROJECT_DIR$/../RapidGrails/RapidGrails.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RapidGrails-inplacePlugin.iml" filepath="$PROJECT_DIR$/RapidGrails-inplacePlugin.iml" />
     </modules>
   </component>
   <component name="ProjectResources">
