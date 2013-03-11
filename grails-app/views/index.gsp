@@ -201,14 +201,6 @@
                         </span>
                         <a href="<g:createLink controller="truck"/>"><g:message code="menu.truck"/></a>
                     </li>
-                    <li>
-                        <span>
-                            <a href="<g:createLink controller="documentType"/>"><img
-                                    src="${resource(dir: 'images/reportMenuImages', file: 'document.png')}"/></a>
-                        </span>
-                        <a href="<g:createLink controller="documentType"/>"><g:message
-                                code="menu.documentType"/></a>
-                    </li>
 
                 </ul>
             </div>
@@ -229,6 +221,14 @@
                                     src="${resource(dir: 'images/reportMenuImages', file: 'cargoItem.png')}"/></a>
                         </span>
                         <a href="<g:createLink controller="cargoItem"/>"><g:message code="menu.cargoItem"/></a>
+                    </li>
+                    <li>
+                        <span>
+                            <a href="<g:createLink controller="documentType"/>"><img
+                                    src="${resource(dir: 'images/reportMenuImages', file: 'document.png')}"/></a>
+                        </span>
+                        <a href="<g:createLink controller="documentType"/>"><g:message
+                                code="menu.documentType"/></a>
                     </li>
                 </ul>
             </div>

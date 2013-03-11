@@ -24,7 +24,6 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <rg:criteria inline="true">
-        <rg:eq name='user.id' value='${userid}' hidden='true'/>
         <rg:like name='title'/>
         <rg:like name='persianTitle'/>
         <rg:filterGrid name='DocumentTypeGrid' grid="DocumentTypeGrid" label="Search"/>
@@ -38,9 +37,6 @@
     </rg:criteria>
     <br>
     <rg:grid domainClass="${cargo.DocumentType}">
-        <rg:criteria>
-            <rg:eq name='user.id' value='${userid}'/>
-        </rg:criteria>
     </rg:grid>
     <rg:dialog id="documentType" title="Document Type Dialog">
         <rg:fields bean="${new cargo.DocumentType()}">

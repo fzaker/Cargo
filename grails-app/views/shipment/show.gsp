@@ -391,6 +391,33 @@
 
 </g:javascript>
 <br>
+<div id="list-documentType" ng-controller="documentTypeController" class="content scaffold-list" role="main">
+    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "Persian Title"],[name: "critical"],[name: "File"]]}">
+        <rg:criteria>
+            <rg:eq name="shipment.id" value="${shipmentInstance.id}" />
+        </rg:criteria>
+    </rg:grid>
+    <rg:dialog id="documentType" title="Document Type Dialog">
+        <rg:fields bean="${new cargo.DocumentType()}">
+            <rg:modify>
+                <rg:ignoreField field="user"/>
+                <rg:ignoreField field="shipment"/>
+                <rg:ignoreField field="bytes"/>
+            </rg:modify>
+            <input type="hidden" name="shipment.id" value="${shipmentInstance.id}">
+        </rg:fields>
+        <br>
+        <input type="file" name="contents"/>
+        <input type="submit" title="Attach"/>
+        <br>
+        <rg:saveButton domainClass="${cargo.DocumentType}" gridId="documentType" conroller="documentType" action="saveDocumentType"/>
+        <rg:cancelButton/>
+    </rg:dialog>
+    <br>
+    <input type="button" ng-click="openDocumentTypeCreateDialog()" value="Create Document Type"/>
+    <input type="button" ng-click="openDocumentTypeEditDialog()" value="Edit Document Type"/>
+
+</div>
 
 </body>
 </html>

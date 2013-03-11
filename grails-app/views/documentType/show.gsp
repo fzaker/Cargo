@@ -49,6 +49,31 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${documentTypeInstance?.bytes}">
+				<li class="fieldcontain">
+					<span id="bytes-label" class="property-label"><g:message code="documentType.bytes.label" default="Bytes" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${documentTypeInstance?.shipment}">
+				<li class="fieldcontain">
+					<span id="shipment-label" class="property-label"><g:message code="documentType.shipment.label" default="Shipment" /></span>
+					
+						<span class="property-value" aria-labelledby="shipment-label"><g:link controller="shipment" action="show" id="${documentTypeInstance?.shipment?.id}">${documentTypeInstance?.shipment?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${documentTypeInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="documentType.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${documentTypeInstance?.user?.id}">${documentTypeInstance?.user?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

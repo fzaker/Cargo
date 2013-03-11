@@ -26,3 +26,27 @@
 	<g:checkBox name="critical" value="${documentTypeInstance?.critical}" />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: documentTypeInstance, field: 'bytes', 'error')} required">
+	<label for="bytes">
+		<g:message code="documentType.bytes.label" default="Bytes" />
+		<span class="required-indicator">*</span>
+	</label>
+	<input type="file" id="bytes" name="bytes" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: documentTypeInstance, field: 'shipment', 'error')} required">
+	<label for="shipment">
+		<g:message code="documentType.shipment.label" default="Shipment" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="shipment" name="shipment.id" from="${cargo.Shipment.list()}" optionKey="id" required="" value="${documentTypeInstance?.shipment?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: documentTypeInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="documentType.user.label" default="User" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="user" name="user.id" from="${cargo.User.list()}" optionKey="id" required="" value="${documentTypeInstance?.user?.id}" class="many-to-one"/>
+</div>
+

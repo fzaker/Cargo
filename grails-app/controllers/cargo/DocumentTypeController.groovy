@@ -4,9 +4,10 @@ import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 
-@Secured("Admin,BasicInfo Operator")
+@Secured("Admin,Head Shipment Creator,Shipment Creator")
 class DocumentTypeController {
 
+    def principalService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -14,12 +15,30 @@ class DocumentTypeController {
     }
 
     def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [documentTypeInstanceList: DocumentType.list(params), documentTypeInstanceTotal: DocumentType.count()]
+        def user = principalService.getUser()
+        def userid = user.id
+        def adminRole = Role.findByAuthority("Admin")
+        def view = "list"
+        if (user.authorities.contains(adminRole))
+            view = "adminList"
+        render(view: view, model: [userid: userid])
     }
 
     def create() {
         [documentTypeInstance: new DocumentType(params)]
+    }
+
+    def saveDocumentType() {
+        def documentType
+        if (params.id) {
+            documentType = DocumentType.get(params.id)
+            documentType.properties = params
+        } else {
+            documentType = new DocumentType(params)
+            documentType.user = principalService.getUser()
+        }
+        documentType.save()
+        render 0;
     }
 
     def save() {
@@ -31,6 +50,14 @@ class DocumentTypeController {
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'documentType.label', default: 'DocumentType'), documentTypeInstance.id])
         redirect(action: "show", id: documentTypeInstance.id)
+    }
+
+    def upload() {
+
+        UploadCommand command
+        def dt = new DocumentType(bytes: command.contents.bytes)
+        dt.properties=params
+        dt.save()
     }
 
     def show() {
@@ -103,4 +130,5 @@ class DocumentTypeController {
             redirect(action: "show", id: params.id)
         }
     }
+
 }
