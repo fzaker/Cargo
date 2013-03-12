@@ -37,7 +37,7 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.DocumentType}">
+    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"],[name: "shipment"],[name: "user"]]}">
         <rg:criteria>
             <rg:eq name='user.id' value='${userid}'/>
         </rg:criteria>
@@ -50,10 +50,6 @@
             </rg:modify>
             <input type="hidden" name="shipment.id">
         </rg:fields>
-        <br>
-        <input type="file" name="contents"/>
-        <input type="submit" title="Attach"/>
-        <br>
         <rg:saveButton domainClass="${cargo.DocumentType}" conroller="documentType" action="saveDocumentType"/>
         <rg:cancelButton/>
     </rg:dialog>

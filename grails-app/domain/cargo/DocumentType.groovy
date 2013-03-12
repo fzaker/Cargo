@@ -14,5 +14,9 @@ class DocumentType {
         title(blank: false, maxSize: 50)
         persianTitle(blank: false, maxSize: 50)
         critical(nullable: false)
+        bytes(maxSize: 100000000)
+
     }
+
+
 }

@@ -280,7 +280,6 @@
                     <a href="<g:createLink controller="localAgent"/>"><g:message code="menu.searchLocalAgent"/></a>
                     <a href="<g:createLink controller="driver"/>"><g:message code="menu.searchDriver"/></a>
                     <a href="<g:createLink controller="truck"/>"><g:message code="menu.searchTruck"/></a>
-                    <a href="<g:createLink controller="documentType"/>"><g:message code="menu.searchDocs"/></a>
                 </li>
                 <li>
                     <a href=""><g:message code="menu.searchShipment"/></a>
@@ -318,6 +317,13 @@
                             code="menu.searchRailCargoItem"/></a>
                     <a href="<g:createLink controller="roadCargoItem"/>"><g:message
                             code="menu.searchRoadCargoItem"/></a>
+                </li>
+                <li>
+                    <a href=""><g:message code="menu.searchDocuments"/></a>
+                    <span>
+                        <a href=""><img src="${resource(dir: 'images/reportMenuImages', file: 'documentsrch.png')}"/></a>
+                    </span>
+                    <a href="<g:createLink controller="documentType"/>"><g:message code="menu.searchDocs"/></a>
                 </li>
             </ul>
         </div>

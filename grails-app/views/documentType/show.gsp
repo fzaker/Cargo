@@ -52,8 +52,9 @@
 				<g:if test="${documentTypeInstance?.bytes}">
 				<li class="fieldcontain">
 					<span id="bytes-label" class="property-label"><g:message code="documentType.bytes.label" default="Bytes" /></span>
-					
-				</li>
+                    <g:link action="getDocument" id="${documentTypeInstance?.id}">download</g:link>
+
+                </li>
 				</g:if>
 			
 				<g:if test="${documentTypeInstance?.shipment}">

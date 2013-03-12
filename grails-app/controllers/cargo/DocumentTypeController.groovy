@@ -52,13 +52,13 @@ class DocumentTypeController {
         redirect(action: "show", id: documentTypeInstance.id)
     }
 
-    def upload() {
-
-        UploadCommand command
-        def dt = new DocumentType(bytes: command.contents.bytes)
-        dt.properties=params
-        dt.save()
+    def getDocument(){
+        def content = DocumentType.get(params.id).bytes
+        //response.contentType = 'image/png'
+        response.outputStream << content
+        response.outputStream.flush()
     }
+
 
     def show() {
         def documentTypeInstance = DocumentType.get(params.id)
