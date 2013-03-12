@@ -62,9 +62,9 @@
     <rg:criteria id='CityCriteria' inline="true">
         <rg:like name='title'/>
         <rg:filterGrid name='CityGrid' grid="CityGrid" label="Search"/>
-        <input type="button" value="Refresh" onclick="refresh()"/>
+        <input type="button" value="Refresh" onclick="refreshCity()"/>
         <g:javascript>
-            function refresh() {
+            function refreshCity() {
                 $('#criteria_CityCriteria').find("input[type=text]").val('')
                 $('#criteria_CityCriteria').find("input[type=button]").first().click()
             }
@@ -98,9 +98,9 @@
     <rg:criteria id='AirportCriteria' inline="true">
         <rg:like name='title'/>
         <rg:filterGrid name='AirportGrid' grid="AirportGrid" label="Search"/>
-        <input type="button" value="Refresh" onclick="refresh()"/>
+        <input type="button" value="Refresh" onclick="refreshAirport()"/>
         <g:javascript>
-            function refresh() {
+            function refreshAirport() {
                 $('#criteria_AirportCriteria').find("input[type=text]").val('')
                 $('#criteria_AirportCriteria').find("input[type=button]").first().click()
             }
