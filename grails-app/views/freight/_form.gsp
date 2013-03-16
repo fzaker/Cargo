@@ -69,9 +69,25 @@
 <div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'numberOfBills', 'error')} ">
 	<label for="numberOfBills">
 		<g:message code="freight.numberOfBills.label" default="Number Of Bills" />
-
+		
 	</label>
-	<g:field type="number" name="numberOfBills"  value="${freightInstance.numberOfBills}"/>
+	<g:field type="number" name="numberOfBills" value="${freightInstance.numberOfBills}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'signedAs', 'error')} ">
+	<label for="signedAs">
+		<g:message code="freight.signedAs.label" default="Signed As" />
+		
+	</label>
+	<g:select name="signedAs" from="${freightInstance.constraints.signedAs.inList}" value="${freightInstance?.signedAs}" valueMessagePrefix="freight.signedAs" noSelection="['': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'freightAction', 'error')} ">
+	<label for="freightAction">
+		<g:message code="freight.freightAction.label" default="Freight Action" />
+		
+	</label>
+	<g:select name="freightAction" from="${freightInstance.constraints.freightAction.inList}" value="${freightInstance?.freightAction}" valueMessagePrefix="freight.freightAction" noSelection="['': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'signature', 'error')} ">
@@ -82,11 +98,11 @@
 	<g:textArea name="signature" cols="40" rows="5" maxlength="512" value="${freightInstance?.signature}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'signedAs', 'error')} ">
-	<label for="signedAs">
-		<g:message code="freight.signedAs.label" default="Signed As" />
-		
+<div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="freight.user.label" default="User" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="signedAs" from="${freightInstance.constraints.signedAs.inList}" value="${freightInstance?.signedAs}" valueMessagePrefix="freight.signedAs" noSelection="['': '']"/>
+	<g:select id="user" name="user.id" from="${cargo.User.list()}" optionKey="id" required="" value="${freightInstance?.user?.id}" class="many-to-one"/>
 </div>
 

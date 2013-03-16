@@ -36,12 +36,12 @@ class CargoItem {
         totalWeight(nullable: false)
         rateOrCharge(nullable: false)
         chargeableWeight(nullable: false)
-        width(nullable: false)
-        length(nullable: false)
-        height(nullable: false)
-        volume(nullable: false)
-        totalVolume(nullable: false)
-        chargeableRate(nullable: false)
+        width(nullable: true)
+        length(nullable: true)
+        height(nullable: true)
+        volume(nullable: true)
+        totalVolume(nullable: true)
+        chargeableRate(nullable: true)
         shipment(nullable: false)
 
     }

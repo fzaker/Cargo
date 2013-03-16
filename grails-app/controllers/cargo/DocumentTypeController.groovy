@@ -53,10 +53,15 @@ class DocumentTypeController {
     }
 
     def getDocument(){
-        def content = DocumentType.get(params.id).bytes
-        //response.contentType = 'image/png'
-        response.outputStream << content
-        response.outputStream.flush()
+
+            def content = DocumentType.get(params.id)
+            response.setContentLength(content?.bytes?.length);
+            response.setHeader("Content-Transfer-Encoding", "binary");
+            response.setHeader("Content-disposition", "attachment;filename=${content?.title}")
+            response.setContentType("application/force-download");
+            response.outputStream << content?.bytes
+            response.outputStream.flush()
+
     }
 
 

@@ -21,6 +21,8 @@ class Freight {
     String signature
     String signedAs
 
+    String freightAction
+
     Shipment shipment
     User user
 
@@ -40,6 +42,7 @@ class Freight {
         dateOfIssue(nullable:false)
         numberOfBills(nullable: true)
         signedAs(inList:["As Agent","As Carrier"])
+        freightAction(nullable: true,inList: ["Import","Export","External Transit","Internal Transit"])
 
         signature(maxSize: 512, nullable: true)
 

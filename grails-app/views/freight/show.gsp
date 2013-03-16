@@ -13,6 +13,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-freight" class="content scaffold-show" role="main">
@@ -108,6 +109,15 @@
 					<span id="signedAs-label" class="property-label"><g:message code="freight.signedAs.label" default="Signed As" /></span>
 					
 						<span class="property-value" aria-labelledby="signedAs-label"><g:fieldValue bean="${freightInstance}" field="signedAs"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${freightInstance?.freightAction}">
+				<li class="fieldcontain">
+					<span id="freightAction-label" class="property-label"><g:message code="freight.freightAction.label" default="Freight Action" /></span>
+					
+						<span class="property-value" aria-labelledby="freightAction-label"><g:fieldValue bean="${freightInstance}" field="freightAction"/></span>
 					
 				</li>
 				</g:if>
