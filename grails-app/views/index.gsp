@@ -217,17 +217,17 @@
                     </li>
                     <li>
                         <span>
-                            <a href="<g:createLink controller="cargoItem"/>"><img
+                            <a href="<g:createLink controller="cargoItem" action="getMenuList"/>"><img
                                     src="${resource(dir: 'images/reportMenuImages', file: 'cargoItem.png')}"/></a>
                         </span>
-                        <a href="<g:createLink controller="cargoItem"/>"><g:message code="menu.cargoItem"/></a>
+                        <a href="<g:createLink controller="cargoItem" action="getMenuList"/>"><g:message code="menu.cargoItem"/></a>
                     </li>
                     <li>
                         <span>
-                            <a href="<g:createLink controller="documentType"/>"><img
+                            <a href="<g:createLink controller="documentType" action="getMenuList"/>"><img
                                     src="${resource(dir: 'images/reportMenuImages', file: 'document.png')}"/></a>
                         </span>
-                        <a href="<g:createLink controller="documentType"/>"><g:message
+                        <a href="<g:createLink controller="documentType" action="getMenuList"/>"><g:message
                                 code="menu.documentType"/></a>
                     </li>
                 </ul>

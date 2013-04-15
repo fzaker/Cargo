@@ -24,6 +24,18 @@ class DocumentTypeController {
         render(view: view, model: [userid: userid])
     }
 
+    def getMenuList(){
+        def user = principalService.getUser()
+        def userid = user.id
+        def adminRole = Role.findByAuthority("Admin")
+        def view = "menuList"
+        if (user.authorities.contains(adminRole))
+            view = "adminMenuList"
+        render(view: view, model: [userid: userid,user:user])
+
+
+    }
+
     def create() {
         [documentTypeInstance: new DocumentType(params)]
     }
@@ -57,7 +69,7 @@ class DocumentTypeController {
             def content = DocumentType.get(params.id)
             response.setContentLength(content?.bytes?.length);
             response.setHeader("Content-Transfer-Encoding", "binary");
-            response.setHeader("Content-disposition", "attachment;filename=${content?.title}")
+            response.setHeader("Content-disposition", "attachment;filename=${content?.fileName}")
             response.setContentType("application/force-download");
             response.outputStream << content?.bytes
             response.outputStream.flush()

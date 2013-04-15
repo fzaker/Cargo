@@ -18,6 +18,14 @@
 	<g:textField name="persianTitle" maxlength="50" required="" value="${documentTypeInstance?.persianTitle}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: documentTypeInstance, field: 'fileName', 'error')} ">
+	<label for="fileName">
+		<g:message code="documentType.fileName.label" default="File Name" />
+		
+	</label>
+	<g:textField name="fileName" value="${documentTypeInstance?.fileName}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: documentTypeInstance, field: 'critical', 'error')} ">
 	<label for="critical">
 		<g:message code="documentType.critical.label" default="Critical" />
@@ -49,4 +57,6 @@
 	</label>
 	<g:select id="user" name="user.id" from="${cargo.User.list()}" optionKey="id" required="" value="${documentTypeInstance?.user?.id}" class="many-to-one"/>
 </div>
+
+
 

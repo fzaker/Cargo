@@ -1,6 +1,7 @@
 package cargo.cargoItem
 
 import cargo.Role
+import cargo.Shipment
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -21,6 +22,18 @@ class CargoItemController {
         if (user.authorities.contains(adminRole))
             view = "adminList"
         render(view: view, model: [userid: userid])
+    }
+
+    def getMenuList(){
+        def user = principalService.getUser()
+        def userid = user.id
+        def adminRole = Role.findByAuthority("Admin")
+        def view = "menuList"
+        if (user.authorities.contains(adminRole))
+            view = "adminMenuList"
+            render(view: view, model: [userid: userid,user: user])
+
+
     }
 
     def create() {

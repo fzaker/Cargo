@@ -40,6 +40,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${documentTypeInstance?.fileName}">
+				<li class="fieldcontain">
+					<span id="fileName-label" class="property-label"><g:message code="documentType.fileName.label" default="File Name" /></span>
+					
+						<span class="property-value" aria-labelledby="fileName-label"><g:fieldValue bean="${documentTypeInstance}" field="fileName"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${documentTypeInstance?.critical}">
 				<li class="fieldcontain">
 					<span id="critical-label" class="property-label"><g:message code="documentType.critical.label" default="Critical" /></span>
@@ -53,8 +62,8 @@
 				<li class="fieldcontain">
 					<span id="bytes-label" class="property-label"><g:message code="documentType.bytes.label" default="Bytes" /></span>
                     <g:link action="getDocument" id="${documentTypeInstance?.id}">download</g:link>
-
-                </li>
+					
+				</li>
 				</g:if>
 			
 				<g:if test="${documentTypeInstance?.shipment}">

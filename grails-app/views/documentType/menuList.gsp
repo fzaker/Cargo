@@ -1,4 +1,4 @@
-<%@ page import="cargo.DocumentType" %>
+<%@ page import="cargo.Shipment; cargo.DocumentType" %>
 <!doctype html>
 <html>
 <head>
@@ -24,6 +24,7 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <rg:criteria inline="true">
+        <rg:eq name='user.id' value='${userid}' hidden='true'/>
         <rg:like name='title'/>
         <rg:like name='persianTitle'/>
         <rg:filterGrid name='DocumentTypeGrid' grid="DocumentTypeGrid" label="Search"/>
@@ -36,15 +37,26 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"],[name: "critical"],[name: "shipment"],[name: "user"]]}">
+    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"],[name: "shipment"],[name: "user"]]}">
+        <rg:criteria>
+            <rg:eq name='user.id' value='${userid}'/>
+        </rg:criteria>
     </rg:grid>
     <rg:dialog id="documentType" title="Document Type Dialog">
         <rg:fields bean="${new cargo.DocumentType()}">
             <rg:modify>
-                <rg:ignoreField field="user"/>
                 <rg:ignoreField field="shipment"/>
+                <rg:ignoreField field="user"/>
+                <rg:extraField field="shipment" title="Shipment">
+                    <label for="shipment">
+                        <g:message code="documentType.shipment.label" default="Shipment" />
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <br>
+                    <g:select name="shipment.id" from="${Shipment.findAllByUser(user)}">
+                    </g:select>
+                </rg:extraField>
             </rg:modify>
-            <input type="hidden" name="shipment.id">
         </rg:fields>
         <rg:saveButton domainClass="${cargo.DocumentType}" conroller="documentType" action="saveDocumentType"/>
         <rg:cancelButton/>

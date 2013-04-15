@@ -1,4 +1,4 @@
-<%@ page import="cargo.cargoItem.CargoItem" %>
+<%@ page import="cargo.Shipment; cargo.cargoItem.CargoItem" %>
 <!doctype html>
 <html>
 <head>
@@ -21,6 +21,7 @@
 
 <div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
     <rg:criteria inline="true">
+        <rg:eq name='user.id' value='${userid}' hidden='true'/>
         <rg:like name='commodity'/>
         <rg:like name='unitOfMeasure'/>
         <rg:like name='kindOfPackage'/>
@@ -35,16 +36,29 @@
     </rg:criteria>
     <br>
     <rg:grid domainClass="${cargo.cargoItem.CargoItem}" caption="" width="1000px" maxColumns="17">
+        <rg:criteria>
+            <rg:eq name='user.id' value='${userid}'/>
+            <rg:eq name='shipment.id' value='${shipmentid}'/>
+        </rg:criteria>
     </rg:grid>
     <rg:dialog id="cargoItem" title="CargoItem Dialog">
         <rg:fields bean="${new cargo.cargoItem.CargoItem()}">
             <rg:modify>
-                <rg:ignoreField field="user"/>
                 <rg:ignoreField field="shipment"/>
+                <rg:ignoreField field="user"/>
+                <rg:extraField field="shipment" title="shipment">
+                    <label for="shipment">
+                        <g:message code="cargoItem.shipment.label" default="Shipment" />
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <br>
+                    <g:select name="shipment.id" from="${Shipment.findAllByUser(user)}">
+                    </g:select>
+                </rg:extraField>
             </rg:modify>
             <input type="hidden" name="shipment.id">
         </rg:fields>
-        <rg:saveButton domainClass="${cargo.cargoItem.CargoItem}"/>
+        <rg:saveButton domainClass="${cargo.cargoItem.CargoItem}" conroller="cargoItem" action="saveCargoItem"/>
         <rg:cancelButton/>
     </rg:dialog>
     <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
@@ -88,7 +102,7 @@
             $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
         })
     </g:javascript>
-
 </div>
+
 </body>
 </html>

@@ -21,6 +21,7 @@
 
 <div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
     <rg:criteria inline="true">
+        <rg:eq name='user.id' value='${userid}' hidden='true'/>
         <rg:like name='commodity'/>
         <rg:like name='unitOfMeasure'/>
         <rg:like name='kindOfPackage'/>
@@ -40,11 +41,9 @@
         <rg:fields bean="${new cargo.cargoItem.CargoItem()}">
             <rg:modify>
                 <rg:ignoreField field="user"/>
-                <rg:ignoreField field="shipment"/>
             </rg:modify>
-            <input type="hidden" name="shipment.id">
         </rg:fields>
-        <rg:saveButton domainClass="${cargo.cargoItem.CargoItem}"/>
+        <rg:saveButton domainClass="${cargo.cargoItem.CargoItem}" conroller="cargoItem" action="saveCargoItem"/>
         <rg:cancelButton/>
     </rg:dialog>
     <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
@@ -88,7 +87,7 @@
             $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
         })
     </g:javascript>
-
 </div>
+
 </body>
 </html>
