@@ -33,6 +33,10 @@ class BootStrap {
 
         def role5 = Role.findByAuthority("Shipment Creator")?:new Role(authority: "Shipment Creator").save()
 
+        def role6 = Role.findByAuthority("Secretary")?:new Role(authority: "Secretary").save()
+
+        def role7 = Role.findByAuthority("Agent")?:new Role(authority: "Agent").save()
+
         def user1 = User.findByUsername("admin")?:new User(username: "admin",password: "123",email: "admin@msn.com",mobile: "0912333333",level: "head",department: "Management",enabled: true).save()
 
         if(!user1.authorities.contains(role1)){UserRole.create(user1,role1,true)}

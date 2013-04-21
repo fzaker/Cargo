@@ -1,7 +1,9 @@
 package cargo.insuranceCertificate
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured("Admin,Secretary")
 class AssignedInsuranceCertController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -11,12 +13,31 @@ class AssignedInsuranceCertController {
     }
 
     def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [assignedInsuranceCertInstanceList: AssignedInsuranceCert.list(params), assignedInsuranceCertInstanceTotal: AssignedInsuranceCert.count()]
+
     }
 
     def create() {
         [assignedInsuranceCertInstance: new AssignedInsuranceCert(params)]
+    }
+
+    def saveAssigned(){
+
+        def assignedInsuranceCert
+        if(params.id) {
+            assignedInsuranceCert = AssignedInsuranceCert.get(params.id)
+            assignedInsuranceCert.properties=params
+            def insuranceCert
+            insuranceCert = InsuranceCert.findById()
+            insuranceCert.totalCount = insuranceCert.totalCount - assignedInsuranceCert.totalCount
+            insuranceCert.serialNumFrom = assignedInsuranceCert.serialNumTo + 1
+        }
+        else{
+
+            assignedInsuranceCert = new AssignedInsuranceCert()
+        }
+        assignedInsuranceCert.save()
+        render(0)
+
     }
 
     def save() {

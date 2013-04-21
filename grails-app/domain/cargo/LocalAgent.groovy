@@ -20,4 +20,6 @@ class LocalAgent {
         fax(blank: false)
         address(blank: false, maxSize: 1024)
     }
+
+    String toString(){"$agent"}
 }

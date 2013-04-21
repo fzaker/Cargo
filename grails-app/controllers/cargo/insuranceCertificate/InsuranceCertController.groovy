@@ -1,7 +1,9 @@
 package cargo.insuranceCertificate
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured("Admin,Secretary")
 class InsuranceCertController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
