@@ -276,6 +276,26 @@
                             code="menu.usedInsuranceCert"/></a>
                 </li>
                 </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+                    <li>
+                        <span>
+                            <a href="<g:createLink controller="oneSheetInsuranceCert"/>"><img
+                                    src="${resource(dir: 'images/reportMenuImages', file: 'sheet1.png')}"/></a>
+                        </span>
+                        <a href="<g:createLink controller="oneSheetInsuranceCert"/>"><g:message
+                                code="menu.oneSheetInsuranceCert"/></a>
+                    </li>
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+                    <li>
+                        <span>
+                            <a href="<g:createLink controller="customsOperations"/>"><img
+                                    src="${resource(dir: 'images/reportMenuImages', file: 'customs.png')}"/></a>
+                        </span>
+                        <a href="<g:createLink controller="customsOperations"/>"><g:message
+                                code="menu.customsOperations"/></a>
+                    </li>
+                </sec:ifAnyGranted>
             </ul>
         </div>
 

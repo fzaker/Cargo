@@ -10,7 +10,7 @@
 <body>
 
 
-<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main">
+<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main" style="padding-top: 10px">
     <rg:grid domainClass="${CargoItem}" maxColumns="14">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}" />
