@@ -1,4 +1,4 @@
-    <%@ page import="cargo.cargoItem.RoadCargoItem; cargo.cargoItem.RailCargoItem; cargo.cargoItem.OceanCargoItem; cargo.cargoItem.AirCargoItem; cargo.cargoItem.CargoItem; cargo.Shipment" %>
+    <%@ page import="cargo.freight.Freight; cargo.cargoItem.RoadCargoItem; cargo.cargoItem.RailCargoItem; cargo.cargoItem.OceanCargoItem; cargo.cargoItem.AirCargoItem; cargo.cargoItem.CargoItem; cargo.Shipment" %>
 <!doctype html>
 <html>
 <head>
@@ -10,7 +10,7 @@
 <body>
 
 
-<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main" style="padding-top: 10px">
+<div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main" style="padding-top: 15px">
     <rg:grid domainClass="${CargoItem}" maxColumns="14">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}" />
@@ -71,7 +71,7 @@
 
 <div id="list-freight" ng-controller="freightController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.freight.Freight}" onSelectRow="loadCargoItems"
-             columns="${[[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "placeOfLoading"], [name: "placeOfDischarge"]]}">
+             columns="${[[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "placeOfLoading"],[name: "placeOfDischarge"],[name: "freightAction"]]}">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
         </rg:criteria>
@@ -390,6 +390,24 @@
     showCargoItem("");
 
 </g:javascript>
+<br>
+<div id="list-customsOperations" ng-controller="customsOperationsController" class="content scaffold-list" role="main">
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}" columns="${[[name: "transitType"],[name: "permitsNum"],[name: "customsDate"],[name: "transitMode"],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"]]}">
+
+    </rg:grid>
+    <rg:dialog id="customsOperations" title="Customs Operations Dialog">
+        <rg:fields bean="${new cargo.insuranceCertificate.CustomsOperations()}"></rg:fields>
+        <rg:saveButton domainClass="${cargo.insuranceCertificate.CustomsOperations}"/>
+        <rg:cancelButton/>
+    </rg:dialog>
+    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+        <input type="button" ng-click="openCustomsOperationsCreateDialog()" value="Create Customs Operations"/>
+        <input type="button" ng-click="openCustomsOperationsEditDialog()" value="Edit Customs Operations"/>
+    </sec:ifAnyGranted>
+</div>
 <br>
 <div id="list-documentType" ng-controller="documentTypeController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"]]}">

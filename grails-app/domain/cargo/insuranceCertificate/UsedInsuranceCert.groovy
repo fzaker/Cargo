@@ -4,7 +4,7 @@ import cargo.City
 import cargo.LocalAgent
 import cargo.Shipment
 
-class UsedInsuranceCert extends Insurance {
+class UsedInsuranceCert extends AssignedInsuranceCert {
 
     Shipment shipment
     City transitFrom

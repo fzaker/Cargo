@@ -23,7 +23,7 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}" columns="${[[name: "operationType"],[name: "licenceNum"],[name: "customsDate"],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"]]}">
+    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}" columns="${[[name: "transitType"],[name: "permitsNum"],[name: "customsDate"],[name: "transitMode"],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"]]}">
 
     </rg:grid>
     <rg:dialog id="customsOperations" title="Customs Operations Dialog">
@@ -31,7 +31,7 @@
         <rg:saveButton domainClass="${cargo.insuranceCertificate.CustomsOperations}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Secretary">
+    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
         <input type="button" ng-click="openCustomsOperationsCreateDialog()" value="Create Customs Operations"/>
         <input type="button" ng-click="openCustomsOperationsEditDialog()" value="Edit Customs Operations"/>
     </sec:ifAnyGranted>

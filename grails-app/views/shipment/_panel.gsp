@@ -94,7 +94,7 @@
     </div>
 
     <div style="float: right;width: 65%">
-        <div style="float: left;width: 47%">
+        <div style="float: left;width: 46%">
 
             <g:if test="${shipmentInstance?.destinationCty}">
                 <li class="fieldcontain">
@@ -159,7 +159,7 @@
             </g:if>
         </div>
 
-        <div style="float: right;width: 47%">
+        <div style="float: right;width: 46%">
 
             <g:if test="${shipmentInstance?.agent}">
                 <li class="fieldcontain">

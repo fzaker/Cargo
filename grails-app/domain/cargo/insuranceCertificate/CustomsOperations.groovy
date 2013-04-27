@@ -4,9 +4,10 @@ import cargo.City
 
 class CustomsOperations {
 
-    String operationType
-    Integer licenceNum
+    String transitType
+    Integer permitsNum
     Date customsDate
+    String transitMode
     Integer kutazhNum
     Integer rowNum
     City origin
@@ -19,9 +20,10 @@ class CustomsOperations {
 
     static constraints = {
 
-        operationType(nullable: false, inList: ["Import","Export","External Transit","Internal Transit"])
-        licenceNum(nullable: false)
+        transitType(nullable: false, inList:["Internal Transit","External Transit"])
+        permitsNum(nullable: false)
         customsDate()
+        transitMode(nullable: false, inList: ["Road","Rail","Air","Marine",])
         kutazhNum(nullable: false)
         rowNum(nullable: false)
         origin(nullable: false)

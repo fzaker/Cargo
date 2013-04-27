@@ -52,7 +52,7 @@
 <body>
 
 <div id="bokeh"><div id="container">
-    <div id="header" role="banner">
+    <div id="header" role="banner" style="padding-top: 1px">
         <h1 id="logo">Admin Control Panel</h1>
     </div><!-- end #header -->
 
