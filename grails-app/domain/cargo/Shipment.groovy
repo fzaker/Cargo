@@ -48,7 +48,8 @@ class Shipment {
         agent(nullable: true)
     }
 
-    String toString(){"$title"}
+    String toString(){"$title,$referenceCode"}
+
 
     static mapping = {
         table 'shipment'

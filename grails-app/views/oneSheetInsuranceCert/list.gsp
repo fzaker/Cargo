@@ -31,7 +31,7 @@
         <rg:saveButton domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+    <sec:ifAnyGranted roles="Admin,Agent">
         <input type="button" ng-click="openOneSheetInsuranceCertCreateDialog()" value="Create One Sheet Insurance Specification"/>
         <input type="button" ng-click="openOneSheetInsuranceCertEditDialog()" value="Edit One Sheet Insurance Specification"/>
     </sec:ifAnyGranted>

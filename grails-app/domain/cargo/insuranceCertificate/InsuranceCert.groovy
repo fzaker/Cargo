@@ -13,8 +13,8 @@ class InsuranceCert extends Insurance {
 
     static constraints = {
 
-        insuranceCo(nullable: false)
-        purchaseDate()
+        insuranceCo(nullable: true)
+        purchaseDate(nullable: true)
 
 
 

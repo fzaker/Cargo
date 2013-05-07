@@ -11,7 +11,7 @@ class UsedInsuranceCert extends AssignedInsuranceCert {
     City transitTo
     Double totalCost
     Date usedDate
-    LocalAgent agent
+
 
     static constraints = {
 
@@ -19,7 +19,8 @@ class UsedInsuranceCert extends AssignedInsuranceCert {
         transitFrom(nullable: false)
         transitTo(nullable: false)
         totalCost(nullable: false)
-        agent(nullable: false)
+
+
 
 
     }

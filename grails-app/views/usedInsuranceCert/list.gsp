@@ -31,12 +31,12 @@
     <rg:dialog id="usedInsuranceCert" title="Used Insurance Specification Dialog">
         <rg:fields bean="${new cargo.insuranceCertificate.UsedInsuranceCert()}">
             <rg:modify>
+                <rg:ignoreField field="sendingDate"/>
                 <rg:ignoreField field="insuranceCo"/>
                 <rg:ignoreField field="purchaseDate"/>
-                <rg:ignoreField field="sendingDate"/>
             </rg:modify>
         </rg:fields>
-        <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}"/>
+        <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed"/>
         <rg:cancelButton/>
     </rg:dialog>
     <sec:ifAnyGranted roles="Admin,Agent">

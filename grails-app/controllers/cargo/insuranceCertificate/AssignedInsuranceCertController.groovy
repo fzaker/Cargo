@@ -23,20 +23,19 @@ class AssignedInsuranceCertController {
     def saveAssigned(){
 
         def assignedInsuranceCert
-        if(params.id) {
-            assignedInsuranceCert = AssignedInsuranceCert.get(params.id)
-            assignedInsuranceCert.properties=params
-            def insuranceCert
-            insuranceCert = InsuranceCert.findById()
-            insuranceCert.totalCount = insuranceCert.totalCount - assignedInsuranceCert.totalCount
-            insuranceCert.serialNumFrom = assignedInsuranceCert.serialNumTo + 1
-        }
-        else{
 
-            assignedInsuranceCert = new AssignedInsuranceCert()
+            assignedInsuranceCert = new AssignedInsuranceCert(params)
+        if (assignedInsuranceCert.save()) {
+            def insuranceCert = new InsuranceCert(params)//How can I omit this part to just change and save previous values in parent class??
+            insuranceCert.serialNumFrom = (assignedInsuranceCert.serialNumTo + 1)
+            insuranceCert.serialNumTo = (insuranceCert.serialNumTo)//it is obvious that new value is assigned so in result we have 201 to 200 for example!!!
+            insuranceCert.totalCount = (insuranceCert.totalCount - assignedInsuranceCert.totalCount )
+            insuranceCert.save()
         }
-        assignedInsuranceCert.save()
-        render(0)
+        else {
+            assignedInsuranceCert = new AssignedInsuranceCert(params)
+        }
+            render(0)
 
     }
 

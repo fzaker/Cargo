@@ -116,13 +116,14 @@
             </li>
         </sec:ifAnyGranted>
 
-
+        <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
         <li>
             <a href="" rel="costs">
                 <g:message code="costs"/>
                 <span><g:message code="costs.description"/></span>
             </a>
         </li>
+        </sec:ifAnyGranted>
         <sec:ifAnyGranted roles="Admin,Secretary,Agent">
         <li>
             <a href="" rel="secretariat">
@@ -238,11 +239,29 @@
 
         <div class="set costs">
             <ul>
+        <sec:ifAnyGranted roles="Admin,Agent">
                 <li>
-                    <a href=""><h3>This part will Complete in the next version</h3></a>
+                    <span>
+                        <a href="<g:createLink controller="costEstimation"/>"><img
+                                src="${resource(dir: 'images/reportMenuImages', file: 'cost.png')}"/></a>
+                    </span>
+                    <a href="<g:createLink controller="costEstimation" />"><g:message
+                            code="menu.costEstimation"/></a>
                 </li>
+        </sec:ifAnyGranted>
+        <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+                <li>
+                    <span>
+                        <a href="<g:createLink controller="costEstimation" action="search"/>"><img
+                                src="${resource(dir: 'images/reportMenuImages', file: 'costs.png')}"/></a>
+                    </span>
+                    <a href="<g:createLink controller="costEstimation" action="search"/>"><g:message
+                            code="menu.costEstimationResult"/></a>
+                </li>
+        </sec:ifAnyGranted>
             </ul>
         </div>
+
 
         <div class="set secretariat">
             <ul>

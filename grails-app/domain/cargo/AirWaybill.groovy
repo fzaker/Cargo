@@ -2,7 +2,7 @@ package cargo
 
 import cargo.cargoItem.AirCargoItem
 
-class AirWaybill extends BillOfLading {
+class AirWaybill extends CostEstimation {
 
 
     String otherCharges // todo: Could be composite relation

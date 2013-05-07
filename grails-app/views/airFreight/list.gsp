@@ -1,5 +1,5 @@
 
-<%@ page import="cargo.freight.AirFreight" %>
+<%@ page import="cargo.freight.AirFreight,cargo.insuranceCertificate.CustomsOperations" %>
 <!doctype html>
 <html>
 <head>

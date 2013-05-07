@@ -3,7 +3,7 @@ package cargo.insuranceCertificate
 import cargo.LocalAgent
 
 
-class AssignedInsuranceCert extends Insurance   {
+class AssignedInsuranceCert extends InsuranceCert   {
 
     LocalAgent agent
     Date sendingDate
@@ -11,8 +11,9 @@ class AssignedInsuranceCert extends Insurance   {
 
     static constraints = {
 
-        agent(nullable: false)
-        sendingDate(nullable: false)
+        agent(nullable: true)
+        sendingDate(nullable: true)
+
 
     }
 

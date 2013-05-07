@@ -31,7 +31,7 @@
         <rg:saveButton domainClass="${cargo.insuranceCertificate.CustomsOperations}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+    <sec:ifAnyGranted roles="Admin,Agent">
         <input type="button" ng-click="openCustomsOperationsCreateDialog()" value="Create Customs Operations"/>
         <input type="button" ng-click="openCustomsOperationsEditDialog()" value="Edit Customs Operations"/>
     </sec:ifAnyGranted>
