@@ -48,8 +48,7 @@
 </div>
 <br>
 <div>
-    <g:link action="search" style="font-family: times;font-size: 18px;"><h3>Search Again</h3></g:link>
+    <g:link action="search" style="font-family: times;color: #00008b;font-size: 18px;">Search Again</g:link>
 </div>
-
 </body>
 </html>

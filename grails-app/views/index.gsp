@@ -279,7 +279,7 @@
                 <li>
                     <span>
                         <a href="<g:createLink controller="assignedInsuranceCert"/>"><img
-                                src="${resource(dir: 'images/reportMenuImages', file: 'allocatedInsur.png')}"/></a>
+                                src="${resource(dir: 'images/reportMenuImages', file: 'assigned.png')}"/></a>
                     </span>
                     <a href="<g:createLink controller="assignedInsuranceCert"/>"><g:message
                             code="menu.assignedInsuranceCert"/></a>
@@ -299,7 +299,7 @@
                     <li>
                         <span>
                             <a href="<g:createLink controller="oneSheetInsuranceCert"/>"><img
-                                    src="${resource(dir: 'images/reportMenuImages', file: 'sheet1.png')}"/></a>
+                                    src="${resource(dir: 'images/reportMenuImages', file: 'oneSheet.png')}"/></a>
                         </span>
                         <a href="<g:createLink controller="oneSheetInsuranceCert"/>"><g:message
                                 code="menu.oneSheetInsuranceCert"/></a>

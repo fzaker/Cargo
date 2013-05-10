@@ -35,7 +35,8 @@ class CostEstimationController {
     def saveCost() {
 
         def costEstimation = new CostEstimation(params)
-        def oldCostEstimation = CostEstimation.findByRateDateAndDesCountryAndDesCityAndContainerTypeAndWeightAndOverWeightAndRouteAndDayAndWeekAndMonthAndHourAndRateAndRemarkAndObservationAndDeprecated(costEstimation.rateDate,costEstimation.desCountry,costEstimation.desCity,costEstimation.containerType,costEstimation.weight,costEstimation.overWeight,costEstimation.route,costEstimation.day,costEstimation.week,costEstimation.month,costEstimation.hour,costEstimation.rate,costEstimation.remark,costEstimation.observation,costEstimation.deprecated)
+        costEstimation.deprecated = false
+        def oldCostEstimation = CostEstimation.findByRateDateAndDesCountryAndDesCityAndContainerTypeAndWeightAndOverWeightAndRouteAndDayAndWeekAndMonthAndHourAndRateAndRemarkAndObservationAndDeprecated(costEstimation.rateDate, costEstimation.desCountry, costEstimation.desCity, costEstimation.containerType, costEstimation.weight, costEstimation.overWeight, costEstimation.route, costEstimation.day, costEstimation.week, costEstimation.month, costEstimation.hour, costEstimation.rate, costEstimation.remark, costEstimation.observation, costEstimation.deprecated)
         if (oldCostEstimation) {
 
             if (oldCostEstimation.desCity == costEstimation.desCity && !oldCostEstimation.deprecated) {
@@ -43,10 +44,12 @@ class CostEstimationController {
                 oldCostEstimation.deprecated = true
                 oldCostEstimation.save()
             }
-            costEstimation.save()
-        }
 
+        }
+        costEstimation.save()
+        render 0;
     }
+
 
 
 

@@ -91,6 +91,7 @@
 </head>
 
 <body>
+<g:javascript src="jquery.quickselect.pack.js"/>
 <h2><g:message code="costEstimation.search.label" args="[entityName]"/></h2>
 <a href="#costEstimSrch" class="skip" tabindex="-1"><g:message code="costEstimation.search.label"
                                                                 default="Skip to content&hellip;"/></a>
@@ -116,7 +117,7 @@
             <p style="padding-left: 110px">
                 <label for='DesCity'><g:message code="searchDesCity.label"/>:</label>
                 <!--<input type='text' class='text_' name='formDesCity' id='desCity'/>  -->
-                <g:select name="desCity" from="${cargo.City.findAll()}" sort="asc"/>
+                <g:select name="desCity" from="${cargo.City.list()}" />
             </p>
             <br>
             <div class= button>
@@ -132,6 +133,11 @@
         </g:form>
     </div>
 </div>
+<g:javascript>
+    $(function(){
+        $("select").quickselect()
+    })
+</g:javascript>
 </body>
 </html>
 

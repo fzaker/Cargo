@@ -23,12 +23,12 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${cargo.CostEstimation}">
+    <rg:grid domainClass="${cargo.CostEstimation}" maxColumns="9">
     </rg:grid>
-    <rg:dialog id="costEstimation" title="Cost Estimation Dialog">
+    <rg:dialog id="costEstimation" title="Cost Estimation Dialog" >
         <rg:fields bean="${new cargo.CostEstimation()}">
         </rg:fields>
-        <rg:saveButton domainClass="${cargo.CostEstimation}" conroller="costEstimation" action="saveCost" params="${[method:'post']}"/>
+        <rg:saveButton domainClass="${cargo.CostEstimation}" conroller="costEstimation" action="saveCost"  params="${[method:'post']}"/>
         <rg:cancelButton/>
     </rg:dialog>
     <sec:ifAnyGranted roles="Admin,Agent">

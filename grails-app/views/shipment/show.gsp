@@ -1,4 +1,4 @@
-    <%@ page import="cargo.freight.Freight; cargo.cargoItem.RoadCargoItem; cargo.cargoItem.RailCargoItem; cargo.cargoItem.OceanCargoItem; cargo.cargoItem.AirCargoItem; cargo.cargoItem.CargoItem; cargo.Shipment" %>
+    <%@ page import="cargo.insuranceCertificate.CustomsOperations; cargo.freight.Freight; cargo.cargoItem.RoadCargoItem; cargo.cargoItem.RailCargoItem; cargo.cargoItem.OceanCargoItem; cargo.cargoItem.AirCargoItem; cargo.cargoItem.CargoItem; cargo.Shipment" %>
 <!doctype html>
 <html>
 <head>
@@ -391,23 +391,40 @@
 
 </g:javascript>
 <br>
-<div id="list-customsOperations" ng-controller="customsOperationsController" class="content scaffold-list" role="main">
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
+    <g:if test="${cargo.insuranceCertificate.CustomsOperations.findByOneSheetInsurance(true)}">
+    <div id="list-oneSheetInsuranceCert" ng-controller="oneSheetInsuranceCertController" class="content scaffold-list" role="main">
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
+        <rg:grid domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}" columns="${[[name: "insuranceNum",formatter:'Integer'],[name: "issueDate"],[name: "transitFrom"],[name: "transitTo"],[name: "totalCost"]]}">
+        </rg:grid>
+        <rg:dialog id="oneSheetInsuranceCert" title="One Sheet Insurance Specification Dialog">
+            <rg:fields bean="${new cargo.insuranceCertificate.OneSheetInsuranceCert()}">
+            </rg:fields>
+            <rg:saveButton domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}"/>
+            <rg:cancelButton/>
+        </rg:dialog>
+    </div>
     </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}" columns="${[[name: "transitType"],[name: "permitsNum"],[name: "customsDate"],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"]]}">
-
-    </rg:grid>
-    <rg:dialog id="customsOperations" title="Customs Operations Dialog">
-        <rg:fields bean="${new cargo.insuranceCertificate.CustomsOperations()}"></rg:fields>
-        <rg:saveButton domainClass="${cargo.insuranceCertificate.CustomsOperations}"/>
-        <rg:cancelButton/>
-    </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Agent">
-        <input type="button" ng-click="openCustomsOperationsCreateDialog()" value="Create Customs Operations"/>
-        <input type="button" ng-click="openCustomsOperationsEditDialog()" value="Edit Customs Operations"/>
-    </sec:ifAnyGranted>
-</div>
+    <g:else>
+        <div id="list-usedInsuranceCert" ng-controller="usedInsuranceCertController" class="content scaffold-list" role="main">
+            <g:if test="${flash.message}">
+                <div class="message" role="status">${flash.message}</div>
+            </g:if>
+            <rg:grid domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" columns="${[[name: "agent"],[name: "usedDate"],[name: "transitFrom"],[name: "transitTo"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "totalCost"]]}">
+            </rg:grid>
+            <rg:dialog id="usedInsuranceCert" title="Used Insurance Specification Dialog">
+                <rg:fields bean="${new cargo.insuranceCertificate.UsedInsuranceCert()}">
+                    <rg:modify>
+                        <rg:ignoreField field="sendingDate"/>
+                        <rg:ignoreField field="insuranceCo"/>
+                        <rg:ignoreField field="purchaseDate"/>
+                    </rg:modify>
+                </rg:fields>
+                <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed"/>
+                <rg:cancelButton/>
+            </rg:dialog>
+    </g:else>
 <br>
 <div id="list-documentType" ng-controller="documentTypeController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"]]}">
@@ -431,6 +448,5 @@
     <input type="button" ng-click="openDocumentTypeEditDialog()" value="Edit Document Type"/>
 
 </div>
-
 </body>
 </html>

@@ -22,20 +22,20 @@
 			</g:if>
 			<ol class="property-list customsOperations">
 			
-				<g:if test="${customsOperationsInstance?.operationType}">
+				<g:if test="${customsOperationsInstance?.transitType}">
 				<li class="fieldcontain">
-					<span id="operationType-label" class="property-label"><g:message code="customsOperations.operationType.label" default="Operation Type" /></span>
+					<span id="transitType-label" class="property-label"><g:message code="customsOperations.transitType.label" default="Transit Type" /></span>
 					
-						<span class="property-value" aria-labelledby="operationType-label"><g:fieldValue bean="${customsOperationsInstance}" field="operationType"/></span>
+						<span class="property-value" aria-labelledby="transitType-label"><g:fieldValue bean="${customsOperationsInstance}" field="transitType"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${customsOperationsInstance?.licenceNum}">
+				<g:if test="${customsOperationsInstance?.permitsNum}">
 				<li class="fieldcontain">
-					<span id="licenceNum-label" class="property-label"><g:message code="customsOperations.licenceNum.label" default="Licence Num" /></span>
+					<span id="permitsNum-label" class="property-label"><g:message code="customsOperations.permitsNum.label" default="Permits Num" /></span>
 					
-						<span class="property-value" aria-labelledby="licenceNum-label"><g:fieldValue bean="${customsOperationsInstance}" field="licenceNum"/></span>
+						<span class="property-value" aria-labelledby="permitsNum-label"><g:fieldValue bean="${customsOperationsInstance}" field="permitsNum"/></span>
 					
 				</li>
 				</g:if>
@@ -45,6 +45,24 @@
 					<span id="customsDate-label" class="property-label"><g:message code="customsOperations.customsDate.label" default="Customs Date" /></span>
 					
 						<span class="property-value" aria-labelledby="customsDate-label"><g:formatDate date="${customsOperationsInstance?.customsDate}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.shipment}">
+				<li class="fieldcontain">
+					<span id="shipment-label" class="property-label"><g:message code="customsOperations.shipment.label" default="Shipment" /></span>
+					
+						<span class="property-value" aria-labelledby="shipment-label"><g:link controller="shipment" action="show" id="${customsOperationsInstance?.shipment?.id}">${customsOperationsInstance?.shipment?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.transitMode}">
+				<li class="fieldcontain">
+					<span id="transitMode-label" class="property-label"><g:message code="customsOperations.transitMode.label" default="Transit Mode" /></span>
+					
+						<span class="property-value" aria-labelledby="transitMode-label"><g:fieldValue bean="${customsOperationsInstance}" field="transitMode"/></span>
 					
 				</li>
 				</g:if>

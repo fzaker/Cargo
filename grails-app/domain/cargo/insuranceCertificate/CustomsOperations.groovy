@@ -27,7 +27,7 @@ class CustomsOperations {
         permitsNum(nullable: false)
         customsDate()
         shipment(nullable: false)
-        transitMode(nullable: false, inList: ["Road","Rail","Air","Marine",])
+        transitMode(nullable: false, inList: ["Road","Rail","Air","Marine"])
         kutazhNum(nullable: false)
         rowNum(nullable: false)
         origin(nullable: false)

@@ -36,7 +36,7 @@
                 <rg:ignoreField field="purchaseDate"/>
             </rg:modify>
         </rg:fields>
-        <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed"/>
+        <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed" conroller="usedInsuranceCert"/>
         <rg:cancelButton/>
     </rg:dialog>
     <sec:ifAnyGranted roles="Admin,Agent">
