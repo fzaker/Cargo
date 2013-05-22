@@ -22,6 +22,15 @@
 			</g:if>
 			<ol class="property-list oneSheetInsuranceCert">
 			
+				<g:if test="${oneSheetInsuranceCertInstance?.agent}">
+				<li class="fieldcontain">
+					<span id="agent-label" class="property-label"><g:message code="oneSheetInsuranceCert.agent.label" default="Agent" /></span>
+					
+						<span class="property-value" aria-labelledby="agent-label"><g:link controller="localAgent" action="show" id="${oneSheetInsuranceCertInstance?.agent?.id}">${oneSheetInsuranceCertInstance?.agent?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${oneSheetInsuranceCertInstance?.insuranceNum}">
 				<li class="fieldcontain">
 					<span id="insuranceNum-label" class="property-label"><g:message code="oneSheetInsuranceCert.insuranceNum.label" default="Insurance Num" /></span>

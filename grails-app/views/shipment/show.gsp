@@ -397,6 +397,9 @@
             <div class="message" role="status">${flash.message}</div>
         </g:if>
         <rg:grid domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}" columns="${[[name: "insuranceNum",formatter:'Integer'],[name: "issueDate"],[name: "transitFrom"],[name: "transitTo"],[name: "totalCost"]]}">
+            <rg:criteria>
+                <rg:eq name='shipment.id' value='${shipmentid}'/>
+            </rg:criteria>
         </rg:grid>
         <rg:dialog id="oneSheetInsuranceCert" title="One Sheet Insurance Specification Dialog">
             <rg:fields bean="${new cargo.insuranceCertificate.OneSheetInsuranceCert()}">
@@ -404,6 +407,10 @@
             <rg:saveButton domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}"/>
             <rg:cancelButton/>
         </rg:dialog>
+        <sec:ifAnyGranted roles="Admin,Agent">
+            <input type="button" ng-click="openOneSheetInsuranceCertCreateDialog()" value="Create One Sheet Insurance Specification"/>
+            <input type="button" ng-click="openOneSheetInsuranceCertEditDialog()" value="Edit One Sheet Insurance Specification"/>
+        </sec:ifAnyGranted>
     </div>
     </g:if>
     <g:else>
@@ -412,18 +419,20 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <rg:grid domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" columns="${[[name: "agent"],[name: "usedDate"],[name: "transitFrom"],[name: "transitTo"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "totalCost"]]}">
+                <rg:criteria>
+                    <rg:eq name='shipment.id' value='${shipmentid}'/>
+                </rg:criteria>
             </rg:grid>
             <rg:dialog id="usedInsuranceCert" title="Used Insurance Specification Dialog">
                 <rg:fields bean="${new cargo.insuranceCertificate.UsedInsuranceCert()}">
-                    <rg:modify>
-                        <rg:ignoreField field="sendingDate"/>
-                        <rg:ignoreField field="insuranceCo"/>
-                        <rg:ignoreField field="purchaseDate"/>
-                    </rg:modify>
                 </rg:fields>
                 <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed"/>
                 <rg:cancelButton/>
             </rg:dialog>
+        <sec:ifAnyGranted roles="Admin,Agent">
+            <input type="button" ng-click="openUsedInsuranceCertCreateDialog()" value="Create Used Insurance Specification"/>
+            <input type="button" ng-click="openUsedInsuranceCertEditDialog()" value="Edit Used Insurance Specification"/>
+        </sec:ifAnyGranted>
     </g:else>
 <br>
 <div id="list-documentType" ng-controller="documentTypeController" class="content scaffold-list" role="main">

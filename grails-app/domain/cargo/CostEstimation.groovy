@@ -3,7 +3,7 @@ package cargo
 class CostEstimation {
 
     static searchable = true
-    Date rateDate
+    Date rateDate = new Date()
     Country desCountry
     City desCity
     String containerType

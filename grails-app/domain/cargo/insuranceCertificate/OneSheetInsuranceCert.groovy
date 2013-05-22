@@ -1,6 +1,7 @@
 package cargo.insuranceCertificate
 
 import cargo.City
+import cargo.LocalAgent
 import cargo.Shipment
 
 
@@ -8,6 +9,7 @@ class OneSheetInsuranceCert {
 
     Integer insuranceNum
     Date issueDate
+    LocalAgent agent
     City transitFrom
     City transitTo
     Double totalCost
@@ -16,8 +18,10 @@ class OneSheetInsuranceCert {
 
     static constraints = {
 
+        agent(nullable: false)
+        shipment(nullable: false)
         insuranceNum(nullable: false)
-        issueDate()
+        issueDate(nullable: false)
         transitFrom(nullable: false)
         transitTo(nullable: false)
         totalCost(nullable: false)

@@ -23,11 +23,14 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}" columns="${[[name: "transitType"],[name: "permitsNum"],[name: "customsDate"],[name: "transitMode"],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"]]}">
-
+    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}" columns="${[[name: "transitType"],[name: "permitsNum"],[name: "customsDate"],[name: "shipment"],[name: "transitMode"],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"]]}">
+        <rg:criteria>
+            <rg:eq name='shipment.id' value='${shipmentid}'/>
+        </rg:criteria>
     </rg:grid>
     <rg:dialog id="customsOperations" title="Customs Operations Dialog">
-        <rg:fields bean="${new cargo.insuranceCertificate.CustomsOperations()}"></rg:fields>
+        <rg:fields bean="${new cargo.insuranceCertificate.CustomsOperations()}">
+        </rg:fields>
         <rg:saveButton domainClass="${cargo.insuranceCertificate.CustomsOperations}"/>
         <rg:cancelButton/>
     </rg:dialog>

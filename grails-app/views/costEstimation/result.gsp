@@ -23,14 +23,6 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:criteria inline="true">
-        <rg:nest name='desCity'>
-            <rg:like name="title" label="Destination City" value="${params.search}"/>
-        </rg:nest>
-        <rg:eq name='deprecated' value='${boolean}' hidden='true' />
-        <rg:filterGrid name='CostEstimation' grid="CostEstimationGrid" label="Search" />
-
-    </rg:criteria>
     <br>
     <p style="font-family: times;color: #00008b;font-size:large;text-align: left">
         Please note that the origin city is Bandar Abbas and the rate is based on this port.

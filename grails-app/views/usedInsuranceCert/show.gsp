@@ -21,18 +21,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list usedInsuranceCert">
-
 			
-
-				<g:if test="${usedInsuranceCertInstance?.agent}">
-				<li class="fieldcontain">
-					<span id="agent-label" class="property-label"><g:message code="usedInsuranceCert.agent.label" default="Agent" /></span>
-					
-						<span class="property-value" aria-labelledby="agent-label"><g:link controller="localAgent" action="show" id="${usedInsuranceCertInstance?.agent?.id}">${usedInsuranceCertInstance?.agent?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-
 				<g:if test="${usedInsuranceCertInstance?.usedDate}">
 				<li class="fieldcontain">
 					<span id="usedDate-label" class="property-label"><g:message code="usedInsuranceCert.usedDate.label" default="Used Date" /></span>
@@ -41,15 +30,15 @@
 					
 				</li>
 				</g:if>
-
-                <g:if test="${usedInsuranceCertInstance?.shipment}">
-                    <li class="fieldcontain">
-                        <span id="shipment-label" class="property-label"><g:message code="usedInsuranceCert.shipment.label" default="Shipment" /></span>
-
-                        <span class="property-value" aria-labelledby="shipment-label"><g:link controller="shipment" action="show" id="${usedInsuranceCertInstance?.shipment?.id}">${usedInsuranceCertInstance?.shipment?.encodeAsHTML()}</g:link></span>
-
-                    </li>
-                </g:if>
+			
+				<g:if test="${usedInsuranceCertInstance?.shipment}">
+				<li class="fieldcontain">
+					<span id="shipment-label" class="property-label"><g:message code="usedInsuranceCert.shipment.label" default="Shipment" /></span>
+					
+						<span class="property-value" aria-labelledby="shipment-label"><g:link controller="shipment" action="show" id="${usedInsuranceCertInstance?.shipment?.id}">${usedInsuranceCertInstance?.shipment?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${usedInsuranceCertInstance?.transitFrom}">
 				<li class="fieldcontain">
@@ -68,36 +57,35 @@
 					
 				</li>
 				</g:if>
-
-
-                <g:if test="${usedInsuranceCertInstance?.serialNumFrom}">
-                    <li class="fieldcontain">
-                        <span id="serialNumFrom-label" class="property-label"><g:message code="usedInsuranceCert.serialNumFrom.label" default="Serial Num From" /></span>
-
-                        <span class="property-value" aria-labelledby="serialNumFrom-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="serialNumFrom"/></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${usedInsuranceCertInstance?.serialNumTo}">
-                    <li class="fieldcontain">
-                        <span id="serialNumTo-label" class="property-label"><g:message code="usedInsuranceCert.serialNumTo.label" default="Serial Num To" /></span>
-
-                        <span class="property-value" aria-labelledby="serialNumTo-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="serialNumTo"/></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${usedInsuranceCertInstance?.totalCount}">
-                    <li class="fieldcontain">
-                        <span id="totalCount-label" class="property-label"><g:message code="usedInsuranceCert.totalCount.label" default="Total Count" /></span>
-
-                        <span class="property-value" aria-labelledby="totalCount-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="totalCount"/></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${usedInsuranceCertInstance?.totalCost}">
+			
+				<g:if test="${usedInsuranceCertInstance?.serialNumFrom}">
+				<li class="fieldcontain">
+					<span id="serialNumFrom-label" class="property-label"><g:message code="usedInsuranceCert.serialNumFrom.label" default="Serial Num From" /></span>
+					
+						<span class="property-value" aria-labelledby="serialNumFrom-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="serialNumFrom"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${usedInsuranceCertInstance?.serialNumTo}">
+				<li class="fieldcontain">
+					<span id="serialNumTo-label" class="property-label"><g:message code="usedInsuranceCert.serialNumTo.label" default="Serial Num To" /></span>
+					
+						<span class="property-value" aria-labelledby="serialNumTo-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="serialNumTo"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${usedInsuranceCertInstance?.totalCount}">
+				<li class="fieldcontain">
+					<span id="totalCount-label" class="property-label"><g:message code="usedInsuranceCert.totalCount.label" default="Total Count" /></span>
+					
+						<span class="property-value" aria-labelledby="totalCount-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="totalCount"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${usedInsuranceCertInstance?.totalCost}">
 				<li class="fieldcontain">
 					<span id="totalCost-label" class="property-label"><g:message code="usedInsuranceCert.totalCost.label" default="Total Cost" /></span>
 					
@@ -106,7 +94,14 @@
 				</li>
 				</g:if>
 			
-
+				<g:if test="${usedInsuranceCertInstance?.assignedInsuranceCert}">
+				<li class="fieldcontain">
+					<span id="assignedInsuranceCert-label" class="property-label"><g:message code="usedInsuranceCert.assignedInsuranceCert.label" default="Assigned Insurance Cert" /></span>
+					
+						<span class="property-value" aria-labelledby="assignedInsuranceCert-label"><g:link controller="assignedInsuranceCert" action="show" id="${usedInsuranceCertInstance?.assignedInsuranceCert?.id}">${usedInsuranceCertInstance?.assignedInsuranceCert?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>

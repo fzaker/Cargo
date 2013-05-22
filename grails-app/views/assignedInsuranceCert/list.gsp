@@ -23,14 +23,10 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.AssignedInsuranceCert}" columns="${[[name: "agent"],[name: "sendingDate"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer']]}">
+    <rg:grid domainClass="${cargo.insuranceCertificate.AssignedInsuranceCert}" columns="${[[name: "agent"],[name: "insuranceCert"],[name: "sendingDate"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer']]}">
     </rg:grid>
     <rg:dialog id="assignedInsuranceCert" title="Assigned Insurance Specification Dialog">
         <rg:fields bean="${new cargo.insuranceCertificate.AssignedInsuranceCert()}">
-            <rg:modify>
-                <rg:ignoreField field="insuranceCo"/>
-                <rg:ignoreField field="purchaseDate"/>
-            </rg:modify>
         </rg:fields>
         <rg:saveButton domainClass="${cargo.insuranceCertificate.AssignedInsuranceCert}" conroller="assignedInsuranceCert" action="saveAssigned"/>
         <rg:cancelButton/>

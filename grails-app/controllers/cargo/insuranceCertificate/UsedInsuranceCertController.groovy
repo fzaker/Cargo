@@ -26,15 +26,13 @@ class UsedInsuranceCertController {
         def usedInsuranceCert
 
         usedInsuranceCert = new UsedInsuranceCert(params)
+        if (usedInsuranceCert.serialNumFrom==usedInsuranceCert.assignedInsuranceCert.serialNumFrom && usedInsuranceCert.serialNumTo<=usedInsuranceCert.assignedInsuranceCert.serialNumTo){
         if (usedInsuranceCert.save()) {
-            def assignedInsuranceCert = new AssignedInsuranceCert(params)
+            def assignedInsuranceCert = usedInsuranceCert.assignedInsuranceCert
             assignedInsuranceCert.serialNumFrom = (usedInsuranceCert.serialNumTo + 1)
-            assignedInsuranceCert.serialNumTo = (assignedInsuranceCert.serialNumTo)
             assignedInsuranceCert.totalCount = (assignedInsuranceCert.totalCount - usedInsuranceCert.totalCount )
             assignedInsuranceCert.save()
         }
-        else {
-            usedInsuranceCert = new UsedInsuranceCert(params)
         }
         render(0)
 

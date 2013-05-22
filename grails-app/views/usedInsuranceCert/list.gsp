@@ -23,18 +23,10 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" columns="${[[name: "agent"],[name: "usedDate"],[name: "shipment"],[name: "transitFrom"],[name: "transitTo"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "totalCost"]]}">
-        <rg:criteria>
-            <rg:eq name='user.id' value='${userid}'/>
-        </rg:criteria>
+    <rg:grid domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" columns="${[[name: "assignedInsuranceCert"],[name: "usedDate"],[name: "shipment"],[name: "transitFrom"],[name: "transitTo"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "totalCost",formatter:'Integer']]}">
     </rg:grid>
     <rg:dialog id="usedInsuranceCert" title="Used Insurance Specification Dialog">
         <rg:fields bean="${new cargo.insuranceCertificate.UsedInsuranceCert()}">
-            <rg:modify>
-                <rg:ignoreField field="sendingDate"/>
-                <rg:ignoreField field="insuranceCo"/>
-                <rg:ignoreField field="purchaseDate"/>
-            </rg:modify>
         </rg:fields>
         <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed" conroller="usedInsuranceCert"/>
         <rg:cancelButton/>

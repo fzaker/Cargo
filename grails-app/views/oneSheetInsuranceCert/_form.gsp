@@ -2,6 +2,14 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: oneSheetInsuranceCertInstance, field: 'agent', 'error')} required">
+	<label for="agent">
+		<g:message code="oneSheetInsuranceCert.agent.label" default="Agent" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="agent" name="agent.id" from="${cargo.LocalAgent.list()}" optionKey="id" required="" value="${oneSheetInsuranceCertInstance?.agent?.id}" class="many-to-one"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: oneSheetInsuranceCertInstance, field: 'insuranceNum', 'error')} required">
 	<label for="insuranceNum">
 		<g:message code="oneSheetInsuranceCert.insuranceNum.label" default="Insurance Num" />
